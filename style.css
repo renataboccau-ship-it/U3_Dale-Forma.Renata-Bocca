@@ -1,199 +1,352 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+/* =========================
+   RESET
+========================= */
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-background:#F4EFE6;
-font-family:Inter,sans-serif;
-overflow-x:hidden;
+    background:#ECE7DE;
+    overflow:hidden;
+    font-family:Georgia, serif;
+    height:100vh;
 }
 
-section{
-height:100vh;
-position:relative;
-}
-
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+    position:relative;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
 }
 
-.title{
-font-size:8rem;
-font-weight:700;
-z-index:10;
-mix-blend-mode:multiply;
+.hero-content{
+    text-align:center;
+    z-index:100;
 }
 
-/* PIEZAS */
-
-.shape{
-position:absolute;
-transition:.7s ease;
-cursor:pointer;
-will-change:transform;
+.hero h1{
+    font-size:9rem;
+    line-height:.9;
+    font-weight:700;
+    user-select:none;
 }
 
-.shape:hover{
-transform:scale(1.15) rotate(15deg);
-filter:blur(1px);
+.hero p{
+    margin-top:20px;
+    font-family:sans-serif;
+    font-size:1.4rem;
+    font-weight:700;
+    color:#5d4d4d;
 }
 
-/* COLORES */
-
-.red{
-background:#D73A3A;
-}
+/* =========================
+   COLORES TEXTO
+========================= */
 
 .green{
-background:#76C67C;
+    color:#76C67C;
 }
 
-.yellow{
-background:#F0A52B;
+.red{
+    color:#D9253A;
 }
 
 .blue{
-background:#8FD0E8;
+    color:#8ED0E8;
 }
 
-/* FORMAS */
-
-.square{
-width:120px;
-height:120px;
+.orange{
+    color:#F4A42A;
 }
 
-.circle{
-width:90px;
-height:90px;
-border-radius:50%;
+/* =========================
+   PIEZAS
+========================= */
+
+.floating-piece{
+    position:absolute;
+    cursor:pointer;
+    transition:
+    transform .5s ease,
+    filter .5s ease;
+    animation:float 8s ease-in-out infinite;
+    will-change:transform;
 }
 
-.rect{
-width:150px;
-height:70px;
+.floating-piece:hover{
+    transform:scale(1.15);
+    filter:drop-shadow(0 15px 20px rgba(0,0,0,.15));
 }
+
+/* =========================
+   TRIANGULOS
+========================= */
 
 .triangle{
-width:0;
-height:0;
-border-left:60px solid transparent;
-border-right:60px solid transparent;
-border-bottom:120px solid #D73A3A;
-background:none;
+    width:0;
+    height:0;
+    border-left:55px solid transparent;
+    border-right:55px solid transparent;
+    border-bottom:100px solid #D9253A;
 }
 
-/* POSICIONES */
+/* =========================
+   CIRCULOS
+========================= */
 
-.red{
-top:15%;
-left:20%;
+.circle{
+    width:80px;
+    height:80px;
+    background:#F4A42A;
+    border-radius:50%;
 }
 
-.green{
-top:60%;
-left:15%;
+/* =========================
+   CUADRADOS
+========================= */
+
+.rect{
+    width:90px;
+    height:90px;
+    background:#8ED0E8;
+    border-radius:12px;
 }
 
-.yellow{
-top:25%;
-right:20%;
+/* =========================
+   ARCOS
+========================= */
+
+.arc{
+    width:130px;
+    height:65px;
+    background:#76C67C;
+    border-radius:130px 130px 0 0;
 }
 
-.red2{
-right:15%;
-bottom:15%;
+/* =========================
+   POSICIONES
+========================= */
+
+/* triangulo superior izquierdo */
+
+.t1{
+    left:4%;
+    top:4%;
+    animation-delay:0s;
 }
 
-.blue{
-top:60%;
-right:10%;
+/* triangulo centro derecha */
+
+.t2{
+    right:24%;
+    top:42%;
+    animation-delay:2s;
 }
 
-/* PATTERN */
+/* triangulo inferior izquierdo */
 
-.pattern{
-display:flex;
-justify-content:center;
-align-items:center;
+.t3{
+    left:5%;
+    bottom:8%;
+    transform:rotate(-15deg);
+    animation-delay:4s;
 }
 
-.pattern-grid{
-display:grid;
-grid-template-columns:repeat(3,180px);
-gap:30px;
+/* triangulo pequeño inferior */
+
+.t4{
+    left:35%;
+    bottom:20%;
+    transform:rotate(-18deg);
+    animation-delay:1s;
 }
 
-.piece{
-width:180px;
-height:180px;
-background:#76C67C;
-transition:.5s;
+/* circulos */
+
+.c1{
+    left:8%;
+    top:45%;
+    animation-delay:2s;
 }
 
-.piece:hover{
-transform:rotate(20deg) scale(1.1);
+.c2{
+    right:28%;
+    bottom:22%;
+    animation-delay:5s;
 }
 
-/* FIGURA */
+/* cuadrados */
 
-.construction{
-display:flex;
-justify-content:center;
-align-items:center;
+.r1{
+    right:40%;
+    top:2%;
+    transform:rotate(15deg);
+    animation-delay:1s;
 }
 
-.figure{
-position:relative;
-width:400px;
-height:400px;
+.r2{
+    right:10%;
+    bottom:18%;
+    transform:rotate(-25deg);
+    animation-delay:3s;
 }
 
-.roof{
-position:absolute;
-width:0;
-height:0;
-border-left:120px solid transparent;
-border-right:120px solid transparent;
-border-bottom:160px solid #D73A3A;
-top:0;
-left:80px;
+/* arcos */
+
+.a1{
+    left:25%;
+    top:6%;
+    transform:rotate(-28deg);
+    animation-delay:2s;
 }
 
-.body{
-position:absolute;
-width:240px;
-height:180px;
-background:#76C67C;
-bottom:0;
-left:80px;
+.a2{
+    right:7%;
+    top:3%;
+    background:#F4A42A;
+    animation-delay:4s;
 }
 
-.figure .circle{
-position:absolute;
-right:20px;
-top:120px;
-background:#F0A52B;
+.a3{
+    left:48%;
+    bottom:6%;
+    width:150px;
+    height:75px;
+    background:#F4A42A;
+    animation-delay:1s;
 }
 
-/* SCROLL */
-
-.reveal{
-opacity:0;
-transform:translateY(100px);
-transition:1s;
+.a4{
+    right:12%;
+    bottom:6%;
+    transform:rotate(18deg);
+    animation-delay:3s;
 }
 
-.reveal.active{
-opacity:1;
-transform:translateY(0);
+/* barra verde */
+
+.bar1{
+    position:absolute;
+    width:180px;
+    height:28px;
+    background:#76C67C;
+    border-radius:8px;
+    left:10%;
+    bottom:25%;
+    transform:rotate(50deg);
+    animation:float 10s ease-in-out infinite;
+}
+
+.bar2{
+    position:absolute;
+    width:110px;
+    height:24px;
+    background:#76C67C;
+    border-radius:8px;
+    right:8%;
+    top:35%;
+    transform:rotate(-30deg);
+    animation:float 9s ease-in-out infinite;
+}
+
+/* =========================
+   ANIMACION FLOTANTE
+========================= */
+
+@keyframes float{
+
+    0%{
+        translate:0 0;
+        rotate:0deg;
+    }
+
+    25%{
+        translate:0 -15px;
+        rotate:2deg;
+    }
+
+    50%{
+        translate:0 8px;
+        rotate:-2deg;
+    }
+
+    75%{
+        translate:0 -12px;
+        rotate:1deg;
+    }
+
+    100%{
+        translate:0 0;
+        rotate:0deg;
+    }
+
+}
+
+/* =========================
+   ENTRADA SUAVE
+========================= */
+
+.hero-content{
+    animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:5rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .circle{
+        width:55px;
+        height:55px;
+    }
+
+    .rect{
+        width:65px;
+        height:65px;
+    }
+
+    .arc{
+        width:90px;
+        height:45px;
+    }
+
+    .triangle{
+        border-left:35px solid transparent;
+        border-right:35px solid transparent;
+        border-bottom:65px solid #D9253A;
+    }
+
 }

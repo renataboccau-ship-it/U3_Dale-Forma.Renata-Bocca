@@ -1,86 +1,26 @@
-/* PARALLAX MOUSE */
+const pieces = document.querySelectorAll(
+    ".floating-piece, .bar1, .bar2"
+);
 
-const shapes = document.querySelectorAll(".shape");
+document.addEventListener("mousemove", (e) => {
 
-document.addEventListener("mousemove",(e)=>{
+    const mouseX =
+        (e.clientX / window.innerWidth - 0.5);
 
-const x = e.clientX / window.innerWidth;
-const y = e.clientY / window.innerHeight;
+    const mouseY =
+        (e.clientY / window.innerHeight - 0.5);
 
-shapes.forEach((shape,index)=>{
+    pieces.forEach((piece, index) => {
 
-const speed = (index + 1) * 15;
+        const speed = (index + 1) * 4;
 
-shape.style.transform =
-`translate(
-${x * speed}px,
-${y * speed}px
-)`;
+        piece.style.transform = `
+            translate(
+                ${mouseX * speed}px,
+                ${mouseY * speed}px
+            )
+        `;
 
-});
-
-});
-
-
-/* SCROLL REVEAL */
-
-const reveals = document.querySelectorAll("section");
-
-window.addEventListener("scroll",()=>{
-
-reveals.forEach(section=>{
-
-const top = section.getBoundingClientRect().top;
-
-if(top < window.innerHeight - 150){
-
-section.classList.add("active");
-
-}
-
-});
-
-});
-
-
-/* DECONSTRUCCIÓN */
-
-window.addEventListener("scroll",()=>{
-
-const figure = document.querySelector(".figure");
-
-const value = window.scrollY;
-
-figure.style.transform =
-`rotate(${value * .05}deg)
-scale(${1 + value * .0002})`;
-
-});
-
-
-/* PIEZAS FLOTANDO */
-
-shapes.forEach((shape,index)=>{
-
-setInterval(()=>{
-
-shape.animate([
-{
-transform:`translateY(0px)`
-},
-{
-transform:`translateY(-15px)`
-},
-{
-transform:`translateY(0px)`
-}
-],{
-
-duration:3000 + index * 500,
-iterations:Infinity
-
-});
-
-},100);
+    });
 
 });
