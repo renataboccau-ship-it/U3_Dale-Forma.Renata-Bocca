@@ -1,26 +1,24 @@
-const pieces = document.querySelectorAll(
-    ".floating-piece, .bar1, .bar2"
-);
+const pieces =
+document.querySelectorAll(".floating-piece");
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove",(e)=>{
 
-    const mouseX =
-        (e.clientX / window.innerWidth - 0.5);
+const x =
+(e.clientX/window.innerWidth)-0.5;
 
-    const mouseY =
-        (e.clientY / window.innerHeight - 0.5);
+const y =
+(e.clientY/window.innerHeight)-0.5;
 
-    pieces.forEach((piece, index) => {
+pieces.forEach((piece,index)=>{
 
-        const speed = (index + 1) * 4;
+const speed = (index + 1) * 10;
 
-        piece.style.transform = `
-            translate(
-                ${mouseX * speed}px,
-                ${mouseY * speed}px
-            )
-        `;
+piece.style.transform =
+`translate(
+${x*speed}px,
+${y*speed}px
+)`;
 
-    });
+});
 
 });
