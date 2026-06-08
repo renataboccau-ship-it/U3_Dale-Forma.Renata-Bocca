@@ -1,54 +1,86 @@
-// PARALLAX
+/* PARALLAX MOUSE */
 
-const parallax = document.querySelector(".parallax");
+const shapes = document.querySelectorAll(".shape");
 
-window.addEventListener("scroll", () => {
+document.addEventListener("mousemove",(e)=>{
 
-    let desplazamiento = window.pageYOffset;
+const x = e.clientX / window.innerWidth;
+const y = e.clientY / window.innerHeight;
 
-    parallax.style.backgroundPositionY =
-        desplazamiento * 0.5 + "px";
+shapes.forEach((shape,index)=>{
+
+const speed = (index + 1) * 15;
+
+shape.style.transform =
+`translate(
+${x * speed}px,
+${y * speed}px
+)`;
+
+});
 
 });
 
 
-// GALERÍA 
+/* SCROLL REVEAL */
 
-const imagenes = document.querySelectorAll(".grid img");
-const lightbox = document.getElementById("lightbox");
+const reveals = document.querySelectorAll("section");
 
-const imagenAmpliada =
-    document.getElementById("imagen-ampliada");
+window.addEventListener("scroll",()=>{
 
-const cerrar =
-    document.querySelector(".cerrar");
+reveals.forEach(section=>{
 
+const top = section.getBoundingClientRect().top;
 
-imagenes.forEach(imagen => {
+if(top < window.innerHeight - 150){
 
-    imagen.addEventListener("click", () => {
+section.classList.add("active");
 
-        lightbox.style.display = "flex";
-        imagenAmpliada.src = imagen.src;
+}
 
-    });
+});
 
 });
 
 
-cerrar.addEventListener("click", () => {
+/* DECONSTRUCCIÓN */
 
-    lightbox.style.display = "none";
+window.addEventListener("scroll",()=>{
+
+const figure = document.querySelector(".figure");
+
+const value = window.scrollY;
+
+figure.style.transform =
+`rotate(${value * .05}deg)
+scale(${1 + value * .0002})`;
 
 });
 
 
-lightbox.addEventListener("click", (e) => {
+/* PIEZAS FLOTANDO */
 
-    if(e.target === lightbox){
+shapes.forEach((shape,index)=>{
 
-        lightbox.style.display = "none";
+setInterval(()=>{
 
-    }
+shape.animate([
+{
+transform:`translateY(0px)`
+},
+{
+transform:`translateY(-15px)`
+},
+{
+transform:`translateY(0px)`
+}
+],{
+
+duration:3000 + index * 500,
+iterations:Infinity
+
+});
+
+},100);
 
 });
