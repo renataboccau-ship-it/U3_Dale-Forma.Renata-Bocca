@@ -1,90 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dale Forma</title>
+    <title>Landing Page</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="noise"></div>
+    <!-- Hero -->
+    <section class="hero">
 
-<section class="hero">
+        <!-- Formas flotantes -->
+        <div class="floating layer1 triangle"></div>
+        <div class="floating layer2 circle"></div>
+        <div class="floating layer3 arc"></div>
+        <div class="floating layer4 rect"></div>
 
-    <div class="floating layer1 triangle"></div>
-    <div class="floating layer2 circle"></div>
-    <div class="floating layer3 arc"></div>
-    <div class="floating layer4 rect"></div>
+        <div class="floating layer5 triangle"></div>
+        <div class="floating layer6 circle"></div>
+        <div class="floating layer7 arc"></div>
+        <div class="floating layer8 rect"></div>
 
-    <div class="floating layer5 triangle"></div>
-    <div class="floating layer6 circle"></div>
-    <div class="floating layer7 arc"></div>
-    <div class="floating layer8 rect"></div>
+        <!-- Contenido principal -->
+        <div class="hero-content">
 
-    <div class="hero-content">
+            <img
+                src="assets/Recurso 1.svg"
+                alt="Logo del juego"
+                class="logo"
+            >
 
-        <h1>
-            <span class="green">D</span>
-            <span class="red">A</span>
-            <span class="blue">L</span>
-            <span class="orange">e</span>
-            <br>
-            <span class="blue">F</span>
-            <span class="green">o</span>
-            <span class="orange">r</span>
-            <span class="red">m</span>
-            <span class="blue">a</span>
-        </h1>
+            <p>¡Construye, junta y gana!</p>
 
-        <p>¡Construye, junta y gana!</p>
+            <a href="#juego" class="btn">
+                Explorar
+            </a>
 
-        <a href="#juego" class="btn">
-            Explorar
-        </a>
+        </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- Descripción -->
+    <section class="info" id="juego">
 
+        <p>
+            Utiliza piezas, conectores y creatividad para representar
+            conceptos, sorprender a los demás jugadores y reunir las
+            cartas necesarias para alcanzar la victoria.
+        </p>
 
-<section id="juego" class="video-section">
+    </section>
 
-   <video autoplay muted loop playsinline class="video-bg">
-    <source src="assets/puedes_animar_esta_imagen_que.mp4" type="video/mp4">
-</video>
-    </div>
+    <!-- Cartas -->
+    <section class="cards">
 
-</section>
+        <div class="card">
+            <img src="cartas1.png" alt="Carta 1">
+        </div>
 
+        <div class="card">
+            <img src="cartas2.png" alt="Carta 2">
+        </div>
 
-<section class="info">
+    </section>
 
-    <p>
-        Utiliza piezas, conectores y creatividad para representar conceptos,
-        sorprender a los demás jugadores y reunir las cartas necesarias
-        para alcanzar la victoria.
-    </p>
-
-</section>
-
-
-<section class="cards">
-
-    <div class="card">
-        <img src="cartas1.png">
-    </div>
-
-    <div class="card">
-        <img src="cartas2.png">
-    </div>
-
-</section>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>

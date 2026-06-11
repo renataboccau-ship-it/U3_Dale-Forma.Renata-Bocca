@@ -1,261 +1,197 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-
-background:#F4EFE6;
-font-family:Arial, sans-serif;
-overflow-x:hidden;
-perspective:1200px;
+    background:#F4EFE6;
+    font-family:Arial, sans-serif;
+    overflow-x:hidden;
+    perspective:1200px;
 }
 
+/* Fondo textura */
 .noise{
-position:fixed;
-width:100%;
-height:100%;
-background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-opacity:.15;
-pointer-events:none;
-z-index:0;
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    opacity:.15;
+    pointer-events:none;
+    z-index:0;
 }
 
+/* Hero */
 .hero{
-
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-position:relative;
-overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
 }
 
 .hero-content{
-
-text-align:center;
-position:relative;
-z-index:10;
+    text-align:center;
+    position:relative;
+    z-index:10;
 }
 
-h1{
-
-font-size:7rem;
-line-height:0.8;
-font-weight:bold;
-}
-
-.green{
-color:#6BB96D;
-}
-
-.blue{
-color:#9BD0E8;
-}
-
-.red{
-color:#D7263D;
-}
-
-.orange{
-color:#F4A62A;
+.logo{
+    width:600px;
+    max-width:90vw;
+    height:auto;
+    transition:transform .2s ease-out;
+    transform-style:preserve-3d;
+    will-change:transform;
 }
 
 .hero p{
-
-margin-top:15px;
-font-weight:600;
+    margin-top:15px;
+    font-size:1.2rem;
+    font-weight:600;
 }
 
+/* Botón */
 .btn{
-
-display:inline-block;
-margin-top:20px;
-
-padding:14px 28px;
-background:#D7263D;
-color:white;
-border-radius:30px;
-
-text-decoration:none;
-
-transition:.4s;
+    display:inline-block;
+    margin-top:20px;
+    padding:14px 28px;
+    background:#D7263D;
+    color:white;
+    border-radius:30px;
+    text-decoration:none;
+    transition:.4s;
 }
 
 .btn:hover{
-
-transform:translateY(-5px);
-}
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    object-fit: cover;
-
-    z-index: -10;
-
-    filter:brightness(100%)
-
+    transform:translateY(-5px);
 }
 
+/* Video fondo */
+.video-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+    z-index:-10;
+    filter:brightness(100%);
+}
 
+/* Información */
 .info{
-
-padding:100px 20px;
-text-align:center;
-max-width:800px;
-margin:auto;
+    padding:100px 20px;
+    text-align:center;
+    max-width:800px;
+    margin:auto;
 }
 
+/* Cartas */
 .cards{
-
-display:flex;
-justify-content:center;
-gap:50px;
-padding:80px 20px;
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    padding:80px 20px;
+    flex-wrap:wrap;
 }
 
 .card{
-
-width:300px;
-background:white;
-padding:20px;
-
-border-radius:20px;
-
-transition:.6s;
-
-transform-style:preserve-3d;
-
-box-shadow:
-0 30px 50px rgba(0,0,0,.08);
+    width:300px;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    transition:.6s;
+    transform-style:preserve-3d;
+    box-shadow:0 30px 50px rgba(0,0,0,.08);
 }
 
 .card:hover{
-
-transform:
-rotateY(15deg)
-rotateX(10deg)
-translateY(-20px);
+    transform:
+        rotateY(15deg)
+        rotateX(10deg)
+        translateY(-20px);
 }
 
 .card img{
-
-width:100%;
-display:block;
+    width:100%;
+    display:block;
 }
 
+/* Formas flotantes */
 .floating{
-
-position:absolute;
-transition:.2s;
-transform-style:preserve-3d;
+    position:absolute;
+    transition:.2s;
+    transform-style:preserve-3d;
+    will-change:transform;
 }
 
+/* Triángulo */
 .triangle{
-
-width:80px;
-height:80px;
-
-background:#D7263D;
-
-clip-path:polygon(50% 0%,0% 100%,100% 100%);
+    width:80px;
+    height:80px;
+    background:#D7263D;
+    clip-path:polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
+/* Círculo */
 .circle{
-
-width:70px;
-height:70px;
-
-background:#F4A62A;
-border-radius:50%;
+    width:70px;
+    height:70px;
+    background:#F4A62A;
+    border-radius:50%;
 }
 
+/* Arco */
 .arc{
-
-width:90px;
-height:90px;
-
-border:15px solid #6BB96D;
-border-right-color:transparent;
-border-bottom-color:transparent;
-border-radius:50%;
+    width:90px;
+    height:90px;
+    border:15px solid #6BB96D;
+    border-right-color:transparent;
+    border-bottom-color:transparent;
+    border-radius:50%;
 }
 
+/* Rectángulo */
 .rect{
-
-width:80px;
-height:40px;
-background:#9BD0E8;
-border-radius:8px;
+    width:80px;
+    height:40px;
+    background:#9BD0E8;
+    border-radius:8px;
 }
 
-.layer1{
-top:10%;
-left:8%;
+/* Posiciones */
+.layer1{ top:10%; left:8%; }
+.layer2{ top:18%; right:15%; }
+.layer3{ top:8%; left:40%; }
+.layer4{ top:25%; right:25%; }
+
+.layer5{ bottom:18%; left:10%; }
+.layer6{ bottom:10%; right:15%; }
+.layer7{ bottom:12%; right:30%; }
+.layer8{ bottom:30%; left:25%; }
+
+/* Animación flotante */
+@keyframes floatShape{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-25px);
+    }
+    100%{
+        transform:translateY(0);
+    }
 }
 
-.layer2{
-top:18%;
-right:15%;
-}
+.layer1{ animation:floatShape 6s ease-in-out infinite; }
+.layer2{ animation:floatShape 8s ease-in-out infinite; }
+.layer3{ animation:floatShape 7s ease-in-out infinite; }
+.layer4{ animation:floatShape 9s ease-in-out infinite; }
 
-.layer3{
-top:8%;
-left:40%;
-}
-
-.layer4{
-top:25%;
-right:25%;
-}
-
-.layer5{
-bottom:18%;
-left:10%;
-}
-
-.layer6{
-bottom:10%;
-right:15%;
-}
-
-.layer7{
-bottom:12%;
-right:30%;
-}
-
-.layer8{
-bottom:30%;
-left:25%;
-}
-
-@keyframes float {
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-25px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-.layer1{animation:float 6s ease-in-out infinite;}
-.layer2{animation:float 8s ease-in-out infinite;}
-.layer3{animation:float 7s ease-in-out infinite;}
-.layer4{animation:float 9s ease-in-out infinite;}
-.layer5{animation:float 5s ease-in-out infinite;}
-.layer6{animation:float 8s ease-in-out infinite;}
-.layer7{animation:float 6s ease-in-out infinite;}
-.layer8{animation:float 10s ease-in-out infinite;}
+.layer5{ animation:floatShape 5s ease-in-out infinite; }
+.layer6{ animation:floatShape 8s ease-in-out infinite; }
+.layer7{ animation:floatShape 6s ease-in-out infinite; }
+.layer8{ animation:floatShape 10s ease-in-out infinite; }
