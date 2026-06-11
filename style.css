@@ -1,408 +1,273 @@
-/* =========================
-   RESET
-========================= */
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:#ECE7DE;
-    overflow:hidden;
-    font-family:Georgia, serif;
-    height:100vh;
+
+background:#F4EFE6;
+font-family:Arial, sans-serif;
+overflow-x:hidden;
+perspective:1200px;
 }
 
-/* =========================
-   HERO
-========================= */
+.noise{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+opacity:.15;
+pointer-events:none;
+z-index:0;
+}
 
 .hero{
-    position:relative;
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
+
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+overflow:hidden;
 }
 
 .hero-content{
-    text-align:center;
-    z-index:100;
+
+text-align:center;
+position:relative;
+z-index:10;
 }
 
-.hero h1{
-    font-size:9rem;
-    line-height:.9;
-    font-weight:700;
-    user-select:none;
-}
+h1{
 
-.hero p{
-    margin-top:20px;
-    font-family:sans-serif;
-    font-size:1.4rem;
-    font-weight:700;
-    color:#5d4d4d;
+font-size:7rem;
+line-height:0.8;
+font-weight:bold;
 }
-
-/* =========================
-   COLORES TEXTO
-========================= */
 
 .green{
-    color:#76C67C;
-}
-
-.red{
-    color:#D9253A;
+color:#6BB96D;
 }
 
 .blue{
-    color:#8ED0E8;
+color:#9BD0E8;
+}
+
+.red{
+color:#D7263D;
 }
 
 .orange{
-    color:#F4A42A;
+color:#F4A62A;
 }
 
-/* =========================
-   PIEZAS
-========================= */
+.hero p{
 
-.floating-piece{
-    position:absolute;
-    cursor:pointer;
-    transition:
-    transform .5s ease,
-    filter .5s ease;
-    animation:float 8s ease-in-out infinite;
-    will-change:transform;
+margin-top:15px;
+font-weight:600;
 }
 
-.floating-piece:hover{
-    transform:scale(1.15);
-    filter:drop-shadow(0 15px 20px rgba(0,0,0,.15));
+.btn{
+
+display:inline-block;
+margin-top:20px;
+
+padding:14px 28px;
+background:#D7263D;
+color:white;
+border-radius:30px;
+
+text-decoration:none;
+
+transition:.4s;
 }
 
-/* =========================
-   TRIANGULOS
-========================= */
+.btn:hover{
+
+transform:translateY(-5px);
+}
+
+.video-section{
+
+padding:100px 0;
+display:flex;
+justify-content:center;
+}
+
+.video-container{
+
+width:70%;
+height:500px;
+
+border-radius:20px;
+overflow:hidden;
+
+box-shadow:
+0 40px 100px rgba(0,0,0,.15);
+
+transform-style:preserve-3d;
+}
+
+video{
+
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.info{
+
+padding:100px 20px;
+text-align:center;
+max-width:800px;
+margin:auto;
+}
+
+.cards{
+
+display:flex;
+justify-content:center;
+gap:50px;
+padding:80px 20px;
+}
+
+.card{
+
+width:300px;
+background:white;
+padding:20px;
+
+border-radius:20px;
+
+transition:.6s;
+
+transform-style:preserve-3d;
+
+box-shadow:
+0 30px 50px rgba(0,0,0,.08);
+}
+
+.card:hover{
+
+transform:
+rotateY(15deg)
+rotateX(10deg)
+translateY(-20px);
+}
+
+.card img{
+
+width:100%;
+display:block;
+}
+
+.floating{
+
+position:absolute;
+transition:.2s;
+transform-style:preserve-3d;
+}
 
 .triangle{
-    width:0;
-    height:0;
-    border-left:55px solid transparent;
-    border-right:55px solid transparent;
-    border-bottom:100px solid #D9253A;
-}
 
-/* =========================
-   CIRCULOS
-========================= */
+width:80px;
+height:80px;
+
+background:#D7263D;
+
+clip-path:polygon(50% 0%,0% 100%,100% 100%);
+}
 
 .circle{
-    width:80px;
-    height:80px;
-    background:#F4A42A;
-    border-radius:50%;
+
+width:70px;
+height:70px;
+
+background:#F4A62A;
+border-radius:50%;
 }
-
-/* =========================
-   CUADRADOS
-========================= */
-
-.rect{
-    width:90px;
-    height:90px;
-    background:#8ED0E8;
-    border-radius:12px;
-}
-
-/* =========================
-   ARCOS
-========================= */
 
 .arc{
-    width:130px;
-    height:65px;
-    background:#76C67C;
-    border-radius:130px 130px 0 0;
+
+width:90px;
+height:90px;
+
+border:15px solid #6BB96D;
+border-right-color:transparent;
+border-bottom-color:transparent;
+border-radius:50%;
 }
 
-/* =========================
-   POSICIONES
-========================= */
+.rect{
 
-/* triangulo superior izquierdo */
-
-.t1{
-    left:4%;
-    top:4%;
-    animation-delay:0s;
+width:80px;
+height:40px;
+background:#9BD0E8;
+border-radius:8px;
 }
 
-/* triangulo centro derecha */
-
-.t2{
-    right:24%;
-    top:42%;
-    animation-delay:2s;
+.layer1{
+top:10%;
+left:8%;
 }
 
-/* triangulo inferior izquierdo */
-
-.t3{
-    left:5%;
-    bottom:8%;
-    transform:rotate(-15deg);
-    animation-delay:4s;
+.layer2{
+top:18%;
+right:15%;
 }
 
-/* triangulo pequeño inferior */
-
-.t4{
-    left:35%;
-    bottom:20%;
-    transform:rotate(-18deg);
-    animation-delay:1s;
+.layer3{
+top:8%;
+left:40%;
 }
 
-/* circulos */
-
-.c1{
-    left:8%;
-    top:45%;
-    animation-delay:2s;
+.layer4{
+top:25%;
+right:25%;
 }
 
-.c2{
-    right:28%;
-    bottom:22%;
-    animation-delay:5s;
+.layer5{
+bottom:18%;
+left:10%;
 }
 
-/* cuadrados */
-
-.r1{
-    right:40%;
-    top:2%;
-    transform:rotate(15deg);
-    animation-delay:1s;
+.layer6{
+bottom:10%;
+right:15%;
 }
 
-.r2{
-    right:10%;
-    bottom:18%;
-    transform:rotate(-25deg);
-    animation-delay:3s;
+.layer7{
+bottom:12%;
+right:30%;
 }
 
-/* arcos */
-
-.a1{
-    left:25%;
-    top:6%;
-    transform:rotate(-28deg);
-    animation-delay:2s;
+.layer8{
+bottom:30%;
+left:25%;
 }
 
-.a2{
-    right:7%;
-    top:3%;
-    background:#F4A42A;
-    animation-delay:4s;
+@keyframes float {
+
+0%{
+transform:translateY(0px);
 }
 
-.a3{
-    left:48%;
-    bottom:6%;
-    width:150px;
-    height:75px;
-    background:#F4A42A;
-    animation-delay:1s;
+50%{
+transform:translateY(-25px);
 }
 
-.a4{
-    right:12%;
-    bottom:6%;
-    transform:rotate(18deg);
-    animation-delay:3s;
+100%{
+transform:translateY(0px);
 }
-
-/* barra verde */
-
-.bar1{
-    position:absolute;
-    width:180px;
-    height:28px;
-    background:#76C67C;
-    border-radius:8px;
-    left:10%;
-    bottom:25%;
-    transform:rotate(50deg);
-    animation:float 10s ease-in-out infinite;
-}
-
-.bar2{
-    position:absolute;
-    width:110px;
-    height:24px;
-    background:#76C67C;
-    border-radius:8px;
-    right:8%;
-    top:35%;
-    transform:rotate(-30deg);
-    animation:float 9s ease-in-out infinite;
-}
-
-/* =========================
-   ANIMACION FLOTANTE
-========================= */
-
-@keyframes float{
-
-    0%{
-        translate:0 0;
-        rotate:0deg;
-    }
-
-    25%{
-        translate:0 -15px;
-        rotate:2deg;
-    }
-
-    50%{
-        translate:0 8px;
-        rotate:-2deg;
-    }
-
-    75%{
-        translate:0 -12px;
-        rotate:1deg;
-    }
-
-    100%{
-        translate:0 0;
-        rotate:0deg;
-    }
 
 }
 
-/* =========================
-   ENTRADA SUAVE
-========================= */
-
-.hero-content{
-    animation:fadeUp 1.2s ease forwards;
-}
-
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(50px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-/* =========================
-   BOTÓN EXPLORAR
-========================= */
-
-.explore-btn{
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    margin-top:40px;
-
-    padding:14px 30px;
-
-    border:2px solid #5d4d4d;
-    border-radius:50px;
-
-    color:#5d4d4d;
-    text-decoration:none;
-
-    font-family:sans-serif;
-    font-weight:700;
-    font-size:1rem;
-
-    transition:all .4s ease;
-
-    backdrop-filter:blur(8px);
-
-    animation:buttonFloat 3s ease-in-out infinite;
-}
-
-.explore-btn:hover{
-
-    background:#5d4d4d;
-    color:white;
-
-    transform:
-        translateY(-4px)
-        scale(1.05);
-
-}
-
-@keyframes buttonFloat{
-
-    0%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-
-    100%{
-        transform:translateY(0);
-    }
-
-}
-@media(max-width:768px){
-
-    .hero h1{
-        font-size:5rem;
-    }
-
-    .hero p{
-        font-size:1rem;
-    }
-
-    .circle{
-        width:55px;
-        height:55px;
-    }
-
-    .rect{
-        width:65px;
-        height:65px;
-    }
-
-    .arc{
-        width:90px;
-        height:45px;
-    }
-
-    .triangle{
-        border-left:35px solid transparent;
-        border-right:35px solid transparent;
-        border-bottom:65px solid #D9253A;
-    }
-
-}
+.layer1{animation:float 6s ease-in-out infinite;}
+.layer2{animation:float 8s ease-in-out infinite;}
+.layer3{animation:float 7s ease-in-out infinite;}
+.layer4{animation:float 9s ease-in-out infinite;}
+.layer5{animation:float 5s ease-in-out infinite;}
+.layer6{animation:float 8s ease-in-out infinite;}
+.layer7{animation:float 6s ease-in-out infinite;}
+.layer8{animation:float 10s ease-in-out infinite;}

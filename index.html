@@ -11,66 +11,83 @@
 
 <body>
 
-    <!-- HERO -->
+<div class="noise"></div>
 
-    <section class="hero">
+<section class="hero">
 
-        <!-- PIEZAS FLOTANTES -->
+    <div class="floating layer1 triangle"></div>
+    <div class="floating layer2 circle"></div>
+    <div class="floating layer3 arc"></div>
+    <div class="floating layer4 rect"></div>
 
-        <!-- TRIÁNGULOS -->
-        <div class="floating-piece triangle t1"></div>
-        <div class="floating-piece triangle t2"></div>
-        <div class="floating-piece triangle t3"></div>
-        <div class="floating-piece triangle t4"></div>
+    <div class="floating layer5 triangle"></div>
+    <div class="floating layer6 circle"></div>
+    <div class="floating layer7 arc"></div>
+    <div class="floating layer8 rect"></div>
 
-        <!-- CÍRCULOS -->
-        <div class="floating-piece circle c1"></div>
-        <div class="floating-piece circle c2"></div>
+    <div class="hero-content">
 
-        <!-- CUADRADOS -->
-        <div class="floating-piece rect r1"></div>
-        <div class="floating-piece rect r2"></div>
+        <h1>
+            <span class="green">D</span>
+            <span class="red">A</span>
+            <span class="blue">L</span>
+            <span class="orange">e</span>
+            <br>
+            <span class="blue">F</span>
+            <span class="green">o</span>
+            <span class="orange">r</span>
+            <span class="red">m</span>
+            <span class="blue">a</span>
+        </h1>
 
-        <!-- ARCOS -->
-        <div class="floating-piece arc a1"></div>
-        <div class="floating-piece arc a2"></div>
-        <div class="floating-piece arc a3"></div>
-        <div class="floating-piece arc a4"></div>
+        <p>¡Construye, junta y gana!</p>
 
-        <!-- BARRAS -->
-        <div class="bar1"></div>
-        <div class="bar2"></div>
+        <a href="#juego" class="btn">
+            Explorar
+        </a>
 
-        <!-- CONTENIDO CENTRAL -->
+    </div>
 
-        <div class="hero-content">
+</section>
 
-            <h1>
-                <span class="green">D</span>
-                <span class="red">A</span>
-                <span class="blue">l</span>
-                <span class="orange">e</span>
 
-                <br>
+<section id="juego" class="video-section">
 
-                <span class="blue">F</span>
-                <span class="orange">o</span>
-                <span class="green">r</span>
-                <span class="blue">m</span>
-                <span class="red">A</span>
-            </h1>
+    <div class="video-container">
 
-            <p>¡Construye, junta y gana!</p>
+        <video autoplay muted loop playsinline>
+            <source src="video.mp4" type="video/mp4">
+        </video>
 
-            <a href="#explorar" class="explore-btn">
-                Explorar 
-            </a>
+    </div>
 
-        </div>
+</section>
 
-    </section>
-    <script src="script.js"></script>
+
+<section class="info">
+
+    <p>
+        Utiliza piezas, conectores y creatividad para representar conceptos,
+        sorprender a los demás jugadores y reunir las cartas necesarias
+        para alcanzar la victoria.
+    </p>
+
+</section>
+
+
+<section class="cards">
+
+    <div class="card">
+        <img src="cartas1.png">
+    </div>
+
+    <div class="card">
+        <img src="cartas2.png">
+    </div>
+
+</section>
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
