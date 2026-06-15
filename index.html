@@ -3,70 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-
+    <title>Dale Forma – Construye, junta y gana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Hero -->
-    <section class="hero">
+    <!-- Textura de fondo -->
+    <div class="noise"></div>
 
-        <!-- Formas flotantes -->
-        <div class="floating layer1 triangle"></div>
-        <div class="floating layer2 circle"></div>
-        <div class="floating layer3 arc"></div>
-        <div class="floating layer4 rect"></div>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="inicio">
 
-        <div class="floating layer5 triangle"></div>
-        <div class="floating layer6 circle"></div>
-        <div class="floating layer7 arc"></div>
-        <div class="floating layer8 rect"></div>
+        <!-- Formas flotantes parallax -->
+        <div class="floating layer1 tri-rojo"></div>
+        <div class="floating layer2 circle-amarillo"></div>
+        <div class="floating layer3 rect-largo-verde"></div>
+        <div class="floating layer4 cuad-turquesa"></div>
+        <div class="floating layer5 semi-amarillo"></div>
+        <div class="floating layer6 tri-rect-rojo"></div>
+        <div class="floating layer7 rect-largo-verde small"></div>
+        <div class="floating layer8 circle-amarillo small"></div>
+        <div class="floating layer9 cuad-turquesa small"></div>
+        <div class="floating layer10 tri-rojo small"></div>
 
         <!-- Contenido principal -->
         <div class="hero-content">
 
-            <img
-                src="assets/Recurso 1.svg"
-                alt="Logo del juego"
-                class="logo"
-            >
+            <!-- LOGO -->
+            <div class="logo-wrap">
+                <img src="assets/Recurso 1.svg" alt="Dale Forma" class="logo">
+            </div>
 
-            <p>¡Construye, junta y gana!</p>
+            <p class="hero-sub">¡Construye, junta y gana!</p>
 
-            <a href="#juego" class="btn">
-                Explorar
-            </a>
+            <!-- Botones ancla con formas del juego -->
+            <nav class="menu-formas" aria-label="Navegación principal">
 
+                <a href="#contexto" class="shape-btn semicircle-btn" aria-label="Contexto">
+                    <span>¿Qué es?</span>
+                </a>
+
+                <a href="#explorar" class="shape-btn triangle-btn" aria-label="Explorar">
+                    <span>Juego</span>
+                </a>
+
+                <a href="#piezas" class="shape-btn rectangle-btn" aria-label="Las piezas">
+                    <span>Las<br>Piezas</span>
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Flecha scroll -->
+        <div class="scroll-hint" aria-hidden="true">
+            <div class="scroll-arrow"></div>
         </div>
 
     </section>
 
-    <!-- Descripción -->
-    <section class="info" id="juego">
+ <!-- ==================== QUE ES DALE FORMA ==================== -->
+<section class="about-section" id="contexto">
 
-        <p>
-            Utiliza piezas, conectores y creatividad para representar
-            conceptos, sorprender a los demás jugadores y reunir las
-            cartas necesarias para alcanzar la victoria.
-        </p>
+    <div class="about-overlay" aria-hidden="true"></div>
+
+    <div class="about-grid">
+
+        <div class="about-texto" data-reveal>
+            <span class="eyebrow">El juego</span>
+            <h2>¿Qué es<br><em class="about-em">Dale Forma</em>?</h2>
+            <p>
+                Un juego de mesa creativo donde deberás construir, conectar y dar forma
+                a conceptos utilizando piezas y conectores. Cada partida desafía tu
+                creatividad y rapidez mental.
+            </p>
+            <div class="about-chips">
+                <span class="chip chip-rojo">Estrategia</span>
+                <span class="chip chip-amarillo">Negociación</span>
+                <span class="chip chip-verde">3–4 jugadores</span>
+                <span class="chip chip-turquesa">+8 años</span>
+            </div>
+        </div>
+
+        <div class="about-build" data-reveal>
+            <div class="about-sandbox" id="aboutSandbox" aria-label="Piezas arrastrables">
+                <div class="ab-piece ab-tri"    style="top:30px;  left:40px"  tabindex="0"></div>
+                <div class="ab-piece ab-circle" style="top:28px;  left:160px" tabindex="0"></div>
+                <div class="ab-piece ab-rect"   style="top:115px; left:25px"  tabindex="0"></div>
+                <div class="ab-piece ab-semi"   style="top:120px; left:165px" tabindex="0"></div>
+                <div class="ab-piece ab-cuad"   style="top:205px; left:70px"  tabindex="0"></div>
+                <div class="ab-piece ab-tri-r"  style="top:200px; left:175px" tabindex="0"></div>
+                <span class="sandbox-hint" aria-hidden="true">arrastra las piezas</span>
+            </div>
+            <p class="build-label">¡Construye lo que imagines!</p>
+        </div>
+
+    </div>
+
+</section>
+<!-- ==================== EXPLORAR ==================== -->
+<section class="explorar-section" id="explorar">
+
+    <div class="explorar-header" data-reveal>
+        <span class="eyebrow">¿Cómo se juega?</span>
+    </div>
+
+    <!-- Paso 1 -->
+    <div class="step-card sc-celeste" data-reveal>
+        <div class="sc-num" aria-hidden="true">01</div>
+        <div class="step-content">
+            <h3>El Vocero Elige</h3>
+            <p>Toma una carta del mazo y escoge un concepto. El resto prepara sus piezas...</p>
+        </div>
+        <div class="step-img-wrap">
+            <img src="assets/cartas de juego.png" alt="Cartas de juego" class="step-img">
+        </div>
+        <div class="sc-stripe" aria-hidden="true"></div>
+    </div>
+
+    <!-- Paso 2 -->
+    <div class="step-card sc-verde" data-reveal>
+        <div class="sc-num" aria-hidden="true">02</div>
+        <div class="step-content">
+            <h3>¡60 Segundos!</h3>
+            <p>Construye el concepto con tus piezas. No hay respuesta única: <strong>la creatividad es la clave.</strong></p>
+        </div>
+        <div class="step-img-wrap">
+            <img src="assets/relojjjj.png" alt="Reloj de arena" class="step-img">
+        </div>
+        <div class="sc-stripe" aria-hidden="true"></div>
+    </div>
+
+    <!-- Paso 3 -->
+    <div class="step-card sc-rojo" data-reveal>
+        <div class="sc-num" aria-hidden="true">03</div>
+        <div class="step-content">
+            <h3>Presenta y Gana</h3>
+            <p>Explica tu construcción. El vocero elige la más ingeniosa.</p>
+            <div class="fichas-counter">
+                <span class="fc-item fc-ganador">Ganador: 4 fichas</span>
+                <span class="fc-item fc-vocero">Vocero: 2 fichas</span>
+            </div>
+        </div>
+        <div class="step-img-wrap">
+            <img src="assets/figura.png" alt="Figura ganadora" class="step-img">
+        </div>
+        <div class="sc-stripe" aria-hidden="true"></div>
+    </div>
+
+</section>
+</section>
+<!-- ==================== MECANICAS DEL JUEGO ==================== -->
+<section class="mecanicas-section" id="mecanicas" style="background: #5B4343;">
+
+    <div class="mec-header" data-reveal>
+        <span class="eyebrow">Domina el juego</span>
+        <h2>Todo lo que necesitas<br><span class="mec-accent">saber para ganar</span></h2>
+    </div>
+
+    <!-- CONECTORES -->
+    <div class="mec-bloque mec-conectores mec-reverse" data-reveal>
+        <div class="mec-texto">
+            <div class="mec-tag tag-turquesa">&#128279; Herramienta</div>
+            <h3>Los <em>Conectores</em></h3>
+            <p>Los conectores amplian tus posibilidades de construccion. Permiten crear <strong>estructuras mas complejas</strong>, agregar nuevas dimensiones y dar vida a ideas cada vez mas creativas.</p>
+            <div class="con-beneficios">
+            </div>
+        </div>
+        <div class="mec-visual mv-conectores" aria-hidden="true">
+            <div class="mec-img-wrap">
+                <img src="assets/mas conectores.png" alt="Conectores del juego" class="mec-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- FICHAS -->
+    <div class="mec-bloque mec-fichas" data-reveal>
+        <div class="mec-visual mv-fichas" aria-hidden="true">
+            <div class="fichas-img-wrap">
+                <img src="assets/ficha sola.png" alt="Ficha del juego" class="fichas-img">
+            </div>
+            <div class="fichas-uses">
+                <div class="fu-item fu-carta">&#127183; Comprar cartas especiales</div>
+                <div class="fu-item fu-ventaja">&#9889; Ventaja táctica</div>
+                <div class="fu-item fu-letra">&#128288; Obtener letra</div>
+            </div>
+        </div>
+        <div class="mec-texto">
+            <div class="mec-tag tag-verde">&#128176; Recurso</div>
+            <h3>Las <em>Fichas</em></h3>
+            <p>Las fichas son tu recurso mas valioso. Usalas estrategicamente para obtener cartas especiales y <strong>aumentar tus posibilidades de completar la palabra FORMA</strong>.</p>
+            <div class="fichas-tip">
+                <div class="ft-icon">&#128161;</div>
+                <p>El ganador de cada ronda recibe <strong>4 fichas</strong>. El vocero recibe <strong>2</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARTAS FORMA -->
+    <div class="mec-bloque mec-cartas" data-reveal>
+        <div class="mec-visual mv-cartas" aria-hidden="true">
+            <div class="fcard fc-f"><span>F</span><div class="fcard-shape fcs-tri"></div></div>
+            <div class="fcard fc-o"><span>O</span><div class="fcard-shape fcs-circle"></div></div>
+            <div class="fcard fc-r active"><span>R</span><div class="fcard-shape fcs-rect"></div></div>
+            <div class="fcard fc-m"><span>M</span><div class="fcard-shape fcs-cuad"></div></div>
+            <div class="fcard fc-a"><span>A</span><div class="fcard-shape fcs-semi"></div></div>
+            <div class="fcard-glow"></div>
+        </div>
+        <div class="mec-texto">
+            <div class="mec-tag tag-rojo">&#11088; Objetivo principal</div>
+            <h3>Cartas <em>FORMA</em></h3>
+            <p>Las Cartas de Letra son las más importantes del juego y solo pueden obtenerse a través del Mazo Especial. Cada una contiene una letra diferente y, para ganar la partida, deberás reunir las cinco cartas necesarias hasta completar la palabra "FORMA".</p>
+            <div class="mec-letras-prog">
+                <div class="mlp-letra mlp-f">F</div>
+                <div class="mlp-letra mlp-o">O</div>
+                <div class="mlp-letra mlp-r">R</div>
+                <div class="mlp-letra mlp-m">M</div>
+                <div class="mlp-letra mlp-a">A</div>
+                <div class="mlp-win">= &#127881; Victoria!</div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+    <!-- ==================== CTA FINAL ==================== -->
+    <section class="seccion cta-seccion">
+
+        <div class="cta-formas" aria-hidden="true">
+            <div class="cta-f tri"></div>
+            <div class="cta-f circle"></div>
+            <div class="cta-f rect-l"></div>
+            <div class="cta-f semi"></div>
+            <div class="cta-f cuad"></div>
+        </div>
+
+        <div class="cta-contenido">
+            <h2>¿Listo para<br><em>Dale Forma</em>?</h2>
+            <a href="#inicio" class="cta-btn">Probar experiencia</a>
+        </div>
 
     </section>
 
-    <!-- Cartas -->
-    <section class="cards">
 
-        <div class="card">
-            <img src="cartas1.png" alt="Carta 1">
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-formas" aria-hidden="true">
+            <div class="ff tri"></div>
+            <div class="ff circle"></div>
+            <div class="ff rect"></div>
+            <div class="ff semi"></div>
         </div>
-
-        <div class="card">
-            <img src="cartas2.png" alt="Carta 2">
-        </div>
-
-    </section>
+        <p>© 2025 Dale Forma. Todos los derechos reservados. 
+            Renata Bocca
+ </p>
+    </footer>
 
     <script src="script.js"></script>
-
 </body>
-</html>
