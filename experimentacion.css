@@ -7,7 +7,128 @@
 body {
   background: #F4EEE3;
   overflow: hidden;
+  font-family: Arial, sans-serif;
 }
+
+/* ── SPLASH ──────────────────────────────────────────────── */
+
+#splash {
+  position: fixed;
+  inset: 0;
+  background: #F4EEE3;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+#splash.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#splash-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#splash-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  pointer-events: none;
+}
+
+#tag {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.32);
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp 0.6s ease 0.1s forwards;
+}
+
+#line1,
+#line2 {
+  display: flex;
+  gap: 4px;
+  line-height: 0.88;
+}
+
+#line1 span,
+#line2 span {
+  font-size: clamp(5rem, 14vw, 10rem);
+  font-weight: 900;
+  line-height: 0.88;
+  opacity: 0;
+  transform: translateY(32px) scale(0.9);
+}
+
+/* letter stagger — line 1 */
+#line1 span:nth-child(1) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.20s forwards; }
+#line1 span:nth-child(2) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.30s forwards; }
+#line1 span:nth-child(3) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.40s forwards; }
+#line1 span:nth-child(4) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.50s forwards; }
+
+/* letter stagger — line 2 */
+#line2 span:nth-child(1) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.62s forwards; }
+#line2 span:nth-child(2) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.72s forwards; }
+#line2 span:nth-child(3) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.82s forwards; }
+#line2 span:nth-child(4) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 0.92s forwards; }
+#line2 span:nth-child(5) { animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) 1.02s forwards; }
+
+#sub {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.38);
+  letter-spacing: 0.05em;
+  margin-top: 28px;
+  margin-bottom: 36px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp 0.6s ease 1.15s forwards;
+  pointer-events: none;
+}
+
+#splashBtn {
+  pointer-events: auto;
+  padding: 15px 40px;
+  border: none;
+  background: #1a1a1a;
+  color: #F4EEE3;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: transform 0.2s, background 0.2s;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 1.35s forwards;
+}
+
+#splashBtn:hover {
+  transform: scale(1.07);
+  background: #333;
+}
+
+@keyframes popIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── EXPERIENCE WRAP ─────────────────────────────────────── */
 
 #wrap {
   position: relative;
@@ -15,10 +136,13 @@ body {
   height: 100vh;
   overflow: hidden;
   background: #F4EEE3;
-  font-family: Arial, sans-serif;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
-/* ── CANVAS LAYERS ─────────────────────────────────────── */
+#wrap.visible {
+  opacity: 1;
+}
 
 #back {
   position: absolute;
@@ -26,21 +150,14 @@ body {
   z-index: 0;
 }
 
-#paint {
+#particles {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
 }
 
-#particles {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* ── MOSAIC ─────────────────────────────────────────────── */
+/* ── MOSAIC ──────────────────────────────────────────────── */
 
 #mosaic {
   position: absolute;
@@ -60,11 +177,11 @@ body {
 }
 
 .tile.lifted {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
   z-index: 200;
 }
 
-/* ── HINT ───────────────────────────────────────────────── */
+/* ── HINT ────────────────────────────────────────────────── */
 
 #hint {
   position: absolute;
@@ -81,37 +198,10 @@ body {
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.22);
 }
 
-/* ── COMBO LABEL ────────────────────────────────────────── */
-
-#combo-label {
-  position: absolute;
-  z-index: 210;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #E5382E;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.8);
-  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
-}
-
-#combo-label.show {
-  animation: comboPop 0.7s ease forwards;
-}
-
-@keyframes comboPop {
-  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
-  25%  { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
-  40%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -65%) scale(1); }
-}
-
-/* ── BUTTONS ────────────────────────────────────────────── */
+/* ── BUTTON ──────────────────────────────────────────────── */
 
 #btn-wrap {
   position: absolute;
@@ -119,9 +209,6 @@ body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 10px;
   opacity: 0;
   transition: opacity 0.6s;
   pointer-events: none;
@@ -132,14 +219,11 @@ body {
   pointer-events: all;
 }
 
-#mainBtn,
-#saveBtn,
-#clearBtn,
-#soundBtn {
+#mainBtn {
   padding: 12px 32px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.55);
+  border: 1.5px solid rgba(0, 0, 0, 0.14);
+  background: rgba(244, 238, 227, 0.85);
+  color: rgba(0, 0, 0, 0.6);
   border-radius: 40px;
   cursor: pointer;
   font-size: 11px;
@@ -150,29 +234,12 @@ body {
   transition: background 0.2s, transform 0.2s;
 }
 
-#mainBtn:hover,
-#saveBtn:hover,
-#clearBtn:hover,
-#soundBtn:hover {
-  background: rgba(0, 0, 0, 0.12);
+#mainBtn:hover {
+  background: rgba(0, 0, 0, 0.07);
   transform: scale(1.06);
 }
 
-#saveBtn,
-#clearBtn {
-  padding: 12px 22px;
-}
-
-#soundBtn {
-  padding: 12px 16px;
-  font-size: 13px;
-}
-
-#soundBtn.muted {
-  opacity: 0.4;
-}
-
-/* ── LABEL ──────────────────────────────────────────────── */
+/* ── LABEL ───────────────────────────────────────────────── */
 
 #label {
   position: absolute;
@@ -181,115 +248,7 @@ body {
   font-size: 9px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.12);
   z-index: 5;
   pointer-events: none;
-}
-
-/* ── SPLASH ──────────────────────────────────────────────── */
-
-#splash {
-  position: fixed;
-  inset: 0;
-  background: #F4EEE3;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-#splash.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-#splash-inner {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-}
-
-#splash-tag {
-  font-size: 10px;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.3);
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(8px);
-  animation: fadeUp 0.7s ease 0.2s forwards;
-}
-
-#splash-title {
-  font-size: clamp(4rem, 12vw, 9rem);
-  font-weight: 900;
-  line-height: 0.92;
-  letter-spacing: -0.02em;
-  color: #1a1a1a;
-  margin-bottom: 24px;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 0.8s ease 0.4s forwards;
-}
-
-#splash-sub {
-  font-size: 13px;
-  color: rgba(0,0,0,0.35);
-  letter-spacing: 0.04em;
-  margin-bottom: 40px;
-  opacity: 0;
-  transform: translateY(8px);
-  animation: fadeUp 0.7s ease 0.6s forwards;
-}
-
-#splashBtn {
-  padding: 14px 36px;
-  border: 1.5px solid rgba(0,0,0,0.15);
-  background: transparent;
-  color: rgba(0,0,0,0.65);
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  transition: background 0.2s, transform 0.2s, border-color 0.2s;
-  opacity: 0;
-  animation: fadeUp 0.7s ease 0.85s forwards;
-}
-
-#splashBtn:hover {
-  background: rgba(0,0,0,0.06);
-  border-color: rgba(0,0,0,0.28);
-  transform: scale(1.05);
-}
-
-/* Floating shapes on splash */
-.splash-shape {
-  position: absolute;
-  opacity: 0;
-  animation: floatIn 1s ease forwards;
-  pointer-events: none;
-}
-
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes floatIn {
-  to { opacity: 0.18; }
-}
-
-/* wrap starts hidden */
-#wrap {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-#wrap.visible {
-  opacity: 1;
 }

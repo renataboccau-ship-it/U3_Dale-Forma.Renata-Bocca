@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forma</title>
+  <title>Dale Forma</title>
   <link rel="stylesheet" href="experimentacion.css">
 </head>
 <body>
 
   <!-- SPLASH -->
   <div id="splash">
-    <div id="splash-inner">
-      <h1 id="splash-title">Dale<br>Forma</h1>
-      <p id="splash-sub">Descubre figuras y colores</p>
+    <canvas id="splash-canvas"></canvas>
+    <div id="splash-content">
+      <p id="tag">exploración interactiva</p>
+      <div id="line1">
+        <span style="color:#E5382E">D</span><span style="color:#3FBDD4">A</span><span style="color:#4BAF6E">L</span><span style="color:#F4C024">E</span>
+      </div>
+      <div id="line2">
+        <span style="color:#F4C024">F</span><span style="color:#E5382E">O</span><span style="color:#3FBDD4">R</span><span style="color:#4BAF6E">M</span><span style="color:#F9D040">A</span>
+      </div>
+      <p id="sub">Descubrí un mundo de figuras y colores</p>
       <button id="splashBtn">probar experiencia</button>
     </div>
   </div>
@@ -20,16 +27,11 @@
   <!-- EXPERIENCIA -->
   <div id="wrap">
     <canvas id="back"></canvas>
-    <canvas id="paint"></canvas>
     <canvas id="particles"></canvas>
     <div id="mosaic"></div>
-    <div id="hint"><p>arrastra las piezas</p></div>
-    <div id="combo-label"></div>
+    <div id="hint"><p>arrastrá las piezas</p></div>
     <div id="btn-wrap">
       <button id="mainBtn">generar composición</button>
-      <button id="saveBtn" title="guardar imagen">guardar</button>
-      <button id="clearBtn" title="limpiar lienzo">limpiar</button>
-      <button id="soundBtn" title="sonido">🔊</button>
     </div>
     <div id="label">forma</div>
   </div>
