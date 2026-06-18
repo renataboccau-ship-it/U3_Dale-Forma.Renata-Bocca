@@ -257,3 +257,8 @@ window.addEventListener('load', () => {
 
     document.addEventListener('touchend', stopDrag);
 })();
+setTimeout(() => {
+    const loader = document.getElementById('loader-wrap');
+    loader.classList.add('hidden');
+    setTimeout(() => loader.style.display = 'none', 600);
+}, 2600);

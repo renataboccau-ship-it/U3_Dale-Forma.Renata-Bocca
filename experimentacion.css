@@ -1,0 +1,295 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F4EEE3;
+  overflow: hidden;
+}
+
+#wrap {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #F4EEE3;
+  font-family: Arial, sans-serif;
+}
+
+/* ── CANVAS LAYERS ─────────────────────────────────────── */
+
+#back {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#paint {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── MOSAIC ─────────────────────────────────────────────── */
+
+#mosaic {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.tile {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  transition: box-shadow 0.15s;
+}
+
+.tile:active {
+  cursor: grabbing;
+}
+
+.tile.lifted {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+}
+
+/* ── HINT ───────────────────────────────────────────────── */
+
+#hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.8s;
+}
+
+#hint p {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+/* ── COMBO LABEL ────────────────────────────────────────── */
+
+#combo-label {
+  position: absolute;
+  z-index: 210;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E5382E;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+}
+
+#combo-label.show {
+  animation: comboPop 0.7s ease forwards;
+}
+
+@keyframes comboPop {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  25%  { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+  40%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -65%) scale(1); }
+}
+
+/* ── BUTTONS ────────────────────────────────────────────── */
+
+#btn-wrap {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+
+#btn-wrap.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#mainBtn,
+#saveBtn,
+#clearBtn,
+#soundBtn {
+  padding: 12px 32px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.55);
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s, transform 0.2s;
+}
+
+#mainBtn:hover,
+#saveBtn:hover,
+#clearBtn:hover,
+#soundBtn:hover {
+  background: rgba(0, 0, 0, 0.12);
+  transform: scale(1.06);
+}
+
+#saveBtn,
+#clearBtn {
+  padding: 12px 22px;
+}
+
+#soundBtn {
+  padding: 12px 16px;
+  font-size: 13px;
+}
+
+#soundBtn.muted {
+  opacity: 0.4;
+}
+
+/* ── LABEL ──────────────────────────────────────────────── */
+
+#label {
+  position: absolute;
+  bottom: 22px;
+  right: 28px;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.15);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ── SPLASH ──────────────────────────────────────────────── */
+
+#splash {
+  position: fixed;
+  inset: 0;
+  background: #F4EEE3;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#splash.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#splash-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+#splash-tag {
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp 0.7s ease 0.2s forwards;
+}
+
+#splash-title {
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+#splash-sub {
+  font-size: 13px;
+  color: rgba(0,0,0,0.35);
+  letter-spacing: 0.04em;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp 0.7s ease 0.6s forwards;
+}
+
+#splashBtn {
+  padding: 14px 36px;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  background: transparent;
+  color: rgba(0,0,0,0.65);
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.85s forwards;
+}
+
+#splashBtn:hover {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.28);
+  transform: scale(1.05);
+}
+
+/* Floating shapes on splash */
+.splash-shape {
+  position: absolute;
+  opacity: 0;
+  animation: floatIn 1s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatIn {
+  to { opacity: 0.18; }
+}
+
+/* wrap starts hidden */
+#wrap {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+#wrap.visible {
+  opacity: 1;
+}
