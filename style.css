@@ -473,12 +473,29 @@ h2 {
    EXPLORAR (¿Cómo se juega?)
 ===================================================== */
 .explorar-section {
-    background: #F4EEE3;
+    background-color: #F4EEE3;
+    background-image: url('assets/patron.svg');
+    background-repeat: repeat;
+    background-size: 500px 290px;
     padding: 80px 40px 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 28px;
+    position: relative;
+}
+.explorar-section:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(244, 238, 227, 0.62);
+    pointer-events: none;
+    z-index: 0;
+}
+.explorar-header,
+.step-card {
+    position: relative;
+    z-index: 1;
 }
 
 .explorar-header {
@@ -519,7 +536,6 @@ h2 {
     max-width: 1280px;
     min-height: 360px;
     box-shadow: 0 8px 40px rgba(91,67,67,.10);
-    border-left: 8px solid transparent;
     overflow: hidden;
     transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s;
 }
@@ -542,10 +558,14 @@ h2 {
     z-index: 0;
 }
 
+/* Franja de color: único elemento responsable del borde lateral,
+   con el mismo radio que la tarjeta para que el recorte sea limpio
+   y no se dupliquen bordes (causa del corte irregular). */
 .sc-stripe {
     position: absolute;
     left: 0; top: 0; bottom: 0;
     width: 8px;
+    border-radius: 28px 0 0 28px;
 }
 
 .step-content {
@@ -600,17 +620,14 @@ h2 {
 .sc-verde   .step-img-wrap { background: #E6F4E7; border-radius: 20px; }
 .sc-rojo    .step-img-wrap { background: #FCECED; border-radius: 20px; }
 
-.sc-celeste            { border-left-color: #87CEE9; }
 .sc-celeste h3         { color: #2a7a9e; }
 .sc-celeste .sc-stripe { background: #87CEE9; }
 .badge-celeste         { background: #E4F4FB; color: #2a7a9e; }
 
-.sc-verde              { border-left-color: #73BC76; }
 .sc-verde h3           { color: #2e7d32; }
 .sc-verde .sc-stripe   { background: #73BC76; }
 .badge-verde           { background: #E6F4E7; color: #2e7d32; }
 
-.sc-rojo               { border-left-color: #D12839; }
 .sc-rojo h3            { color: #D12839; }
 .sc-rojo .sc-stripe    { background: #D12839; }
 .badge-rojo            { background: #FCECED; color: #A8001A; }
@@ -653,25 +670,22 @@ h2 {
    MECÁNICAS DEL JUEGO
 ===================================================== */
 .mecanicas-section {
-    background: #87CEE9;
+    background-color: #F4EFE6;
+    background-image: url('assets/patron.svg');
+    background-repeat: repeat;
+    background-size: 500px 290px;
     padding: 120px 60px 140px;
     position: relative;
     overflow: hidden;
-    border-radius: 24px;
-    margin: 20px 100px;
-    border: 3px solid rgba(0,0,0,.08);
-    box-shadow: 0 4px 24px rgba(0,0,0,.08);
 }
-
-.mecanicas-section::before {
+.mecanicas-section:before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(0,0,0,.06) 1px, transparent 1px);
-    background-size: 36px 36px;
+    background: rgba(244, 239, 230, 0.62);
     pointer-events: none;
+    z-index: 1;
 }
-
 /* Header */
 .mec-header {
     text-align: center;
@@ -684,7 +698,7 @@ h2 {
     font-family: 'Poppins', sans-serif;
     font-size: clamp(2.6rem, 6vw, 4.2rem);
     font-weight: 900;
-    color: #1a1a1a;
+    color: #5B4343;
     line-height: 1.1;
 }
 .mec-accent {
@@ -718,24 +732,26 @@ h2 {
     text-transform: uppercase;
     letter-spacing: .1em;
     margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
-.tag-rojo     { background: #D12839; color: white; }
-.tag-amarillo { background: #E6A800; color: white; }
-.tag-verde    { background: #73BC76; color: white; }
-.tag-turquesa { background: #00838F; color: white; }
+.tag-rojo     { background: #D12839; color: #FFFFFF; }
+.tag-amarillo { background: #C47F00; color: #FFFFFF; }
+.tag-verde    { background: #2F8C4A; color: #FFFFFF; }
+.tag-turquesa { background: #00838F; color: #FFFFFF; }
 
 /* Texto */
 .mec-texto h3 {
     font-family: 'Poppins', sans-serif;
     font-size: clamp(2.2rem, 4vw, 3.2rem);
     font-weight: 900;
-    color: #D12839;
+    color: #5B4343;
     line-height: 1.1;
     margin-bottom: 22px;
 }
 .mec-texto h3 em {
     font-style: normal;
-    color: #D12839;
+    color: #5B4343;
 }
 .mec-texto p {
     color: rgba(103, 83, 83, 0.832);
@@ -765,6 +781,7 @@ h2 {
     justify-content: center;
     background: transparent;
     border: none;
+    box-shadow: none;
 }
 .mec-img {
     width: 100%;
@@ -874,6 +891,7 @@ h2 {
     justify-content: center;
     background: transparent;
     border: none;
+    box-shadow: none;
 }
 .fichas-img {
     width: 100%;
@@ -1019,7 +1037,7 @@ h2 {
 /* Texto de cartas FORMA */
 .mec-cartas .mec-texto p,
 .mec-cartas .mec-texto {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(103, 83, 83, 0.832);
 }
 
 /* Barra de progreso FORMA */
@@ -1144,7 +1162,42 @@ h2 {
     box-shadow: 0 24px 60px rgba(0,0,0,.28);
 }
 
+/* =====================================================
+   FUNDAMENTO
+===================================================== */
+.fundamento-seccion {
+    background: var(--rojo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;       /* espacio amplio para escribir */
+    text-align: left;
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
 
+.fundamento-contenido {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    width: 100%;
+}
+
+.fundamento-contenido h3 {
+    color: var(--amarillo);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.fundamento-contenido p {
+    color: rgba(255,255,255,.9);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
 /* =====================================================
    FOOTER
 ===================================================== */

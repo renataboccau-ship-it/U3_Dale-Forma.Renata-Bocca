@@ -19,7 +19,7 @@
       <div id="line2">
         <span style="color:#F4C024">F</span><span style="color:#E5382E">O</span><span style="color:#3FBDD4">R</span><span style="color:#4BAF6E">M</span><span style="color:#F9D040">A</span>
       </div>
-      <p id="sub">Descubrí un mundo de figuras y colores</p>
+      <p id="sub">Descubre figuras y colores</p>
       <button id="splashBtn">probar experiencia</button>
     </div>
   </div>
@@ -29,11 +29,25 @@
     <canvas id="back"></canvas>
     <canvas id="particles"></canvas>
     <div id="mosaic"></div>
-    <div id="hint"><p>arrastrá las piezas</p></div>
+    <div id="progress-dots"></div>
+    <div id="round-badge"></div>
+    <div id="hint"><p>arrastra las piezas</p></div>
+    <p id="freeplay-hint">mueve el mouse cerca de FORMA · haz click para dispersar</p>
     <div id="btn-wrap">
+      <button id="secondaryBtn">continuar</button>
       <button id="mainBtn">generar composición</button>
     </div>
     <div id="label">forma</div>
+  </div>
+
+  <!-- DESPEDIDA -->
+  <div id="farewell">
+    <p id="farewell-tag">gracias por explorar</p>
+    <p id="farewell-msg">le diste forma a tu propia composición</p>
+    <div id="farewell-actions">
+      <button id="retryBtn">Volver a probar</button>
+      <button id="farewellBtn">Volver al inicio</button>
+    </div>
   </div>
 
   <script src="experimentacion.js"></script>
