@@ -31,6 +31,7 @@ const PALETTE_SETS = [
 let paletteIdx = 0;
 let PAL = PALETTE_SETS[0];
 
+
 const SC_SETS = [
   { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F7B85A' },
   { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F7B85A' },
@@ -1121,11 +1122,17 @@ function plantConstelPiece(guide) {
   const color = SC[type];
 
   const div = document.createElement('div');
+  // misma clase que usan las piezas de la mezcla de colores (cursor,
+  // hover, estado 'lifted'), aunque el arrastre recién se activa más
+  // adelante — al completar la constelación, estas piezas se reutilizan
+  // literalmente en la fase de mezcla en vez de generar piezas nuevas.
+  div.className = 'final-piece';
   const dim = CONSTEL_PIECE_SIZE * 2.2;
   div.style.cssText = `
     position:absolute; left:${guide.x - dim/2}px; top:${guide.y - dim/2}px;
     width:${dim}px; height:${dim}px; opacity:0; transform:scale(0.3);
     transition: opacity 0.4s ease, transform 0.45s cubic-bezier(.34,1.56,.64,1);
+    pointer-events:none;
   `;
   const cv = document.createElement('canvas');
   cv.width = dim; cv.height = dim;
@@ -1139,7 +1146,7 @@ function plantConstelPiece(guide) {
     div.style.transform = 'scale(1)';
   });
 
-  constelPieces.push({ x: guide.x, y: guide.y });
+  constelPieces.push({ x: guide.x, y: guide.y, div, cv, type, color, baseSize: CONSTEL_PIECE_SIZE });
   playColorNote(color);
   burst(guide.x, guide.y, 10);
 
@@ -1154,12 +1161,15 @@ function checkConstelComplete() {
   }
 }
 
+let constelLinesSvg = null;
+
 function drawConstelLines() {
   const svgNS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(svgNS, 'svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  svg.style.cssText = 'position:absolute; inset:0; width:100%; height:100%;';
+  svg.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; transition: opacity 0.5s ease;';
   constelEl.appendChild(svg);
+  constelLinesSvg = svg;
 
   const n = constelPieces.length;
   for (let i = 0; i < n; i++) {
@@ -1183,14 +1193,61 @@ function drawConstelLines() {
   playSuccessChord();
   const totalDur = n * 160 + 600 + 900; // tiempo de dibujar todas las líneas + pausa contemplativa
   setTimeout(() => {
-    if (phase === 'garden') goToFormaFromGarden();
+    if (phase === 'garden') transitionConstelToMix();
   }, totalDur);
+}
+
+// A pedido: las MISMAS piezas plantadas en la constelación pasan a ser las
+// piezas de la mezcla de colores, en vez de generar piezas nuevas — la
+// transición se siente continua (las piezas no desaparecen y reaparecen).
+function transitionConstelToMix() {
+  hint.style.opacity = '0';
+
+  // las líneas se desvanecen antes de habilitar el arrastre, como señal
+  // de que ahora la interacción cambia de naturaleza.
+  if (constelLinesSvg) {
+    constelLinesSvg.style.opacity = '0';
+  }
+  constelGuides.forEach(g => { g.div.style.opacity = '0'; });
+
+  setTimeout(() => {
+    phase = 'final-canvas';
+    finalCanvasEl.innerHTML = '';
+    finalPieces = [];
+    finalMergesDone = 0;
+    btnWrap.classList.remove('show');
+    secondaryBtn.classList.remove('show');
+    roundBadge.classList.remove('show');
+    colorFloodEl.style.opacity = '0';
+    colorFloodEl.style.background = 'transparent';
+
+    // mover cada div ya existente de constelEl a finalCanvasEl, conservando
+    // su posición real en pantalla (left/top en coordenadas de wrap, que
+    // ambos contenedores comparten con position:absolute; inset:0).
+    constelPieces.forEach(cp => {
+      cp.div.style.pointerEvents = ''; // quita el bloqueo inline; hereda 'auto' de .final-piece
+      finalCanvasEl.appendChild(cp.div);
+      const piece = { div: cp.div, cv: cp.cv, type: cp.type, baseSize: cp.baseSize, color: cp.color, merged: false };
+      finalPieces.push(piece);
+      makeFinalPieceDraggable(piece);
+    });
+
+    constelEl.innerHTML = '';
+    constelGuides = [];
+    constelPieces = [];
+    constelLinesSvg = null;
+
+    hint.classList.remove('bottom');
+    hint.querySelector('p').textContent = 'mezcla los colores arrastrándolos juntos';
+    hint.style.opacity = '1';
+  }, 600);
 }
 
 function endGardenPhase() {
   constelEl.innerHTML = '';
   constelGuides = [];
   constelPieces = [];
+  constelLinesSvg = null;
 }
 
 // ── LIENZO FINAL: MEZCLA DE COLOR ───────────────────────────

@@ -1171,7 +1171,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;       /* espacio amplio para escribir */
+    min-height: 100vh;
     text-align: left;
     padding: 100px 20px;
     position: relative;
@@ -1181,22 +1181,39 @@ h2 {
 .fundamento-contenido {
     position: relative;
     z-index: 2;
-    max-width: 760px;
+    max-width: 850px;
     width: 100%;
 }
 
 .fundamento-contenido h3 {
     color: var(--amarillo);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    margin-bottom: 24px;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
     text-align: center;
 }
 
+.fundamento-contenido .fundamento-lead {
+    color: var(--amarillo);
+    font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 28px;
+    border-left: 4px solid var(--amarillo);
+    padding-left: 22px;
+}
+
 .fundamento-contenido p {
-    color: rgba(255,255,255,.9);
-    font-size: 1.05rem;
+    color: rgba(255,255,255,.92);
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
     line-height: 1.7;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+}
+
+.fundamento-contenido p:last-child {
+    margin-bottom: 0;
 }
 /* =====================================================
    FOOTER
