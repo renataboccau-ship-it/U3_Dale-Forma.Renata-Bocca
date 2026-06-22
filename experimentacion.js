@@ -857,9 +857,8 @@ function startTangramPhase() {
     phase = 'tangram';
     tangramRound = 1;
     hint.classList.add('bottom');
-    btnWrap.classList.add('show');
+    btnWrap.classList.remove('show');
     secondaryBtn.classList.remove('show');
-    mainBtn.textContent = 'saltar';
     if (TANGRAM_ROUNDS > 1) updateRoundBadge();
     buildTangramRound();
   }, maxWait);
@@ -1283,13 +1282,12 @@ function startMandalaPhase() {
 
   playReveal();
 
-  // cuando termina de ensamblarse, habilita el botón para reiniciar el ciclo
+  // ya no se muestra un botón acá: el cierre del mandala es 100% automático
+  // (se dispara al girar lo suficiente, ver MANDALA_SPIN_THRESHOLD).
   setTimeout(() => {
     if (phase !== 'mandala') return;
     hint.querySelector('p').textContent = 'haz scroll para girar la composición';
     hint.style.opacity = '1';
-    mainBtn.textContent = 'volver a empezar';
-    btnWrap.classList.add('show');
     startMandalaLoop();
   }, totalPieces * 35 + 750);
 }
