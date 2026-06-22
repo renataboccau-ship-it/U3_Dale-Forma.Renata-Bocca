@@ -1,4 +1,6 @@
-// ── ELEMENTS ─────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 1. ELEMENTOS DEL DOM
+// ════════════════════════════════════════════════════════════════
 const splash      = document.getElementById('splash');
 const splashCv    = document.getElementById('splash-canvas');
 const splashCtx   = splashCv.getContext('2d');
@@ -22,7 +24,9 @@ const retryBtn     = document.getElementById('retryBtn');
 
 let W, H;
 
-// ── PALETTE ───────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 2. PALETA DE COLORES
+// ════════════════════════════════════════════════════════════════
 const PALETTE_SETS = [
   ['#F5A02D', '#87CEE9', '#D12839', '#73BC76', '#F4EEE3'],
   ['#F5A02D', '#87CEE9', '#D12839', '#73BC76', '#F4EEE3'],
@@ -33,9 +37,9 @@ let PAL = PALETTE_SETS[0];
 
 
 const SC_SETS = [
-  { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F7B85A' },
-  { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F7B85A' },
-  { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F7B85A' },
+  { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F5A02D' },
+  { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F5A02D' },
+  { triangle: '#D12839', square: '#87CEE9', elongated: '#73BC76', circle: '#F5A02D', semicircle: '#F5A02D' },
 ];
 let SC = SC_SETS[0];
 
@@ -47,7 +51,9 @@ function rotatePalette() {
   SC  = SC_SETS[paletteIdx];
 }
 
-// ── HELPERS ───────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 3. HELPERS / UTILIDADES MATEMÁTICAS
+// ════════════════════════════════════════════════════════════════
 function rnd(a, b) { return a + Math.random() * (b - a); }
 function rndI(a)   { return a[Math.floor(Math.random() * a.length)]; }
 function easeOutBack(t) {
@@ -58,7 +64,11 @@ function easeInOutCubic(t) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
-// ── ROUNDED RECT ──────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 4. DIBUJO DE FORMAS (rect redondeado / polígono redondeado / shape genérica)
+// ════════════════════════════════════════════════════════════════
+
+// ── 4.1 RECTÁNGULO REDONDEADO ──────────────────────────────
 function rrect(ctx, x, y, w, h, r) {
   ctx.moveTo(x + r, y);
   ctx.lineTo(x + w - r, y);
@@ -72,7 +82,7 @@ function rrect(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
-// ── ROUNDED POLYGON (esquinas redondeadas en ángulos arbitrarios) ──────
+// ── 4.2 POLÍGONO REDONDEADO (esquinas redondeadas en ángulos arbitrarios) ──
 // A diferencia de rrect (pensada solo para ángulos de 90°), esta función
 // redondea los vértices de un polígono cualquiera: en cada vértice, recorta
 // hacia los dos lados adyacentes una distancia `r` (usando el vector
@@ -103,7 +113,7 @@ function rpoly(ctx, points, r) {
   ctx.closePath();
 }
 
-// ── SHAPE DRAW ────────────────────────────────────────────
+// ── 4.3 DIBUJO DE FIGURA GENÉRICA SOBRE UN CONTEXTO ────────
 function drawShapeOn(ctx, type, color, cx, cy, s, rot) {
   ctx.save();
   ctx.translate(cx, cy);
@@ -133,7 +143,25 @@ function drawShapeOn(ctx, type, color, cx, cy, s, rot) {
   ctx.restore();
 }
 
-// ── SPLASH FLOATING SHAPES ────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 5. FONDO (BACK LAYER)
+// ════════════════════════════════════════════════════════════════
+function drawBack() {
+  bCtx.fillStyle = '#F4EEE3';
+  bCtx.fillRect(0, 0, W, H);
+  bCtx.fillStyle = 'rgba(0,0,0,0.04)';
+  for (let x = 0; x < W; x += 28) {
+    for (let y = 0; y < H; y += 28) {
+      bCtx.beginPath();
+      bCtx.arc(x, y, 1.2, 0, Math.PI * 2);
+      bCtx.fill();
+    }
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// 6. SPLASH — FORMAS FLOTANTES DE BIENVENIDA
+// ════════════════════════════════════════════════════════════════
 const splashShapes = [];
 
 const SPLASH_DEFS = [
@@ -186,21 +214,209 @@ function drawSplashShapes(now) {
   splashCtx.globalAlpha = 1;
 }
 
-// ── BACK LAYER ────────────────────────────────────────────
-function drawBack() {
-  bCtx.fillStyle = '#F4EEE3';
-  bCtx.fillRect(0, 0, W, H);
-  bCtx.fillStyle = 'rgba(0,0,0,0.04)';
-  for (let x = 0; x < W; x += 28) {
-    for (let y = 0; y < H; y += 28) {
-      bCtx.beginPath();
-      bCtx.arc(x, y, 1.2, 0, Math.PI * 2);
-      bCtx.fill();
+// ════════════════════════════════════════════════════════════════
+// 7. SISTEMA DE PARTÍCULAS (clase Piece + loop de animación)
+// ════════════════════════════════════════════════════════════════
+let pieces    = [];
+let animGoing = false;
+let last      = 0;
+let mouse     = { x: 0, y: 0 };
+let trailT    = 0;
+let splashMode = true;
+
+class Piece {
+  constructor(x, y, type, vx, vy, opts = {}) {
+    this.type  = type || rndI(TYPES);
+    this.color = opts.color || SC[this.type];
+    this.x = x; this.y = y;
+    this.vx = (vx !== undefined) ? vx : rnd(-4, 4);
+    this.vy = (vy !== undefined) ? vy : rnd(-5, -1);
+    this.rot  = rnd(0, Math.PI * 2);
+    this.rotV = rnd(-0.07, 0.07);
+    this.size  = opts.size  || rnd(14, 58);
+    this.alpha = 1;
+    this.born  = performance.now();
+    this.life  = opts.life  || rnd(1400, 3000);
+    this.dead  = false;
+    this.mode  = opts.mode  || 'free';
+    this.permanent   = opts.permanent   || false;
+    this.assembling  = false;
+    this.assembled   = false;
+    this.targetX     = null;
+    this.targetY     = null;
+    this.targetRot   = 0;
+    this.assembleStart = 0;
+    this.assembleDur   = opts.assembleDur   || rnd(600, 950);
+    this.assembleDelay = opts.assembleDelay || 0;
+    this.startX   = x;
+    this.startY   = y;
+    this.startRot = this.rot;
+    this.dispersing  = false;
+    this.disperseStart = 0;
+    this.disperseDur   = opts.disperseDur || rnd(550, 900);
+    this.disperseDelay = opts.disperseDelay || 0;
+    this.disperseFromX = 0;
+    this.disperseFromY = 0;
+    this.disperseToX   = 0;
+    this.disperseToY   = 0;
+    this.disperseToRot = 0;
+    this.anchorX = null;
+    this.anchorY = null;
+    this.repelVX = 0;
+    this.repelVY = 0;
+  }
+
+  startDisperse(toX, toY, toRot, delay) {
+    this.dispersing     = true;
+    this.assembling      = false;
+    this.assembled        = false;
+    this.disperseFromX  = this.x;
+    this.disperseFromY  = this.y;
+    this.disperseToX    = toX;
+    this.disperseToY    = toY;
+    this.disperseToRot  = toRot;
+    this.disperseDelay  = delay;
+    this.disperseStart  = performance.now();
+  }
+
+  update(now) {
+    if (this.dispersing) {
+      const el = now - this.disperseStart - this.disperseDelay;
+      if (el < 0) return;
+      const t  = Math.min(1, el / this.disperseDur);
+      const et = easeInOutCubic(t);
+      this.x   = this.disperseFromX + (this.disperseToX - this.disperseFromX) * et;
+      this.y   = this.disperseFromY + (this.disperseToY - this.disperseFromY) * et;
+      this.rot = this.startRot + (this.disperseToRot - this.startRot) * et;
+      this.alpha = 1 - t;
+      if (t >= 1) { this.dispersing = false; this.dead = true; }
+      return;
     }
+    if (this.assembling) {
+      const el = now - this.assembleStart - this.assembleDelay;
+      if (el < 0) return;
+      const t  = Math.min(1, el / this.assembleDur);
+      const et = easeOutBack(t);
+      this.x   = this.startX + (this.targetX - this.startX) * et;
+      this.y   = this.startY + (this.targetY - this.startY) * et;
+      this.rot = this.startRot + (this.targetRot - this.startRot) * et;
+      this.alpha = 0.15 + 0.85 * t;
+      if (t >= 1) {
+        this.assembling = false;
+        this.assembled = true;
+        this.anchorX = this.targetX;
+        this.anchorY = this.targetY;
+      }
+      return;
+    }
+    if (this.assembled && this.permanent) {
+      const t = (now * 0.0015) + this.startRot;
+      let bx = this.anchorX + Math.sin(t) * 1.4;
+      let by = this.anchorY + Math.cos(t * 0.8) * 1.4;
+
+      if (freeplayActive) {
+        const dx = bx - mouse.x, dy = by - mouse.y;
+        const d  = Math.sqrt(dx * dx + dy * dy) || 1;
+        const radius = 130;
+        if (d < radius) {
+          const force = (1 - d / radius) * 14;
+          this.repelVX += (dx / d) * force * 0.18;
+          this.repelVY += (dy / d) * force * 0.18;
+        }
+      }
+      const rdx = bx - this.anchorX, rdy = by - this.anchorY;
+      this.repelVX += -rdx * 0.012 - this.repelVX * 0.06;
+      this.repelVY += -rdy * 0.012 - this.repelVY * 0.06;
+      this.repelVX *= 0.9;
+      this.repelVY *= 0.9;
+
+      this.x = bx + this.repelVX;
+      this.y = by + this.repelVY;
+      return;
+    }
+    if (this.mode === 'vortex') {
+      const dx = this.x - W / 2, dy = this.y - H / 2;
+      const d  = Math.sqrt(dx * dx + dy * dy) || 1;
+      this.vx += (-dy / d) * 0.8 - dx * 0.012;
+      this.vy += ( dx / d) * 0.8 - dy * 0.012;
+    } else if (this.mode === 'float') {
+      // sin gravedad: deriva suave tipo "flota en el aire", no cae.
+      const t = now * 0.0012 + this.born * 0.0001;
+      this.vx += Math.cos(t) * 0.006;
+      this.vy += Math.sin(t * 0.8) * 0.006;
+    } else {
+      this.vy += 0.12;
+    }
+    this.vx *= 0.98; this.vy *= 0.98;
+    this.x  += this.vx;
+    this.y  += this.vy;
+    this.rot += this.rotV;
+    const age = (now - this.born) / this.life;
+    this.alpha = age < 0.1 ? age / 0.1 : age > 0.7 ? 1 - (age - 0.7) / 0.3 : 1;
+    if (age >= 1) this.dead = true;
+  }
+
+  draw(ctx) {
+    if (this.dead) return;
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rot);
+    ctx.fillStyle = this.color;
+    const s = this.size / 2, r = s * 0.2;
+    ctx.beginPath();
+    if (this.type === 'circle') {
+      ctx.arc(0, 0, s, 0, Math.PI * 2);
+    } else if (this.type === 'semicircle') {
+      ctx.arc(0, 0, s, Math.PI, 0);
+      ctx.closePath();
+    } else if (this.type === 'triangle') {
+      // mismos vértices que antes, con esquinas redondeadas (rpoly).
+      rpoly(ctx, [
+        { x: 0,        y: -s * 0.9  },
+        { x: s * 0.85, y:  s * 0.65 },
+        { x: -s * 0.85, y: s * 0.65 },
+      ], r);
+    } else if (this.type === 'square') {
+      rrect(ctx, -s, -s, s * 2, s * 2, r);
+    } else if (this.type === 'elongated') {
+      rrect(ctx, -s * 0.34, -s, s * 0.68, s * 2, s * 0.34);
+    }
+    ctx.fill();
+    ctx.restore();
   }
 }
 
-// ── MOSAIC ────────────────────────────────────────────────
+function startAnim() {
+  if (animGoing) return;
+  animGoing = true;
+  requestAnimationFrame(loop);
+}
+
+function loop(now) {
+  const dt = now - last; last = now;
+
+  if (splashMode) drawSplashShapes(now);
+
+  pCtx.clearRect(0, 0, W, H);
+  trailT += dt;
+  if (trailT > 80 && (phase === 'revealed' || phase === 'freeplay' || phase === 'garden')) {
+    trailT = 0;
+    if (Math.random() < 0.38) {
+      const p = new Piece(mouse.x, mouse.y, rndI(TYPES), rnd(-0.5, 0.5), rnd(-0.6, 0.6));
+      p.size = rnd(5, 20);
+      p.life = rnd(400, 900);
+      pieces.push(p);
+    }
+  }
+  pieces = pieces.filter(p => !p.dead);
+  pieces.forEach(p => { p.update(now); p.draw(pCtx); });
+  requestAnimationFrame(loop);
+}
+
+// ════════════════════════════════════════════════════════════════
+// 8. FASE 1 — MOSAICO
+// ════════════════════════════════════════════════════════════════
 const COLS = 5;
 const ROWS = 3;
 const REVEAL_THRESHOLD = 0.55;
@@ -426,205 +642,9 @@ function checkReveal() {
   }
 }
 
-// ── PARTICLES ────────────────────────────────────────────
-let pieces    = [];
-let animGoing = false;
-let last      = 0;
-let mouse     = { x: 0, y: 0 };
-let trailT    = 0;
-let splashMode = true;
-
-class Piece {
-  constructor(x, y, type, vx, vy, opts = {}) {
-    this.type  = type || rndI(TYPES);
-    this.color = opts.color || SC[this.type];
-    this.x = x; this.y = y;
-    this.vx = (vx !== undefined) ? vx : rnd(-4, 4);
-    this.vy = (vy !== undefined) ? vy : rnd(-5, -1);
-    this.rot  = rnd(0, Math.PI * 2);
-    this.rotV = rnd(-0.07, 0.07);
-    this.size  = opts.size  || rnd(14, 58);
-    this.alpha = 1;
-    this.born  = performance.now();
-    this.life  = opts.life  || rnd(1400, 3000);
-    this.dead  = false;
-    this.mode  = opts.mode  || 'free';
-    this.permanent   = opts.permanent   || false;
-    this.assembling  = false;
-    this.assembled   = false;
-    this.targetX     = null;
-    this.targetY     = null;
-    this.targetRot   = 0;
-    this.assembleStart = 0;
-    this.assembleDur   = opts.assembleDur   || rnd(600, 950);
-    this.assembleDelay = opts.assembleDelay || 0;
-    this.startX   = x;
-    this.startY   = y;
-    this.startRot = this.rot;
-    this.dispersing  = false;
-    this.disperseStart = 0;
-    this.disperseDur   = opts.disperseDur || rnd(550, 900);
-    this.disperseDelay = opts.disperseDelay || 0;
-    this.disperseFromX = 0;
-    this.disperseFromY = 0;
-    this.disperseToX   = 0;
-    this.disperseToY   = 0;
-    this.disperseToRot = 0;
-    this.anchorX = null;
-    this.anchorY = null;
-    this.repelVX = 0;
-    this.repelVY = 0;
-  }
-
-  startDisperse(toX, toY, toRot, delay) {
-    this.dispersing     = true;
-    this.assembling      = false;
-    this.assembled        = false;
-    this.disperseFromX  = this.x;
-    this.disperseFromY  = this.y;
-    this.disperseToX    = toX;
-    this.disperseToY    = toY;
-    this.disperseToRot  = toRot;
-    this.disperseDelay  = delay;
-    this.disperseStart  = performance.now();
-  }
-
-  update(now) {
-    if (this.dispersing) {
-      const el = now - this.disperseStart - this.disperseDelay;
-      if (el < 0) return;
-      const t  = Math.min(1, el / this.disperseDur);
-      const et = easeInOutCubic(t);
-      this.x   = this.disperseFromX + (this.disperseToX - this.disperseFromX) * et;
-      this.y   = this.disperseFromY + (this.disperseToY - this.disperseFromY) * et;
-      this.rot = this.startRot + (this.disperseToRot - this.startRot) * et;
-      this.alpha = 1 - t;
-      if (t >= 1) { this.dispersing = false; this.dead = true; }
-      return;
-    }
-    if (this.assembling) {
-      const el = now - this.assembleStart - this.assembleDelay;
-      if (el < 0) return;
-      const t  = Math.min(1, el / this.assembleDur);
-      const et = easeOutBack(t);
-      this.x   = this.startX + (this.targetX - this.startX) * et;
-      this.y   = this.startY + (this.targetY - this.startY) * et;
-      this.rot = this.startRot + (this.targetRot - this.startRot) * et;
-      this.alpha = 0.15 + 0.85 * t;
-      if (t >= 1) {
-        this.assembling = false;
-        this.assembled = true;
-        this.anchorX = this.targetX;
-        this.anchorY = this.targetY;
-      }
-      return;
-    }
-    if (this.assembled && this.permanent) {
-      const t = (now * 0.0015) + this.startRot;
-      let bx = this.anchorX + Math.sin(t) * 1.4;
-      let by = this.anchorY + Math.cos(t * 0.8) * 1.4;
-
-      if (freeplayActive) {
-        const dx = bx - mouse.x, dy = by - mouse.y;
-        const d  = Math.sqrt(dx * dx + dy * dy) || 1;
-        const radius = 130;
-        if (d < radius) {
-          const force = (1 - d / radius) * 14;
-          this.repelVX += (dx / d) * force * 0.18;
-          this.repelVY += (dy / d) * force * 0.18;
-        }
-      }
-      const rdx = bx - this.anchorX, rdy = by - this.anchorY;
-      this.repelVX += -rdx * 0.012 - this.repelVX * 0.06;
-      this.repelVY += -rdy * 0.012 - this.repelVY * 0.06;
-      this.repelVX *= 0.9;
-      this.repelVY *= 0.9;
-
-      this.x = bx + this.repelVX;
-      this.y = by + this.repelVY;
-      return;
-    }
-    if (this.mode === 'vortex') {
-      const dx = this.x - W / 2, dy = this.y - H / 2;
-      const d  = Math.sqrt(dx * dx + dy * dy) || 1;
-      this.vx += (-dy / d) * 0.8 - dx * 0.012;
-      this.vy += ( dx / d) * 0.8 - dy * 0.012;
-    } else if (this.mode === 'float') {
-      // sin gravedad: deriva suave tipo "flota en el aire", no cae.
-      const t = now * 0.0012 + this.born * 0.0001;
-      this.vx += Math.cos(t) * 0.006;
-      this.vy += Math.sin(t * 0.8) * 0.006;
-    } else {
-      this.vy += 0.12;
-    }
-    this.vx *= 0.98; this.vy *= 0.98;
-    this.x  += this.vx;
-    this.y  += this.vy;
-    this.rot += this.rotV;
-    const age = (now - this.born) / this.life;
-    this.alpha = age < 0.1 ? age / 0.1 : age > 0.7 ? 1 - (age - 0.7) / 0.3 : 1;
-    if (age >= 1) this.dead = true;
-  }
-
-  draw(ctx) {
-    if (this.dead) return;
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.rot);
-    ctx.fillStyle = this.color;
-    const s = this.size / 2, r = s * 0.2;
-    ctx.beginPath();
-    if (this.type === 'circle') {
-      ctx.arc(0, 0, s, 0, Math.PI * 2);
-    } else if (this.type === 'semicircle') {
-      ctx.arc(0, 0, s, Math.PI, 0);
-      ctx.closePath();
-    } else if (this.type === 'triangle') {
-      // mismos vértices que antes, con esquinas redondeadas (rpoly).
-      rpoly(ctx, [
-        { x: 0,        y: -s * 0.9  },
-        { x: s * 0.85, y:  s * 0.65 },
-        { x: -s * 0.85, y: s * 0.65 },
-      ], r);
-    } else if (this.type === 'square') {
-      rrect(ctx, -s, -s, s * 2, s * 2, r);
-    } else if (this.type === 'elongated') {
-      rrect(ctx, -s * 0.34, -s, s * 0.68, s * 2, s * 0.34);
-    }
-    ctx.fill();
-    ctx.restore();
-  }
-}
-
-function startAnim() {
-  if (animGoing) return;
-  animGoing = true;
-  requestAnimationFrame(loop);
-}
-
-function loop(now) {
-  const dt = now - last; last = now;
-
-  if (splashMode) drawSplashShapes(now);
-
-  pCtx.clearRect(0, 0, W, H);
-  trailT += dt;
-  if (trailT > 80 && (phase === 'revealed' || phase === 'freeplay' || phase === 'garden')) {
-    trailT = 0;
-    if (Math.random() < 0.38) {
-      const p = new Piece(mouse.x, mouse.y, rndI(TYPES), rnd(-0.5, 0.5), rnd(-0.6, 0.6));
-      p.size = rnd(5, 20);
-      p.life = rnd(400, 900);
-      pieces.push(p);
-    }
-  }
-  pieces = pieces.filter(p => !p.dead);
-  pieces.forEach(p => { p.update(now); p.draw(pCtx); });
-  requestAnimationFrame(loop);
-}
-
-// ── PALABRA / FORMA ────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 9. FASE 2 — PALABRA "FORMA"
+// ════════════════════════════════════════════════════════════════
 function getLetterPoints(letter, fontSize, count) {
   const oc  = document.createElement('canvas');
   oc.width  = fontSize * 1.2;
@@ -782,770 +802,9 @@ function endFreeplay() {
   clearTimeout(freeplayTimer);
 }
 
-// ── MANDALA: fase nueva que aparece al completar el tangram ─
-// Patrón simétrico de anillos concéntricos que se autoensambla una sola vez
-// desde el centro hacia afuera (como en la versión original). El scroll /
-// rueda del mouse / swipe rota el mandala completo: más scroll = más giro.
-const mandalaEl = document.createElement('div');
-mandalaEl.id = 'mandala';
-mandalaEl.style.cssText = 'position:absolute; inset:0; z-index:12; pointer-events:none;';
-wrap.appendChild(mandalaEl);
-
-let mandalaPieces = [];
-let mandalaRotation = 0;       // rotación acumulada actual (radianes)
-let mandalaTargetRotation = 0; // objetivo hacia el que se interpola con inercia
-let mandalaAnimId = null;
-let mandalaTouchStartX = null;
-// umbral de giro acumulado (en radianes, valor absoluto, sin importar
-// dirección) a partir del cual el mandala explota solo — automático al
-// cruzar el umbral, sin que el usuario tenga que soltar nada.
-const MANDALA_SPIN_THRESHOLD = Math.PI * 2; // ~1 vuelta completa (antes ~2.5, duraba mucho)
-let mandalaExploding = false;
-
-function startMandalaPhase() {
-  phase = 'mandala';
-  mandalaEl.innerHTML = '';
-  mandalaPieces = [];
-  mandalaRotation = 0;
-  mandalaTargetRotation = 0;
-  mandalaExploding = false;
-  hint.style.opacity = '0';
-  hint.classList.remove('bottom');
-  btnWrap.classList.remove('show');
-  secondaryBtn.classList.remove('show');
-  roundBadge.classList.remove('show');
-
-  const cx = W / 2, cy = H / 2;
-  const rings = [
-    { count: 8,  radius: Math.min(W, H) * 0.13, size: 24 },
-    { count: 12, radius: Math.min(W, H) * 0.25, size: 29 },
-    { count: 16, radius: Math.min(W, H) * 0.37, size: 34 },
-  ];
-
-  let globalIdx = 0;
-  const totalPieces = rings.reduce((s, r) => s + r.count, 0);
-
-  rings.forEach((ring, ringIdx) => {
-    const typesCycle = TYPES;
-    for (let i = 0; i < ring.count; i++) {
-      const angle = (i / ring.count) * Math.PI * 2;
-      const type  = typesCycle[(i + ringIdx) % typesCycle.length];
-      const color = SC[type];
-      const tx = cx + Math.cos(angle) * ring.radius;
-      const ty = cy + Math.sin(angle) * ring.radius;
-
-      const div = document.createElement('div');
-      const dim = ring.size * 2.4;
-      div.style.cssText = `
-        position:absolute; left:${cx - dim/2}px; top:${cy - dim/2}px;
-        width:${dim}px; height:${dim}px; opacity:0;
-        transform: translate(0,0) scale(0.3);
-        transition: left 0.7s cubic-bezier(.2,.8,.2,1), top 0.7s cubic-bezier(.2,.8,.2,1),
-                    opacity 0.5s ease, transform 0.7s cubic-bezier(.34,1.56,.64,1);
-      `;
-      const cv = document.createElement('canvas');
-      cv.width = dim; cv.height = dim;
-      cv.style.cssText = 'width:100%; height:100%; display:block;';
-      drawShapeOn(cv.getContext('2d'), type, color, dim/2, dim/2, ring.size, angle);
-      div.appendChild(cv);
-      mandalaEl.appendChild(div);
-
-      const delay = globalIdx * 35;
-      setTimeout(() => {
-        div.style.left = `${tx - dim/2}px`;
-        div.style.top  = `${ty - dim/2}px`;
-        div.style.opacity = '1';
-        div.style.transform = 'translate(0,0) scale(1)';
-      }, delay);
-
-      mandalaPieces.push({ div, baseX: tx - cx, baseY: ty - cy, cx, cy, baseAngle: angle, ringIdx, dim });
-      globalIdx++;
-    }
-  });
-
-  playReveal();
-
-  // cuando termina de ensamblarse, habilita el botón para reiniciar el ciclo
-  setTimeout(() => {
-    if (phase !== 'mandala') return;
-    hint.querySelector('p').textContent = 'haz scroll para girar la composición';
-    hint.style.opacity = '1';
-    mainBtn.textContent = 'volver a empezar';
-    btnWrap.classList.add('show');
-    startMandalaLoop();
-  }, totalPieces * 35 + 750);
-}
-
-function startMandalaLoop() {
-  function tick() {
-    if (phase !== 'mandala') { mandalaAnimId = null; return; }
-    // inercia: la rotación actual persigue suavemente el objetivo del scroll
-    mandalaRotation += (mandalaTargetRotation - mandalaRotation) * 0.08;
-    const now = performance.now() * 0.0006;
-    mandalaPieces.forEach(p => {
-      // respiración sutil + la rotación global acumulada del scroll
-      const wobble = Math.sin(now + p.ringIdx * 1.3) * 3;
-      const dist   = Math.sqrt(p.baseX * p.baseX + p.baseY * p.baseY);
-      const angle  = p.baseAngle + mandalaRotation;
-      const x = Math.cos(angle) * dist + Math.cos(p.baseAngle) * wobble;
-      const y = Math.sin(angle) * dist + Math.sin(p.baseAngle) * wobble;
-      const rot = angle + Math.sin(now * 0.5) * 0.08;
-      p.div.style.transform = `translate(${x - p.baseX}px, ${y - p.baseY}px) scale(1) rotate(${rot}rad)`;
-    });
-
-    if (!mandalaExploding && Math.abs(mandalaTargetRotation) >= MANDALA_SPIN_THRESHOLD) {
-      mandalaExploding = true;
-      explodeMandala();
-      return; // deja de animar el giro normal; la explosión toma el control
-    }
-
-    mandalaAnimId = requestAnimationFrame(tick);
-  }
-  if (!mandalaAnimId) mandalaAnimId = requestAnimationFrame(tick);
-}
-
-function explodeMandala() {
-  hint.style.opacity = '0';
-  btnWrap.classList.remove('show');
-  secondaryBtn.classList.remove('show');
-
-  mandalaPieces.forEach((p, i) => {
-    // se lee la transform actual (ya incluye la rotación visible en este
-    // instante) para que la explosión parta desde la posición real en
-    // pantalla, sin saltos.
-    const cs = getComputedStyle(p.div);
-    const matrix = new DOMMatrixReadOnly(cs.transform);
-    const curDX = matrix.m41, curDY = matrix.m42;
-
-    const a    = Math.atan2(p.baseY, p.baseX) + rnd(-0.3, 0.3);
-    const dist = rnd(Math.max(W, H) * 0.7, Math.max(W, H) * 1.15);
-    const toX  = curDX + Math.cos(a) * dist;
-    const toY  = curDY + Math.sin(a) * dist;
-
-    p.div.style.transition = `transform ${rnd(0.5,0.8)}s cubic-bezier(.15,.6,.3,1), opacity 0.6s ease`;
-    p.div.style.transform  = `translate(${toX}px, ${toY}px) scale(1.6) rotate(${rnd(-2,2)}rad)`;
-    p.div.style.opacity    = '0';
-  });
-
-  playSuccessChord();
-  playWhoosh(0.18);
-
-  setTimeout(() => {
-    endMandalaPhase();
-    mandalaExploding = false;
-    rotatePalette();
-    startGardenPhase();
-  }, 780);
-}
-
-// ── Entrada de scroll / wheel / touch: gira el mandala completo ───────────
-function mandalaSpin(delta) {
-  if (phase !== 'mandala') return;
-  mandalaTargetRotation += delta;
-}
-
-window.addEventListener('wheel', e => {
-  if (phase !== 'mandala') return;
-  e.preventDefault();
-  mandalaSpin(e.deltaY * 0.0028); // intermedio: 0.0022 original duraba mucho, 0.0042 quedó demasiado rápido
-}, { passive: false });
-
-window.addEventListener('touchstart', e => {
-  if (phase !== 'mandala') return;
-  mandalaTouchStartX = e.touches[0].clientX;
-}, { passive: true });
-
-window.addEventListener('touchmove', e => {
-  if (phase !== 'mandala' || mandalaTouchStartX === null) return;
-  e.preventDefault();
-  const x = e.touches[0].clientX;
-  const dx = x - mandalaTouchStartX;
-  mandalaTouchStartX = x;
-  mandalaSpin(dx * 0.006);
-}, { passive: false });
-
-window.addEventListener('touchend', () => { mandalaTouchStartX = null; }, { passive: true });
-
-window.addEventListener('keydown', e => {
-  if (phase !== 'mandala') return;
-  if (e.key === 'ArrowRight') { e.preventDefault(); mandalaSpin(0.15); }
-  if (e.key === 'ArrowLeft')  { e.preventDefault(); mandalaSpin(-0.15); }
-});
-
-function endMandalaPhase() {
-  mandalaEl.innerHTML = '';
-  mandalaPieces = [];
-  mandalaAnimId = null;
-}
-
-// ── JARDÍN DE CALMA ──────────────────────────────────────────
-// ── CONSTELACIÓN ─────────────────────────────────────────────
-// Reemplaza al antiguo "jardín de calma". Etapa CON objetivo entre el
-// mandala y la mezcla de colores: aparecen puntos guía punteados dispersos
-// como una constelación; tocar/click cerca de un punto "planta" una pieza
-// que se ancla ahí (deja de poder moverse, no se desvanece) y el punto
-// queda completado. Tocar lejos de cualquier punto da un feedback chico
-// (mini explosión de partículas) pero no cuenta para el objetivo. Al
-// completar todos los puntos, se dibujan las líneas conectándolos como una
-// constelación real, sonido de cierre, y avanza automático a la siguiente
-// fase — sin botón, igual que el resto de las transiciones del ciclo.
-const constelEl = document.createElement('div');
-constelEl.id = 'constelacion';
-constelEl.style.cssText = 'position:absolute; inset:0; z-index:12; pointer-events:none;';
-wrap.appendChild(constelEl);
-
-let constelGuides = [];      // { x, y, filled, div (outline punteado) }
-let constelPieces = [];      // piezas ancladas, para dibujar las líneas finales
-let constelCompleted = false;
-const CONSTEL_GUIDE_COUNT = 6;
-// El tamaño de pieza y el radio de detección escalan con el tamaño de
-// pantalla (recalculados en buildConstelGuides, que conoce W/H actuales).
-// Valores fijos se veían bien en desktop pero en pantallas angostas
-// (celular) las piezas grandes se superponían entre puntos vecinos.
-let CONSTEL_HIT_RADIUS = 85;
-let CONSTEL_PIECE_SIZE = 78;
-
-function startGardenPhase() {
-  phase = 'garden';
-  cycleCompleted = true;
-  constelCompleted = false;
-  constelGuides = [];
-  constelPieces = [];
-  constelEl.innerHTML = '';
-  hint.classList.remove('bottom');
-  btnWrap.classList.remove('show');
-  secondaryBtn.classList.remove('show');
-  roundBadge.classList.remove('show');
-
-  hint.querySelector('p').textContent = 'toca cerca de cada punto para plantar';
-  hint.style.opacity = '1';
-
-  buildConstelGuides();
-}
-
-function buildConstelGuides() {
-  // Antes rx/ry usaban Math.min(W,H) para ambos ejes — en pantallas anchas
-  // (la mayoría en desktop) eso dejaba mucho ancho sin aprovechar a los
-  // costados, porque el límite siempre era la altura. Ahora cada eje usa
-  // su propia dimensión real (W para horizontal, H para vertical), con
-  // margen de seguridad, así la constelación ocupa mucho más del espacio
-  // disponible en cualquier proporción de pantalla.
-  const cx = W / 2, cy = H * 0.46;
-  const rx = W * 0.40;
-  const ry = H * 0.34;
-
-  // FIX: antes el tamaño de pieza se calculaba con una ESTIMACIÓN previa
-  // de la distancia esperada entre puntos vecinos (basada en un factor
-  // fijo), pero la disposición real tiene aleatoriedad en ángulo y
-  // distancia — esa estimación resultaba demasiado conservadora incluso
-  // en resoluciones de escritorio normales (1366x768, 1280x720), achicando
-  // las piezas mucho más de lo necesario. Ahora generamos primero las
-  // posiciones REALES de los 6 puntos, medimos la distancia mínima real
-  // entre vecinos en ESE conjunto específico, y solo entonces calculamos
-  // el tamaño máximo de pieza que cabe sin superponerse.
-  const positions = [];
-  for (let i = 0; i < CONSTEL_GUIDE_COUNT; i++) {
-    const a = (i / CONSTEL_GUIDE_COUNT) * Math.PI * 2 + rnd(-0.22, 0.22);
-    const dist = rnd(0.62, 1.05);
-    positions.push({
-      x: cx + Math.cos(a) * rx * dist,
-      y: cy + Math.sin(a) * ry * dist,
-    });
-  }
-
-  let minNeighborDist = Infinity;
-  for (let i = 0; i < positions.length; i++) {
-    const a = positions[i], b = positions[(i + 1) % positions.length];
-    const d = Math.hypot(a.x - b.x, a.y - b.y);
-    if (d < minNeighborDist) minNeighborDist = d;
-  }
-
-  const desiredDiameter = 78 * 2.2;
-  const maxDiameterForSpacing = minNeighborDist * 0.92; // deja un margen chico, no exactamente al límite
-  const scale = Math.min(1, maxDiameterForSpacing / desiredDiameter);
-  CONSTEL_PIECE_SIZE = Math.max(30, 78 * scale);
-  CONSTEL_HIT_RADIUS = Math.max(38, 85 * scale);
-
-  positions.forEach((pos, i) => {
-    const gx = pos.x, gy = pos.y;
-
-    const div = document.createElement('div');
-    const dim = 30;
-    div.style.cssText = `
-      position:absolute; left:${gx - dim/2}px; top:${gy - dim/2}px;
-      width:${dim}px; height:${dim}px; opacity:0;
-      transition: opacity 0.5s ease;
-    `;
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(svgNS, 'svg');
-    svg.setAttribute('viewBox', `0 0 ${dim} ${dim}`);
-    svg.style.cssText = 'width:100%; height:100%; display:block;';
-    const circle = document.createElementNS(svgNS, 'circle');
-    circle.setAttribute('cx', dim / 2);
-    circle.setAttribute('cy', dim / 2);
-    circle.setAttribute('r', 9);
-    circle.setAttribute('fill', 'none');
-    circle.setAttribute('stroke', 'rgba(0,0,0,0.3)');
-    circle.setAttribute('stroke-width', '2');
-    circle.setAttribute('stroke-dasharray', '3 4');
-    circle.setAttribute('class', 'constel-pulse');
-    svg.appendChild(circle);
-    div.appendChild(svg);
-    constelEl.appendChild(div);
-
-    setTimeout(() => { div.style.opacity = '1'; }, i * 90);
-
-    constelGuides.push({ x: gx, y: gy, filled: false, div });
-  });
-}
-
-function constelTouch(x, y) {
-  if (phase !== 'garden' || constelCompleted) return;
-
-  const target = constelGuides.find(g => !g.filled && Math.hypot(g.x - x, g.y - y) < CONSTEL_HIT_RADIUS);
-  if (target) {
-    plantConstelPiece(target);
-  } else {
-    // feedback chico para no dejar el toque sin respuesta, pero no cuenta
-    // como objetivo — solo cerca de un punto guía se ancla algo.
-    burst(x, y, 7);
-    playPop(rnd(380, 520), 0.1, 0.08);
-  }
-}
-
-function plantConstelPiece(guide) {
-  guide.filled = true;
-  guide.div.style.transition = 'opacity 0.3s';
-  guide.div.style.opacity = '0';
-
-  const type = rndI(TYPES);
-  const color = SC[type];
-
-  const div = document.createElement('div');
-  // misma clase que usan las piezas de la mezcla de colores (cursor,
-  // hover, estado 'lifted'), aunque el arrastre recién se activa más
-  // adelante — al completar la constelación, estas piezas se reutilizan
-  // literalmente en la fase de mezcla en vez de generar piezas nuevas.
-  div.className = 'final-piece';
-  const dim = CONSTEL_PIECE_SIZE * 2.2;
-  div.style.cssText = `
-    position:absolute; left:${guide.x - dim/2}px; top:${guide.y - dim/2}px;
-    width:${dim}px; height:${dim}px; opacity:0; transform:scale(0.3);
-    transition: opacity 0.4s ease, transform 0.45s cubic-bezier(.34,1.56,.64,1);
-    pointer-events:none;
-  `;
-  const cv = document.createElement('canvas');
-  cv.width = dim; cv.height = dim;
-  cv.style.cssText = 'width:100%; height:100%; display:block;';
-  drawShapeOn(cv.getContext('2d'), type, color, dim / 2, dim / 2, CONSTEL_PIECE_SIZE, rnd(-0.2, 0.2));
-  div.appendChild(cv);
-  constelEl.appendChild(div);
-
-  requestAnimationFrame(() => {
-    div.style.opacity = '1';
-    div.style.transform = 'scale(1)';
-  });
-
-  constelPieces.push({ x: guide.x, y: guide.y, div, cv, type, color, baseSize: CONSTEL_PIECE_SIZE });
-  playColorNote(color);
-  burst(guide.x, guide.y, 10);
-
-  checkConstelComplete();
-}
-
-function checkConstelComplete() {
-  if (constelGuides.every(g => g.filled) && !constelCompleted) {
-    constelCompleted = true;
-    hint.querySelector('p').textContent = 'constelación completa';
-    drawConstelLines();
-  }
-}
-
-let constelLinesSvg = null;
-
-function drawConstelLines() {
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  svg.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; transition: opacity 0.5s ease;';
-  constelEl.appendChild(svg);
-  constelLinesSvg = svg;
-
-  const n = constelPieces.length;
-  for (let i = 0; i < n; i++) {
-    const a = constelPieces[i];
-    const b = constelPieces[(i + 1) % n];
-    const line = document.createElementNS(svgNS, 'line');
-    line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
-    line.setAttribute('x2', a.x); line.setAttribute('y2', a.y);
-    line.setAttribute('stroke', 'rgba(0,0,0,0.26)');
-    line.setAttribute('stroke-width', '1.6');
-    line.setAttribute('stroke-dasharray', '5 5');
-    svg.appendChild(line);
-
-    setTimeout(() => {
-      line.style.transition = 'all 0.5s ease';
-      line.setAttribute('x2', b.x);
-      line.setAttribute('y2', b.y);
-    }, i * 160 + 50);
-  }
-
-  playSuccessChord();
-  const totalDur = n * 160 + 600 + 900; // tiempo de dibujar todas las líneas + pausa contemplativa
-  setTimeout(() => {
-    if (phase === 'garden') transitionConstelToMix();
-  }, totalDur);
-}
-
-// A pedido: las MISMAS piezas plantadas en la constelación pasan a ser las
-// piezas de la mezcla de colores, en vez de generar piezas nuevas — la
-// transición se siente continua (las piezas no desaparecen y reaparecen).
-function transitionConstelToMix() {
-  hint.style.opacity = '0';
-
-  // las líneas se desvanecen antes de habilitar el arrastre, como señal
-  // de que ahora la interacción cambia de naturaleza.
-  if (constelLinesSvg) {
-    constelLinesSvg.style.opacity = '0';
-  }
-  constelGuides.forEach(g => { g.div.style.opacity = '0'; });
-
-  setTimeout(() => {
-    phase = 'final-canvas';
-    finalCanvasEl.innerHTML = '';
-    finalPieces = [];
-    finalMergesDone = 0;
-    btnWrap.classList.remove('show');
-    secondaryBtn.classList.remove('show');
-    roundBadge.classList.remove('show');
-    colorFloodEl.style.opacity = '0';
-    colorFloodEl.style.background = 'transparent';
-
-    // mover cada div ya existente de constelEl a finalCanvasEl, conservando
-    // su posición real en pantalla (left/top en coordenadas de wrap, que
-    // ambos contenedores comparten con position:absolute; inset:0).
-    constelPieces.forEach(cp => {
-      cp.div.style.pointerEvents = ''; // quita el bloqueo inline; hereda 'auto' de .final-piece
-      finalCanvasEl.appendChild(cp.div);
-      const piece = { div: cp.div, cv: cp.cv, type: cp.type, baseSize: cp.baseSize, color: cp.color, merged: false };
-      finalPieces.push(piece);
-      makeFinalPieceDraggable(piece);
-    });
-
-    constelEl.innerHTML = '';
-    constelGuides = [];
-    constelPieces = [];
-    constelLinesSvg = null;
-
-    hint.classList.remove('bottom');
-    hint.querySelector('p').textContent = 'mezcla los colores arrastrándolos juntos';
-    hint.style.opacity = '1';
-  }, 600);
-}
-
-function endGardenPhase() {
-  constelEl.innerHTML = '';
-  constelGuides = [];
-  constelPieces = [];
-  constelLinesSvg = null;
-}
-
-// ── LIENZO FINAL: MEZCLA DE COLOR ───────────────────────────
-// Última fase antes de la despedida. Aparecen piezas de colores variados;
-// arrastrar una pieza sobre otra las fusiona en una sola pieza con el
-// color mezclado (promedio RGB). Repitiendo la mezcla, la cantidad de
-// piezas y de colores distintos en pantalla va bajando. Cuando TODAS las
-// piezas quedan del mismo color (con una tolerancia chica), ese color
-// inunda toda la pantalla y, sin ningún botón, la experiencia pasa sola
-// a la despedida tras una pausa contemplativa.
-const finalCanvasEl = document.createElement('div');
-finalCanvasEl.id = 'final-canvas';
-finalCanvasEl.style.cssText = 'position:absolute; inset:0; z-index:13; pointer-events:none;';
-wrap.appendChild(finalCanvasEl);
-
-// overlay de inundación de color, por encima de todo, arranca transparente
-const colorFloodEl = document.createElement('div');
-colorFloodEl.id = 'color-flood';
-colorFloodEl.style.cssText = `
-  position:absolute; inset:0; z-index:90; pointer-events:none;
-  background: transparent; opacity:0;
-  transition: background-color 0.6s ease, opacity 0.9s ease;
-`;
-wrap.appendChild(colorFloodEl);
-
-let finalPieces = [];
-let finalMergesDone = 0;
-const FINAL_PIECE_COUNT_MIN = 4;
-const FINAL_PIECE_COUNT_MAX = 6;
-const FINAL_MERGE_RADIUS_FACTOR = 1.15; // qué tan cerca hay que soltar para fusionar
-const FINAL_UNIFY_TOLERANCE = 18;       // distancia RGB máxima para considerar "mismo color"
-
-function hexToRgb(hex) {
-  const h = hex.replace('#', '');
-  return {
-    r: parseInt(h.substring(0, 2), 16),
-    g: parseInt(h.substring(2, 4), 16),
-    b: parseInt(h.substring(4, 6), 16),
-  };
-}
-function rgbToHex(r, g, b) {
-  const toHex = v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
-  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-}
-function mixColors(hexA, hexB) {
-  const a = hexToRgb(hexA), b = hexToRgb(hexB);
-  return rgbToHex((a.r + b.r) / 2, (a.g + b.g) / 2, (a.b + b.b) / 2);
-}
-function colorDistance(hexA, hexB) {
-  const a = hexToRgb(hexA), b = hexToRgb(hexB);
-  return Math.sqrt((a.r - b.r) ** 2 + (a.g - b.g) ** 2 + (a.b - b.b) ** 2);
-}
-
-function startFinalCanvasPhase() {
-  phase = 'final-canvas';
-  endGardenPhase();
-  finalCanvasEl.innerHTML = '';
-  finalPieces = [];
-  finalMergesDone = 0;
-  btnWrap.classList.remove('show');
-  secondaryBtn.classList.remove('show');
-  roundBadge.classList.remove('show');
-  colorFloodEl.style.opacity = '0';
-  colorFloodEl.style.background = 'transparent';
-
-  // Variedad garantizada de colores para que la mezcla tenga sentido:
-  // tomamos los colores base de la paleta actual y los repartimos entre
-  // varias piezas, en vez de reciclar literalmente lo plantado en el jardín
-  // (que podría no tener suficiente variedad de color para jugar con esto).
-  const baseColors = Object.values(SC);
-  const count = Math.floor(rnd(FINAL_PIECE_COUNT_MIN, FINAL_PIECE_COUNT_MAX + 1));
-
-  for (let i = 0; i < count; i++) {
-    const type  = rndI(TYPES);
-    const color = baseColors[i % baseColors.length];
-    const x = rnd(W * 0.24, W * 0.76);
-    const y = rnd(H * 0.30, H * 0.68);
-    const baseSize = rnd(88, 116); // agrandadas de nuevo a pedido, antes 64-86
-    spawnFinalPiece(x, y, type, color, baseSize, i * 70);
-  }
-
-  hint.classList.remove('bottom');
-  hint.querySelector('p').textContent = 'mezcla los colores arrastrándolos juntos';
-  hint.style.opacity = '1';
-}
-
-function spawnFinalPiece(x, y, type, color, baseSize, delay) {
-  const div = document.createElement('div');
-  div.className = 'final-piece';
-  const dim = baseSize * 2.2;
-  div.style.cssText = `
-    left:${x - dim/2}px; top:${y - dim/2}px;
-    width:${dim}px; height:${dim}px;
-    opacity:0; transform:scale(0.5);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.34,1.56,.64,1);
-  `;
-  const cv = document.createElement('canvas');
-  cv.width = dim; cv.height = dim;
-  cv.style.cssText = 'width:100%; height:100%; display:block;';
-  drawShapeOn(cv.getContext('2d'), type, color, dim/2, dim/2, baseSize, rnd(0, Math.PI * 2));
-  div.appendChild(cv);
-  finalCanvasEl.appendChild(div);
-
-  setTimeout(() => {
-    div.style.opacity = '1';
-    div.style.transform = 'scale(1)';
-  }, delay);
-
-  const piece = { div, cv, type, baseSize, color, merged: false };
-  finalPieces.push(piece);
-  makeFinalPieceDraggable(piece);
-  return piece;
-}
-
-function redrawFinalPiece(piece) {
-  const dim = piece.baseSize * 2.2;
-  piece.cv.width = dim; piece.cv.height = dim;
-  drawShapeOn(piece.cv.getContext('2d'), piece.type, piece.color, dim / 2, dim / 2, piece.baseSize, 0);
-}
-
-function makeFinalPieceDraggable(piece) {
-  const div = piece.div;
-  let sx = 0, sy = 0, baseLeft = 0, baseTop = 0, dragging = false;
-
-  function down(ex, ey) {
-    if (phase !== 'final-canvas' || piece.merged) return;
-    dragging = true;
-    sx = ex; sy = ey;
-    baseLeft = parseFloat(div.style.left);
-    baseTop  = parseFloat(div.style.top);
-    div.classList.add('lifted');
-    div.style.transition = 'none';
-    div.style.zIndex = '300';
-    playPop(550, 0.04, 0.05);
-  }
-
-  function move(ex, ey) {
-    if (!dragging) return;
-    div.style.left = `${baseLeft + (ex - sx)}px`;
-    div.style.top  = `${baseTop  + (ey - sy)}px`;
-  }
-
-  function up() {
-    if (!dragging) return;
-    dragging = false;
-    div.classList.remove('lifted');
-    div.style.transition = 'left 0.25s ease, top 0.25s ease';
-    div.style.zIndex = '';
-
-    // busca otra pieza viva, no fusionada, lo bastante cerca como para fusionar
-    const rect = div.getBoundingClientRect();
-    const wrapRect = wrap.getBoundingClientRect();
-    const cx = rect.left - wrapRect.left + rect.width / 2;
-    const cy = rect.top  - wrapRect.top  + rect.height / 2;
-
-    let target = null;
-    let bestDist = Infinity;
-    finalPieces.forEach(other => {
-      if (other === piece || other.merged) return;
-      const r2 = other.div.getBoundingClientRect();
-      const ox = r2.left - wrapRect.left + r2.width / 2;
-      const oy = r2.top  - wrapRect.top  + r2.height / 2;
-      const d = Math.hypot(ox - cx, oy - cy);
-      const threshold = (rect.width / 2 + r2.width / 2) * FINAL_MERGE_RADIUS_FACTOR;
-      if (d < threshold && d < bestDist) {
-        bestDist = d;
-        target = other;
-      }
-    });
-
-    if (target) {
-      mergeFinalPieces(piece, target);
-    }
-  }
-
-  div.addEventListener('mousedown', e => { e.preventDefault(); down(e.clientX, e.clientY); });
-  window.addEventListener('mousemove', e => move(e.clientX, e.clientY));
-  window.addEventListener('mouseup', up);
-  div.addEventListener('touchstart', e => { e.preventDefault(); down(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
-  div.addEventListener('touchmove', e => { e.preventDefault(); move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
-  div.addEventListener('touchend', up);
-}
-
-function mergeFinalPieces(moved, target) {
-  // el color resultante se promedia; la pieza "target" (la que estaba quieta)
-  // se queda y absorbe a "moved", que desaparece.
-  const mixed = mixColors(moved.color, target.color);
-  target.color = mixed;
-  target.baseSize = Math.min(150, target.baseSize + moved.baseSize * 0.22); // crece un poco al fusionar, refuerza la idea de "absorber"
-  redrawFinalPiece(target);
-
-  moved.merged = true;
-  moved.div.style.transition = 'transform 0.3s cubic-bezier(.4,0,.6,1), opacity 0.3s ease';
-  const tr = target.div.getBoundingClientRect();
-  const mr = moved.div.getBoundingClientRect();
-  moved.div.style.transform = `translate(${tr.left - mr.left}px, ${tr.top - mr.top}px) scale(0.3)`;
-  moved.div.style.opacity = '0';
-  moved.div.style.pointerEvents = 'none';
-
-  // pequeño pulso en la pieza resultante para marcar la fusión
-  target.div.style.transition = 'transform 0.3s cubic-bezier(.34,1.56,.64,1)';
-  target.div.style.transform = 'scale(1.12)';
-  setTimeout(() => { target.div.style.transform = 'scale(1)'; }, 220);
-
-  playColorNote(mixed);
-  finalMergesDone++;
-
-  setTimeout(() => {
-    moved.div.remove();
-    finalPieces = finalPieces.filter(p => p !== moved);
-    checkFinalUnify();
-  }, 320);
-}
-
-function checkFinalUnify() {
-  if (phase !== 'final-canvas') return;
-  const alive = finalPieces.filter(p => !p.merged);
-  if (alive.length <= 1) {
-    // si por fusiones sucesivas queda una sola pieza, ya está unificado
-    finishFinalCanvasPhase(alive[0] ? alive[0].color : '#D12839');
-    return;
-  }
-  const ref = alive[0].color;
-  const allSame = alive.every(p => colorDistance(p.color, ref) <= FINAL_UNIFY_TOLERANCE);
-  if (allSame) {
-    finishFinalCanvasPhase(ref);
-  }
-}
-
-function finishFinalCanvasPhase(finalColor) {
-  if (phase !== 'final-canvas') return;
-  phase = 'final-flood';
-  hint.style.opacity = '0';
-  btnWrap.classList.remove('show');
-  secondaryBtn.classList.remove('show');
-
-  playWhoosh(0.16);
-  playSuccessChord();
-
-  // el color logrado inunda toda la pantalla — sin botón, todo automático
-  colorFloodEl.style.background = finalColor;
-  requestAnimationFrame(() => {
-    colorFloodEl.style.opacity = '1';
-  });
-
-  // pausa contemplativa con el color en pantalla completa, después
-  // transición automática a la despedida. A pedido: la despedida se queda
-  // con ESE color de fondo (no vuelve al beige) — aplicamos el mismo color
-  // directamente al fondo de #farewell antes de mostrarla, y dejamos que
-  // el overlay de flood se desvanezca por encima sin un cambio de color
-  // brusco debajo.
-  setTimeout(() => {
-    finalCanvasEl.innerHTML = '';
-    finalPieces = [];
-    wrap.classList.remove('visible');
-    if (farewell) {
-      farewell.style.background = finalColor;
-      // contraste dinámico: si el color final resulta oscuro, el texto y
-      // el botón pasan a modo claro; si es claro, se quedan como siempre
-      // (oscuro sobre claro). Luminancia relativa simple, suficiente para
-      // decidir entre dos modos, no para precisión WCAG estricta.
-      const rgb = hexToRgb(finalColor);
-      const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
-      farewell.classList.toggle('on-dark', luminance < 0.55);
-      farewell.classList.add('show');
-    }
-    setTimeout(() => {
-      colorFloodEl.style.opacity = '0';
-    }, 700);
-  }, 1500);
-}
-
-function goToFormaFromGarden() {
-  if (phase !== 'garden') return;
-  hint.style.opacity = '0';
-  btnWrap.classList.remove('show');
-  secondaryBtn.classList.remove('show');
-
-  // FIX: antes esta función siempre volvía a armar la palabra FORMA y
-  // entraba a startFreeplay(), lo cual cambiaba phase a 'freeplay' antes
-  // de que el usuario pudiera hacer click — por eso el botón principal
-  // nunca llegaba a la rama que muestra la despedida (#farewell), sin
-  // importar que cycleCompleted ya fuera true. Ahora, si el ciclo ya se
-  // completó (pasamos por tangram + mandala + jardín), el jardín no
-  // vuelve a FORMA: avanza a una fase de cierre nueva (mezcla de color)
-  // que es la única puerta hacia la despedida, y es 100% automática
-  // (sin botón): cierra sola cuando todos los colores quedan unificados.
-  if (cycleCompleted) {
-    endGardenPhase();
-    startFinalCanvasPhase();
-  } else {
-    endGardenPhase();
-    phase = 'revealed';
-    setTimeout(spawnForma, 200);
-  }
-}
-
-// ── TANGRAM: relleno libre de figuras (2 rondas) ───────────
+// ════════════════════════════════════════════════════════════════
+// 10. FASE 3 — TANGRAM (relleno libre de figuras)
+// ════════════════════════════════════════════════════════════════
 const tangramEl = document.createElement('div');
 tangramEl.id = 'tangram';
 tangramEl.style.cssText = 'position:absolute; inset:0; z-index:11; pointer-events:none;';
@@ -1939,7 +1198,777 @@ function finishTangramPhase() {
   disperseFormaAndRestart('mandala');
 }
 
-// ── DISPERSE (cierre del ciclo) ────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 11. FASE 4 — MANDALA
+// ════════════════════════════════════════════════════════════════
+// Patrón simétrico de anillos concéntricos que se autoensambla una sola vez
+// desde el centro hacia afuera (como en la versión original). El scroll /
+// rueda del mouse / swipe rota el mandala completo: más scroll = más giro.
+const mandalaEl = document.createElement('div');
+mandalaEl.id = 'mandala';
+mandalaEl.style.cssText = 'position:absolute; inset:0; z-index:12; pointer-events:none;';
+wrap.appendChild(mandalaEl);
+
+let mandalaPieces = [];
+let mandalaRotation = 0;       // rotación acumulada actual (radianes)
+let mandalaTargetRotation = 0; // objetivo hacia el que se interpola con inercia
+let mandalaAnimId = null;
+let mandalaTouchStartX = null;
+// umbral de giro acumulado (en radianes, valor absoluto, sin importar
+// dirección) a partir del cual el mandala explota solo — automático al
+// cruzar el umbral, sin que el usuario tenga que soltar nada.
+const MANDALA_SPIN_THRESHOLD = Math.PI * 2; // ~1 vuelta completa (antes ~2.5, duraba mucho)
+let mandalaExploding = false;
+
+function startMandalaPhase() {
+  phase = 'mandala';
+  mandalaEl.innerHTML = '';
+  mandalaPieces = [];
+  mandalaRotation = 0;
+  mandalaTargetRotation = 0;
+  mandalaExploding = false;
+  hint.style.opacity = '0';
+  hint.classList.remove('bottom');
+  btnWrap.classList.remove('show');
+  secondaryBtn.classList.remove('show');
+  roundBadge.classList.remove('show');
+
+  const cx = W / 2, cy = H / 2;
+  const rings = [
+    { count: 8,  radius: Math.min(W, H) * 0.13, size: 24 },
+    { count: 12, radius: Math.min(W, H) * 0.25, size: 29 },
+    { count: 16, radius: Math.min(W, H) * 0.37, size: 34 },
+  ];
+
+  let globalIdx = 0;
+  const totalPieces = rings.reduce((s, r) => s + r.count, 0);
+
+  rings.forEach((ring, ringIdx) => {
+    const typesCycle = TYPES;
+    for (let i = 0; i < ring.count; i++) {
+      const angle = (i / ring.count) * Math.PI * 2;
+      const type  = typesCycle[(i + ringIdx) % typesCycle.length];
+      const color = SC[type];
+      const tx = cx + Math.cos(angle) * ring.radius;
+      const ty = cy + Math.sin(angle) * ring.radius;
+
+      const div = document.createElement('div');
+      const dim = ring.size * 2.4;
+      div.style.cssText = `
+        position:absolute; left:${cx - dim/2}px; top:${cy - dim/2}px;
+        width:${dim}px; height:${dim}px; opacity:0;
+        transform: translate(0,0) scale(0.3);
+        transition: left 0.7s cubic-bezier(.2,.8,.2,1), top 0.7s cubic-bezier(.2,.8,.2,1),
+                    opacity 0.5s ease, transform 0.7s cubic-bezier(.34,1.56,.64,1);
+      `;
+      const cv = document.createElement('canvas');
+      cv.width = dim; cv.height = dim;
+      cv.style.cssText = 'width:100%; height:100%; display:block;';
+      drawShapeOn(cv.getContext('2d'), type, color, dim/2, dim/2, ring.size, angle);
+      div.appendChild(cv);
+      mandalaEl.appendChild(div);
+
+      const delay = globalIdx * 35;
+      setTimeout(() => {
+        div.style.left = `${tx - dim/2}px`;
+        div.style.top  = `${ty - dim/2}px`;
+        div.style.opacity = '1';
+        div.style.transform = 'translate(0,0) scale(1)';
+      }, delay);
+
+      mandalaPieces.push({ div, baseX: tx - cx, baseY: ty - cy, cx, cy, baseAngle: angle, ringIdx, dim });
+      globalIdx++;
+    }
+  });
+
+  playReveal();
+
+  // cuando termina de ensamblarse, habilita el botón para reiniciar el ciclo
+  setTimeout(() => {
+    if (phase !== 'mandala') return;
+    hint.querySelector('p').textContent = 'haz scroll para girar la composición';
+    hint.style.opacity = '1';
+    mainBtn.textContent = 'volver a empezar';
+    btnWrap.classList.add('show');
+    startMandalaLoop();
+  }, totalPieces * 35 + 750);
+}
+
+function startMandalaLoop() {
+  function tick() {
+    if (phase !== 'mandala') { mandalaAnimId = null; return; }
+    // inercia: la rotación actual persigue suavemente el objetivo del scroll
+    mandalaRotation += (mandalaTargetRotation - mandalaRotation) * 0.08;
+    const now = performance.now() * 0.0006;
+    mandalaPieces.forEach(p => {
+      // respiración sutil + la rotación global acumulada del scroll
+      const wobble = Math.sin(now + p.ringIdx * 1.3) * 3;
+      const dist   = Math.sqrt(p.baseX * p.baseX + p.baseY * p.baseY);
+      const angle  = p.baseAngle + mandalaRotation;
+      const x = Math.cos(angle) * dist + Math.cos(p.baseAngle) * wobble;
+      const y = Math.sin(angle) * dist + Math.sin(p.baseAngle) * wobble;
+      const rot = angle + Math.sin(now * 0.5) * 0.08;
+      p.div.style.transform = `translate(${x - p.baseX}px, ${y - p.baseY}px) scale(1) rotate(${rot}rad)`;
+    });
+
+    if (!mandalaExploding && Math.abs(mandalaTargetRotation) >= MANDALA_SPIN_THRESHOLD) {
+      mandalaExploding = true;
+      explodeMandala();
+      return; // deja de animar el giro normal; la explosión toma el control
+    }
+
+    mandalaAnimId = requestAnimationFrame(tick);
+  }
+  if (!mandalaAnimId) mandalaAnimId = requestAnimationFrame(tick);
+}
+
+function explodeMandala() {
+  hint.style.opacity = '0';
+  btnWrap.classList.remove('show');
+  secondaryBtn.classList.remove('show');
+
+  mandalaPieces.forEach((p, i) => {
+    // se lee la transform actual (ya incluye la rotación visible en este
+    // instante) para que la explosión parta desde la posición real en
+    // pantalla, sin saltos.
+    const cs = getComputedStyle(p.div);
+    const matrix = new DOMMatrixReadOnly(cs.transform);
+    const curDX = matrix.m41, curDY = matrix.m42;
+
+    const a    = Math.atan2(p.baseY, p.baseX) + rnd(-0.3, 0.3);
+    const dist = rnd(Math.max(W, H) * 0.7, Math.max(W, H) * 1.15);
+    const toX  = curDX + Math.cos(a) * dist;
+    const toY  = curDY + Math.sin(a) * dist;
+
+    p.div.style.transition = `transform ${rnd(0.5,0.8)}s cubic-bezier(.15,.6,.3,1), opacity 0.6s ease`;
+    p.div.style.transform  = `translate(${toX}px, ${toY}px) scale(1.6) rotate(${rnd(-2,2)}rad)`;
+    p.div.style.opacity    = '0';
+  });
+
+  playSuccessChord();
+  playWhoosh(0.18);
+
+  setTimeout(() => {
+    endMandalaPhase();
+    mandalaExploding = false;
+    rotatePalette();
+    startGardenPhase();
+  }, 780);
+}
+
+// ── Entrada de scroll / wheel / touch: gira el mandala completo ───────────
+function mandalaSpin(delta) {
+  if (phase !== 'mandala') return;
+  mandalaTargetRotation += delta;
+}
+
+window.addEventListener('wheel', e => {
+  if (phase !== 'mandala') return;
+  e.preventDefault();
+  mandalaSpin(e.deltaY * 0.0028); // intermedio: 0.0022 original duraba mucho, 0.0042 quedó demasiado rápido
+}, { passive: false });
+
+window.addEventListener('touchstart', e => {
+  if (phase !== 'mandala') return;
+  mandalaTouchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+window.addEventListener('touchmove', e => {
+  if (phase !== 'mandala' || mandalaTouchStartX === null) return;
+  e.preventDefault();
+  const x = e.touches[0].clientX;
+  const dx = x - mandalaTouchStartX;
+  mandalaTouchStartX = x;
+  mandalaSpin(dx * 0.006);
+}, { passive: false });
+
+window.addEventListener('touchend', () => { mandalaTouchStartX = null; }, { passive: true });
+
+window.addEventListener('keydown', e => {
+  if (phase !== 'mandala') return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); mandalaSpin(0.15); }
+  if (e.key === 'ArrowLeft')  { e.preventDefault(); mandalaSpin(-0.15); }
+});
+
+function endMandalaPhase() {
+  mandalaEl.innerHTML = '';
+  mandalaPieces = [];
+  mandalaAnimId = null;
+}
+
+// ════════════════════════════════════════════════════════════════
+// 12. FASE 5 — CONSTELACIÓN (JARDÍN)
+// ════════════════════════════════════════════════════════════════
+// Etapa CON objetivo entre el mandala y la mezcla de colores: aparecen
+// puntos guía punteados dispersos como una constelación; tocar/click cerca
+// de un punto "planta" una pieza que se ancla ahí (deja de poder moverse,
+// no se desvanece) y el punto queda completado. Tocar lejos de cualquier
+// punto da un feedback chico (mini explosión de partículas) pero no cuenta
+// para el objetivo. Al completar todos los puntos, se dibujan las líneas
+// conectándolos como una constelación real, sonido de cierre, y avanza
+// automático a la siguiente fase — sin botón, igual que el resto de las
+// transiciones del ciclo.
+const constelEl = document.createElement('div');
+constelEl.id = 'constelacion';
+constelEl.style.cssText = 'position:absolute; inset:0; z-index:12; pointer-events:none;';
+wrap.appendChild(constelEl);
+
+let constelGuides = [];      // { x, y, filled, div (outline punteado) }
+let constelPieces = [];      // piezas ancladas, para dibujar las líneas finales
+let constelCompleted = false;
+const CONSTEL_GUIDE_COUNT = 6;
+// El tamaño de pieza y el radio de detección escalan con el tamaño de
+// pantalla (recalculados en buildConstelGuides, que conoce W/H actuales).
+// Valores fijos se veían bien en desktop pero en pantallas angostas
+// (celular) las piezas grandes se superponían entre puntos vecinos.
+let CONSTEL_HIT_RADIUS = 85;
+let CONSTEL_PIECE_SIZE = 78;
+
+function startGardenPhase() {
+  phase = 'garden';
+  cycleCompleted = true;
+  constelCompleted = false;
+  constelGuides = [];
+  constelPieces = [];
+  constelEl.innerHTML = '';
+  hint.classList.remove('bottom');
+  btnWrap.classList.remove('show');
+  secondaryBtn.classList.remove('show');
+  roundBadge.classList.remove('show');
+
+  hint.querySelector('p').textContent = 'clickea en los puntos';
+  hint.style.opacity = '1';
+
+  buildConstelGuides();
+}
+
+function buildConstelGuides() {
+  // Antes rx/ry usaban Math.min(W,H) para ambos ejes — en pantallas anchas
+  // (la mayoría en desktop) eso dejaba mucho ancho sin aprovechar a los
+  // costados, porque el límite siempre era la altura. Ahora cada eje usa
+  // su propia dimensión real (W para horizontal, H para vertical), con
+  // margen de seguridad, así la constelación ocupa mucho más del espacio
+  // disponible en cualquier proporción de pantalla.
+  const cx = W / 2, cy = H * 0.46;
+  const rx = W * 0.40;
+  const ry = H * 0.34;
+
+  // FIX: antes el tamaño de pieza se calculaba con una ESTIMACIÓN previa
+  // de la distancia esperada entre puntos vecinos (basada en un factor
+  // fijo), pero la disposición real tiene aleatoriedad en ángulo y
+  // distancia — esa estimación resultaba demasiado conservadora incluso
+  // en resoluciones de escritorio normales (1366x768, 1280x720), achicando
+  // las piezas mucho más de lo necesario. Ahora generamos primero las
+  // posiciones REALES de los 6 puntos, medimos la distancia mínima real
+  // entre vecinos en ESE conjunto específico, y solo entonces calculamos
+  // el tamaño máximo de pieza que cabe sin superponerse.
+  const positions = [];
+  for (let i = 0; i < CONSTEL_GUIDE_COUNT; i++) {
+    const a = (i / CONSTEL_GUIDE_COUNT) * Math.PI * 2 + rnd(-0.22, 0.22);
+    const dist = rnd(0.62, 1.05);
+    positions.push({
+      x: cx + Math.cos(a) * rx * dist,
+      y: cy + Math.sin(a) * ry * dist,
+    });
+  }
+
+  let minNeighborDist = Infinity;
+  for (let i = 0; i < positions.length; i++) {
+    const a = positions[i], b = positions[(i + 1) % positions.length];
+    const d = Math.hypot(a.x - b.x, a.y - b.y);
+    if (d < minNeighborDist) minNeighborDist = d;
+  }
+
+  const desiredDiameter = 78 * 2.2;
+  const maxDiameterForSpacing = minNeighborDist * 0.92; // deja un margen chico, no exactamente al límite
+  const scale = Math.min(1, maxDiameterForSpacing / desiredDiameter);
+  CONSTEL_PIECE_SIZE = Math.max(30, 78 * scale);
+  CONSTEL_HIT_RADIUS = Math.max(38, 85 * scale);
+
+  positions.forEach((pos, i) => {
+    const gx = pos.x, gy = pos.y;
+
+    const div = document.createElement('div');
+    const dim = 30;
+    div.style.cssText = `
+      position:absolute; left:${gx - dim/2}px; top:${gy - dim/2}px;
+      width:${dim}px; height:${dim}px; opacity:0;
+      transition: opacity 0.5s ease;
+    `;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${dim} ${dim}`);
+    svg.style.cssText = 'width:100%; height:100%; display:block;';
+    const circle = document.createElementNS(svgNS, 'circle');
+    circle.setAttribute('cx', dim / 2);
+    circle.setAttribute('cy', dim / 2);
+    circle.setAttribute('r', 9);
+    circle.setAttribute('fill', 'none');
+    circle.setAttribute('stroke', 'rgba(0,0,0,0.3)');
+    circle.setAttribute('stroke-width', '2');
+    circle.setAttribute('stroke-dasharray', '3 4');
+    circle.setAttribute('class', 'constel-pulse');
+    svg.appendChild(circle);
+    div.appendChild(svg);
+    constelEl.appendChild(div);
+
+    setTimeout(() => { div.style.opacity = '1'; }, i * 90);
+
+    constelGuides.push({ x: gx, y: gy, filled: false, div });
+  });
+}
+
+function constelTouch(x, y) {
+  if (phase !== 'garden' || constelCompleted) return;
+
+  const target = constelGuides.find(g => !g.filled && Math.hypot(g.x - x, g.y - y) < CONSTEL_HIT_RADIUS);
+  if (target) {
+    plantConstelPiece(target);
+  } else {
+    // feedback chico para no dejar el toque sin respuesta, pero no cuenta
+    // como objetivo — solo cerca de un punto guía se ancla algo.
+    burst(x, y, 7);
+    playPop(rnd(380, 520), 0.1, 0.08);
+  }
+}
+
+function plantConstelPiece(guide) {
+  guide.filled = true;
+  guide.div.style.transition = 'opacity 0.3s';
+  guide.div.style.opacity = '0';
+
+  const type = rndI(TYPES);
+  const color = SC[type];
+
+  const div = document.createElement('div');
+  // misma clase que usan las piezas de la mezcla de colores (cursor,
+  // hover, estado 'lifted'), aunque el arrastre recién se activa más
+  // adelante — al completar la constelación, estas piezas se reutilizan
+  // literalmente en la fase de mezcla en vez de generar piezas nuevas.
+  div.className = 'final-piece';
+  const dim = CONSTEL_PIECE_SIZE * 2.2;
+  div.style.cssText = `
+    position:absolute; left:${guide.x - dim/2}px; top:${guide.y - dim/2}px;
+    width:${dim}px; height:${dim}px; opacity:0; transform:scale(0.3);
+    transition: opacity 0.4s ease, transform 0.45s cubic-bezier(.34,1.56,.64,1);
+    pointer-events:none;
+  `;
+  const cv = document.createElement('canvas');
+  cv.width = dim; cv.height = dim;
+  cv.style.cssText = 'width:100%; height:100%; display:block;';
+  drawShapeOn(cv.getContext('2d'), type, color, dim / 2, dim / 2, CONSTEL_PIECE_SIZE, rnd(-0.2, 0.2));
+  div.appendChild(cv);
+  constelEl.appendChild(div);
+
+  requestAnimationFrame(() => {
+    div.style.opacity = '1';
+    div.style.transform = 'scale(1)';
+  });
+
+  constelPieces.push({ x: guide.x, y: guide.y, div, cv, type, color, baseSize: CONSTEL_PIECE_SIZE });
+  playColorNote(color);
+  burst(guide.x, guide.y, 10);
+
+  checkConstelComplete();
+}
+
+function checkConstelComplete() {
+  if (constelGuides.every(g => g.filled) && !constelCompleted) {
+    constelCompleted = true;
+    hint.querySelector('p').textContent = 'recorrido completo';
+    drawConstelLines();
+  }
+}
+
+let constelLinesSvg = null;
+
+function drawConstelLines() {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; transition: opacity 0.5s ease;';
+  constelEl.appendChild(svg);
+  constelLinesSvg = svg;
+
+  const n = constelPieces.length;
+  for (let i = 0; i < n; i++) {
+    const a = constelPieces[i];
+    const b = constelPieces[(i + 1) % n];
+    const line = document.createElementNS(svgNS, 'line');
+    line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+    line.setAttribute('x2', a.x); line.setAttribute('y2', a.y);
+    line.setAttribute('stroke', 'rgba(0,0,0,0.26)');
+    line.setAttribute('stroke-width', '1.6');
+    line.setAttribute('stroke-dasharray', '5 5');
+    svg.appendChild(line);
+
+    setTimeout(() => {
+      line.style.transition = 'all 0.5s ease';
+      line.setAttribute('x2', b.x);
+      line.setAttribute('y2', b.y);
+    }, i * 160 + 50);
+  }
+
+  playSuccessChord();
+  const totalDur = n * 160 + 600 + 900; // tiempo de dibujar todas las líneas + pausa contemplativa
+  setTimeout(() => {
+    if (phase === 'garden') transitionConstelToMix();
+  }, totalDur);
+}
+
+// A pedido: las MISMAS piezas plantadas en la constelación pasan a ser las
+// piezas de la mezcla de colores, en vez de generar piezas nuevas — la
+// transición se siente continua (las piezas no desaparecen y reaparecen).
+function transitionConstelToMix() {
+  hint.style.opacity = '0';
+
+  // las líneas se desvanecen antes de habilitar el arrastre, como señal
+  // de que ahora la interacción cambia de naturaleza.
+  if (constelLinesSvg) {
+    constelLinesSvg.style.opacity = '0';
+  }
+  constelGuides.forEach(g => { g.div.style.opacity = '0'; });
+
+  setTimeout(() => {
+    phase = 'final-canvas';
+    finalCanvasEl.innerHTML = '';
+    finalPieces = [];
+    finalMergesDone = 0;
+    btnWrap.classList.remove('show');
+    secondaryBtn.classList.remove('show');
+    roundBadge.classList.remove('show');
+    colorFloodEl.style.opacity = '0';
+    colorFloodEl.style.background = 'transparent';
+
+    // mover cada div ya existente de constelEl a finalCanvasEl, conservando
+    // su posición real en pantalla (left/top en coordenadas de wrap, que
+    // ambos contenedores comparten con position:absolute; inset:0).
+    constelPieces.forEach(cp => {
+      cp.div.style.pointerEvents = ''; // quita el bloqueo inline; hereda 'auto' de .final-piece
+      finalCanvasEl.appendChild(cp.div);
+      const piece = { div: cp.div, cv: cp.cv, type: cp.type, baseSize: cp.baseSize, color: cp.color, merged: false };
+      finalPieces.push(piece);
+      makeFinalPieceDraggable(piece);
+    });
+
+    constelEl.innerHTML = '';
+    constelGuides = [];
+    constelPieces = [];
+    constelLinesSvg = null;
+
+    hint.classList.remove('bottom');
+    hint.querySelector('p').textContent = 'mezcla los colores arrastrándolos juntos';
+    hint.style.opacity = '1';
+  }, 600);
+}
+
+function endGardenPhase() {
+  constelEl.innerHTML = '';
+  constelGuides = [];
+  constelPieces = [];
+  constelLinesSvg = null;
+}
+
+function goToFormaFromGarden() {
+  if (phase !== 'garden') return;
+  hint.style.opacity = '0';
+  btnWrap.classList.remove('show');
+  secondaryBtn.classList.remove('show');
+
+  // FIX: antes esta función siempre volvía a armar la palabra FORMA y
+  // entraba a startFreeplay(), lo cual cambiaba phase a 'freeplay' antes
+  // de que el usuario pudiera hacer click — por eso el botón principal
+  // nunca llegaba a la rama que muestra la despedida (#farewell), sin
+  // importar que cycleCompleted ya fuera true. Ahora, si el ciclo ya se
+  // completó (pasamos por tangram + mandala + jardín), el jardín no
+  // vuelve a FORMA: avanza a una fase de cierre nueva (mezcla de color)
+  // que es la única puerta hacia la despedida, y es 100% automática
+  // (sin botón): cierra sola cuando todos los colores quedan unificados.
+  if (cycleCompleted) {
+    endGardenPhase();
+    startFinalCanvasPhase();
+  } else {
+    endGardenPhase();
+    phase = 'revealed';
+    setTimeout(spawnForma, 200);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// 13. FASE 6 — LIENZO FINAL (MEZCLA DE COLOR)
+// ════════════════════════════════════════════════════════════════
+// Última fase antes de la despedida. Aparecen piezas de colores variados;
+// arrastrar una pieza sobre otra las fusiona en una sola pieza con el
+// color mezclado (promedio RGB). Repitiendo la mezcla, la cantidad de
+// piezas y de colores distintos en pantalla va bajando. Cuando TODAS las
+// piezas quedan del mismo color (con una tolerancia chica), ese color
+// inunda toda la pantalla y, sin ningún botón, la experiencia pasa sola
+// a la despedida tras una pausa contemplativa.
+const finalCanvasEl = document.createElement('div');
+finalCanvasEl.id = 'final-canvas';
+finalCanvasEl.style.cssText = 'position:absolute; inset:0; z-index:13; pointer-events:none;';
+wrap.appendChild(finalCanvasEl);
+
+// overlay de inundación de color, por encima de todo, arranca transparente
+const colorFloodEl = document.createElement('div');
+colorFloodEl.id = 'color-flood';
+colorFloodEl.style.cssText = `
+  position:absolute; inset:0; z-index:90; pointer-events:none;
+  background: transparent; opacity:0;
+  transition: background-color 0.6s ease, opacity 0.9s ease;
+`;
+wrap.appendChild(colorFloodEl);
+
+let finalPieces = [];
+let finalMergesDone = 0;
+const FINAL_PIECE_COUNT_MIN = 4;
+const FINAL_PIECE_COUNT_MAX = 6;
+const FINAL_MERGE_RADIUS_FACTOR = 1.15; // qué tan cerca hay que soltar para fusionar
+const FINAL_UNIFY_TOLERANCE = 18;       // distancia RGB máxima para considerar "mismo color"
+
+function hexToRgb(hex) {
+  const h = hex.replace('#', '');
+  return {
+    r: parseInt(h.substring(0, 2), 16),
+    g: parseInt(h.substring(2, 4), 16),
+    b: parseInt(h.substring(4, 6), 16),
+  };
+}
+function rgbToHex(r, g, b) {
+  const toHex = v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+function mixColors(hexA, hexB) {
+  const a = hexToRgb(hexA), b = hexToRgb(hexB);
+  return rgbToHex((a.r + b.r) / 2, (a.g + b.g) / 2, (a.b + b.b) / 2);
+}
+function colorDistance(hexA, hexB) {
+  const a = hexToRgb(hexA), b = hexToRgb(hexB);
+  return Math.sqrt((a.r - b.r) ** 2 + (a.g - b.g) ** 2 + (a.b - b.b) ** 2);
+}
+
+function startFinalCanvasPhase() {
+  phase = 'final-canvas';
+  endGardenPhase();
+  finalCanvasEl.innerHTML = '';
+  finalPieces = [];
+  finalMergesDone = 0;
+  btnWrap.classList.remove('show');
+  secondaryBtn.classList.remove('show');
+  roundBadge.classList.remove('show');
+  colorFloodEl.style.opacity = '0';
+  colorFloodEl.style.background = 'transparent';
+
+  // Variedad garantizada de colores para que la mezcla tenga sentido:
+  // tomamos los colores base de la paleta actual y los repartimos entre
+  // varias piezas, en vez de reciclar literalmente lo plantado en el jardín
+  // (que podría no tener suficiente variedad de color para jugar con esto).
+  const baseColors = Object.values(SC);
+  const count = Math.floor(rnd(FINAL_PIECE_COUNT_MIN, FINAL_PIECE_COUNT_MAX + 1));
+
+  for (let i = 0; i < count; i++) {
+    const type  = rndI(TYPES);
+    const color = baseColors[i % baseColors.length];
+    const x = rnd(W * 0.24, W * 0.76);
+    const y = rnd(H * 0.30, H * 0.68);
+    const baseSize = rnd(88, 116); // agrandadas de nuevo a pedido, antes 64-86
+    spawnFinalPiece(x, y, type, color, baseSize, i * 70);
+  }
+
+  hint.classList.remove('bottom');
+  hint.querySelector('p').textContent = 'mezcla los colores arrastrándolos juntos';
+  hint.style.opacity = '1';
+}
+
+function spawnFinalPiece(x, y, type, color, baseSize, delay) {
+  const div = document.createElement('div');
+  div.className = 'final-piece';
+  const dim = baseSize * 2.2;
+  div.style.cssText = `
+    left:${x - dim/2}px; top:${y - dim/2}px;
+    width:${dim}px; height:${dim}px;
+    opacity:0; transform:scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.34,1.56,.64,1);
+  `;
+  const cv = document.createElement('canvas');
+  cv.width = dim; cv.height = dim;
+  cv.style.cssText = 'width:100%; height:100%; display:block;';
+  drawShapeOn(cv.getContext('2d'), type, color, dim/2, dim/2, baseSize, rnd(0, Math.PI * 2));
+  div.appendChild(cv);
+  finalCanvasEl.appendChild(div);
+
+  setTimeout(() => {
+    div.style.opacity = '1';
+    div.style.transform = 'scale(1)';
+  }, delay);
+
+  const piece = { div, cv, type, baseSize, color, merged: false };
+  finalPieces.push(piece);
+  makeFinalPieceDraggable(piece);
+  return piece;
+}
+
+function redrawFinalPiece(piece) {
+  const dim = piece.baseSize * 2.2;
+  piece.cv.width = dim; piece.cv.height = dim;
+  drawShapeOn(piece.cv.getContext('2d'), piece.type, piece.color, dim / 2, dim / 2, piece.baseSize, 0);
+}
+
+function makeFinalPieceDraggable(piece) {
+  const div = piece.div;
+  let sx = 0, sy = 0, baseLeft = 0, baseTop = 0, dragging = false;
+
+  function down(ex, ey) {
+    if (phase !== 'final-canvas' || piece.merged) return;
+    dragging = true;
+    sx = ex; sy = ey;
+    baseLeft = parseFloat(div.style.left);
+    baseTop  = parseFloat(div.style.top);
+    div.classList.add('lifted');
+    div.style.transition = 'none';
+    div.style.zIndex = '300';
+    playPop(550, 0.04, 0.05);
+  }
+
+  function move(ex, ey) {
+    if (!dragging) return;
+    div.style.left = `${baseLeft + (ex - sx)}px`;
+    div.style.top  = `${baseTop  + (ey - sy)}px`;
+  }
+
+  function up() {
+    if (!dragging) return;
+    dragging = false;
+    div.classList.remove('lifted');
+    div.style.transition = 'left 0.25s ease, top 0.25s ease';
+    div.style.zIndex = '';
+
+    // busca otra pieza viva, no fusionada, lo bastante cerca como para fusionar
+    const rect = div.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    const cx = rect.left - wrapRect.left + rect.width / 2;
+    const cy = rect.top  - wrapRect.top  + rect.height / 2;
+
+    let target = null;
+    let bestDist = Infinity;
+    finalPieces.forEach(other => {
+      if (other === piece || other.merged) return;
+      const r2 = other.div.getBoundingClientRect();
+      const ox = r2.left - wrapRect.left + r2.width / 2;
+      const oy = r2.top  - wrapRect.top  + r2.height / 2;
+      const d = Math.hypot(ox - cx, oy - cy);
+      const threshold = (rect.width / 2 + r2.width / 2) * FINAL_MERGE_RADIUS_FACTOR;
+      if (d < threshold && d < bestDist) {
+        bestDist = d;
+        target = other;
+      }
+    });
+
+    if (target) {
+      mergeFinalPieces(piece, target);
+    }
+  }
+
+  div.addEventListener('mousedown', e => { e.preventDefault(); down(e.clientX, e.clientY); });
+  window.addEventListener('mousemove', e => move(e.clientX, e.clientY));
+  window.addEventListener('mouseup', up);
+  div.addEventListener('touchstart', e => { e.preventDefault(); down(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+  div.addEventListener('touchmove', e => { e.preventDefault(); move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
+  div.addEventListener('touchend', up);
+}
+
+function mergeFinalPieces(moved, target) {
+  // el color resultante se promedia; la pieza "target" (la que estaba quieta)
+  // se queda y absorbe a "moved", que desaparece.
+  const mixed = mixColors(moved.color, target.color);
+  target.color = mixed;
+  target.baseSize = Math.min(150, target.baseSize + moved.baseSize * 0.22); // crece un poco al fusionar, refuerza la idea de "absorber"
+  redrawFinalPiece(target);
+
+  moved.merged = true;
+  moved.div.style.transition = 'transform 0.3s cubic-bezier(.4,0,.6,1), opacity 0.3s ease';
+  const tr = target.div.getBoundingClientRect();
+  const mr = moved.div.getBoundingClientRect();
+  moved.div.style.transform = `translate(${tr.left - mr.left}px, ${tr.top - mr.top}px) scale(0.3)`;
+  moved.div.style.opacity = '0';
+  moved.div.style.pointerEvents = 'none';
+
+  // pequeño pulso en la pieza resultante para marcar la fusión
+  target.div.style.transition = 'transform 0.3s cubic-bezier(.34,1.56,.64,1)';
+  target.div.style.transform = 'scale(1.12)';
+  setTimeout(() => { target.div.style.transform = 'scale(1)'; }, 220);
+
+  playColorNote(mixed);
+  finalMergesDone++;
+
+  setTimeout(() => {
+    moved.div.remove();
+    finalPieces = finalPieces.filter(p => p !== moved);
+    checkFinalUnify();
+  }, 320);
+}
+
+function checkFinalUnify() {
+  if (phase !== 'final-canvas') return;
+  const alive = finalPieces.filter(p => !p.merged);
+  if (alive.length <= 1) {
+    // si por fusiones sucesivas queda una sola pieza, ya está unificado
+    finishFinalCanvasPhase(alive[0] ? alive[0].color : '#D12839');
+    return;
+  }
+  const ref = alive[0].color;
+  const allSame = alive.every(p => colorDistance(p.color, ref) <= FINAL_UNIFY_TOLERANCE);
+  if (allSame) {
+    finishFinalCanvasPhase(ref);
+  }
+}
+
+function finishFinalCanvasPhase(finalColor) {
+  if (phase !== 'final-canvas') return;
+  phase = 'final-flood';
+  hint.style.opacity = '0';
+  btnWrap.classList.remove('show');
+  secondaryBtn.classList.remove('show');
+
+  playWhoosh(0.16);
+  playSuccessChord();
+
+  // el color logrado inunda toda la pantalla — sin botón, todo automático
+  colorFloodEl.style.background = finalColor;
+  requestAnimationFrame(() => {
+    colorFloodEl.style.opacity = '1';
+  });
+
+  // pausa contemplativa con el color en pantalla completa, después
+  // transición automática a la despedida. A pedido: la despedida se queda
+  // con ESE color de fondo (no vuelve al beige) — aplicamos el mismo color
+  // directamente al fondo de #farewell antes de mostrarla, y dejamos que
+  // el overlay de flood se desvanezca por encima sin un cambio de color
+  // brusco debajo.
+  setTimeout(() => {
+    finalCanvasEl.innerHTML = '';
+    finalPieces = [];
+    wrap.classList.remove('visible');
+    if (farewell) {
+      farewell.style.background = finalColor;
+      // contraste dinámico: si el color final resulta oscuro, el texto y
+      // el botón pasan a modo claro; si es claro, se quedan como siempre
+      // (oscuro sobre claro). Luminancia relativa simple, suficiente para
+      // decidir entre dos modos, no para precisión WCAG estricta.
+      const rgb = hexToRgb(finalColor);
+      const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
+      farewell.classList.toggle('on-dark', luminance < 0.55);
+      farewell.classList.add('show');
+    }
+    setTimeout(() => {
+      colorFloodEl.style.opacity = '0';
+    }, 700);
+  }, 1500);
+}
+
+// ════════════════════════════════════════════════════════════════
+// 14. TRANSICIONES Y CIERRE DE CICLO (disperse / restart / farewell)
+// ════════════════════════════════════════════════════════════════
 let formaComplete = false;
 let resetting = false;
 
@@ -2024,7 +2053,9 @@ function burst(cx, cy, n = 18) {
   }
 }
 
-// ── EVENTS ───────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 15. EVENTOS GLOBALES
+// ════════════════════════════════════════════════════════════════
 splashBtn.addEventListener('click', () => {
   splash.classList.add('hidden');
   wrap.classList.add('visible');
@@ -2162,7 +2193,9 @@ mainBtn.addEventListener('click', e => {
   }
 });
 
-// ── INIT ─────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 16. INICIALIZACIÓN (init / resize)
+// ════════════════════════════════════════════════════════════════
 function initExperience() {
   drawBack();
   buildMosaicAnimated();
@@ -2182,7 +2215,9 @@ resize();
 window.addEventListener('resize', resize);
 startAnim();
 
-// ── AUDIO ─────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════
+// 17. AUDIO — SÍNTESIS DE SONIDOS
+// ════════════════════════════════════════════════════════════════
 let audioCtx = null;
 
 function getAudio() {
@@ -2294,8 +2329,9 @@ function playSplashEnter() {
   });
 }
 
-// ── PATCH INTERACTIONS WITH SOUND ────────────────────────
-
+// ════════════════════════════════════════════════════════════════
+// 18. AUDIO — CONEXIÓN DE SONIDOS A INTERACCIONES (patch)
+// ════════════════════════════════════════════════════════════════
 splashBtn.addEventListener('click', () => playSplashEnter(), true);
 
 const _origFling = flingTile;
