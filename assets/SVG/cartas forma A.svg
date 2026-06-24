@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 247.57 331.51">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: #d12839;
+      }
+
+      .cls-2 {
+        opacity: .25;
+        stroke: #1d1d1b;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-5 {
+        fill: #f4eee3;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-7 {
+        fill: #e9e2d6;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-3" x="59.52" y="44.15" width="151.16" height="250.5" rx="5.6" ry="5.6"/>
+    </clipPath>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <g>
+      <rect class="cls-1" x="48.16" y="33.36" width="173.08" height="274.96" rx="8.06" ry="8.06"/>
+      <rect class="cls-2" x="48.64" y="33.36" width="172.91" height="274.96" rx="5.6" ry="5.6"/>
+      <rect class="cls-5" x="59.52" y="43.81" width="151.16" height="250.64" rx="5.6" ry="5.6"/>
+      <g class="cls-6">
+        <g>
+          <g>
+            <g>
+              <polygon class="cls-7" points="70.1 39.3 79.15 50.05 83.93 36.84 70.1 39.3"/>
+              <polygon class="cls-7" points="76.19 60.38 85.94 71.96 69.51 66.01 76.19 60.38"/>
+              <rect class="cls-7" x="86.39" y="40.04" width="4.29" height="16.44" transform="translate(21.71 -27.25) rotate(19.89)"/>
+              <rect class="cls-7" x="90.99" y="55.67" width="7.21" height="13.52" transform="translate(81.41 -50.14) rotate(49.89)"/>
+              <circle class="cls-7" cx="68.43" cy="53.81" r="4.82"/>
+              <rect class="cls-7" x="53.5" y="65.62" width="10.46" height="10.46" transform="translate(106.8 -7.63) rotate(71.14)"/>
+              <path class="cls-7" d="M81.64,81.79c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69c4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M51.82,58.69l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="107.16 73.32 116.21 84.06 120.99 70.85 107.16 73.32"/>
+              <polygon class="cls-7" points="113.26 94.4 123 105.97 106.57 100.02 113.26 94.4"/>
+              <rect class="cls-7" x="123.46" y="74.06" width="4.29" height="16.44" transform="translate(35.49 -37.83) rotate(19.89)"/>
+              <rect class="cls-7" x="128.05" y="89.68" width="7.21" height="13.52" transform="translate(120.61 -66.39) rotate(49.89)"/>
+              <circle class="cls-7" cx="105.5" cy="87.83" r="4.82"/>
+              <rect class="cls-7" x="90.57" y="99.64" width="10.46" height="10.46" transform="translate(164.08 -19.68) rotate(71.14)"/>
+              <path class="cls-7" d="M118.7,115.81c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M88.89,92.7l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="122.6 20.74 131.65 31.48 136.42 18.27 122.6 20.74"/>
+              <polygon class="cls-7" points="128.69 41.82 138.44 53.39 122.01 47.44 128.69 41.82"/>
+              <rect class="cls-7" x="138.89" y="21.48" width="4.29" height="16.44" transform="translate(18.52 -46.22) rotate(19.89)"/>
+              <rect class="cls-7" x="143.49" y="37.1" width="7.21" height="13.52" transform="translate(85.89 -96.9) rotate(49.89)"/>
+              <circle class="cls-7" cx="120.93" cy="35.24" r="4.82"/>
+              <rect class="cls-7" x="106" y="47.06" width="10.46" height="10.46" transform="translate(124.76 -69.87) rotate(71.14)"/>
+              <path class="cls-7" d="M134.13,63.23c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M104.32,40.12l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="52.15 92.71 61.2 103.45 65.98 90.24 52.15 92.71"/>
+              <polygon class="cls-7" points="58.24 113.79 67.99 125.36 51.56 119.41 58.24 113.79"/>
+              <rect class="cls-7" x="68.44" y="93.45" width="4.29" height="16.44" transform="translate(38.81 -17.95) rotate(19.89)"/>
+              <rect class="cls-7" x="73.04" y="109.07" width="7.21" height="13.52" transform="translate(115.87 -17.41) rotate(49.89)"/>
+              <circle class="cls-7" cx="50.48" cy="107.22" r="4.82"/>
+              <rect class="cls-7" x="35.55" y="119.03" width="10.46" height="10.46" transform="translate(145.19 45.5) rotate(71.14)"/>
+              <path class="cls-7" d="M63.69,135.2c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69c4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M33.87,112.09l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="159.86 56.17 168.91 66.91 173.69 53.7 159.86 56.17"/>
+              <polygon class="cls-7" points="165.95 77.25 175.7 88.82 159.27 82.87 165.95 77.25"/>
+              <rect class="cls-7" x="176.15" y="56.91" width="4.29" height="16.44" transform="translate(32.8 -56.79) rotate(19.89)"/>
+              <rect class="cls-7" x="180.75" y="72.53" width="7.21" height="13.52" transform="translate(126.24 -112.79) rotate(49.89)"/>
+              <circle class="cls-7" cx="158.19" cy="70.67" r="4.82"/>
+              <rect class="cls-7" x="143.26" y="82.49" width="10.46" height="10.46" transform="translate(183.51 -81.16) rotate(71.14)"/>
+              <path class="cls-7" d="M171.4,98.66c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M141.58,75.55l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="176.53 2.46 185.58 13.21 190.36 0 176.53 2.46"/>
+              <polygon class="cls-7" points="182.62 23.54 192.37 35.12 175.94 29.17 182.62 23.54"/>
+              <rect class="cls-7" x="192.82" y="3.21" width="4.29" height="16.44" transform="translate(15.52 -65.66) rotate(19.89)"/>
+              <rect class="cls-7" x="197.42" y="18.83" width="7.21" height="13.52" transform="translate(91.1 -144.65) rotate(49.89)"/>
+              <circle class="cls-7" cx="174.87" cy="16.97" r="4.82"/>
+              <rect class="cls-7" x="159.94" y="28.78" width="10.46" height="10.46" transform="translate(143.98 -133.28) rotate(71.14)"/>
+              <path class="cls-7" d="M188.07,44.95c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M158.25,21.85l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="212.33 37.89 221.38 48.64 226.16 35.43 212.33 37.89"/>
+              <polygon class="cls-7" points="218.42 58.97 228.17 70.55 211.74 64.6 218.42 58.97"/>
+              <rect class="cls-7" x="228.62" y="38.63" width="4.29" height="16.44" transform="translate(29.71 -75.73) rotate(19.89)"/>
+              <rect class="cls-7" x="233.22" y="54.26" width="7.21" height="13.52" transform="translate(130.93 -159.42) rotate(49.89)"/>
+              <circle class="cls-7" cx="210.66" cy="52.4" r="4.82"/>
+              <rect class="cls-7" x="195.73" y="64.21" width="10.46" height="10.46" transform="translate(201.73 -143.18) rotate(71.14)"/>
+              <path class="cls-7" d="M223.86,80.38c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69l14.75-2.63Z"/>
+              <path class="cls-7" d="M194.05,57.28l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+          </g>
+          <g>
+            <g>
+              <polygon class="cls-7" points="36.77 145.27 45.82 156.02 50.6 142.81 36.77 145.27"/>
+              <polygon class="cls-7" points="42.87 166.35 52.61 177.92 36.18 171.98 42.87 166.35"/>
+              <rect class="cls-7" x="53.07" y="146.01" width="4.29" height="16.44" transform="translate(55.78 -9.58) rotate(19.89)"/>
+              <rect class="cls-7" x="57.66" y="161.64" width="7.21" height="13.52" transform="translate(150.6 13.05) rotate(49.89)"/>
+              <circle class="cls-7" cx="35.11" cy="159.78" r="4.82"/>
+              <rect class="cls-7" x="20.18" y="171.59" width="10.46" height="10.46" transform="translate(184.53 95.63) rotate(71.14)"/>
+              <path class="cls-7" d="M48.31,187.76c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69c4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M18.5,164.66l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="73.84 179.29 82.88 190.03 87.66 176.82 73.84 179.29"/>
+              <polygon class="cls-7" points="79.93 200.37 89.68 211.94 73.25 205.99 79.93 200.37"/>
+              <rect class="cls-7" x="90.13" y="180.03" width="4.29" height="16.44" transform="translate(69.56 -20.17) rotate(19.89)"/>
+              <rect class="cls-7" x="94.73" y="195.65" width="7.21" height="13.52" transform="translate(189.8 -3.19) rotate(49.89)"/>
+              <circle class="cls-7" cx="72.17" cy="193.8" r="4.82"/>
+              <rect class="cls-7" x="57.24" y="205.61" width="10.46" height="10.46" transform="translate(241.8 83.58) rotate(71.14)"/>
+              <path class="cls-7" d="M85.37,221.78c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M55.56,198.67l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="89.27 126.71 98.32 137.45 103.1 124.24 89.27 126.71"/>
+              <polygon class="cls-7" points="95.36 147.79 105.11 159.36 88.68 153.41 95.36 147.79"/>
+              <rect class="cls-7" x="105.56" y="127.45" width="4.29" height="16.44" transform="translate(52.59 -28.56) rotate(19.89)"/>
+              <rect class="cls-7" x="110.16" y="143.07" width="7.21" height="13.52" transform="translate(155.08 -33.71) rotate(49.89)"/>
+              <circle class="cls-7" cx="87.6" cy="141.21" r="4.82"/>
+              <rect class="cls-7" x="72.67" y="153.03" width="10.46" height="10.46" transform="translate(202.49 33.39) rotate(71.14)"/>
+              <path class="cls-7" d="M100.81,169.2c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69c4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M70.99,146.09l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="18.82 198.68 27.87 209.42 32.65 196.21 18.82 198.68"/>
+              <polygon class="cls-7" points="24.92 219.76 34.66 231.33 18.23 225.38 24.92 219.76"/>
+              <rect class="cls-7" x="35.12" y="199.42" width="4.29" height="16.44" transform="translate(72.88 -.29) rotate(19.89)"/>
+              <rect class="cls-7" x="39.71" y="215.04" width="7.21" height="13.52" transform="translate(185.06 45.78) rotate(49.89)"/>
+              <circle class="cls-7" cx="17.16" cy="213.18" r="4.82"/>
+              <rect class="cls-7" x="2.23" y="225" width="10.46" height="10.46" transform="translate(222.92 148.76) rotate(71.14)"/>
+              <path class="cls-7" d="M30.36,241.17c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M.55,218.06l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="126.53 162.14 135.58 172.88 140.36 159.67 126.53 162.14"/>
+              <polygon class="cls-7" points="132.63 183.22 142.37 194.79 125.95 188.84 132.63 183.22"/>
+              <rect class="cls-7" x="142.83" y="162.88" width="4.29" height="16.44" transform="translate(66.87 -39.12) rotate(19.89)"/>
+              <rect class="cls-7" x="147.42" y="178.5" width="7.21" height="13.52" transform="translate(195.44 -49.6) rotate(49.89)"/>
+              <circle class="cls-7" cx="124.87" cy="176.64" r="4.82"/>
+              <rect class="cls-7" x="109.94" y="188.46" width="10.46" height="10.46" transform="translate(261.24 22.1) rotate(71.14)"/>
+              <path class="cls-7" d="M138.07,204.63c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69c4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M108.26,181.52l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="143.2 108.43 152.25 119.18 157.03 105.97 143.2 108.43"/>
+              <polygon class="cls-7" points="149.3 129.51 159.04 141.09 142.62 135.14 149.3 129.51"/>
+              <rect class="cls-7" x="159.5" y="109.17" width="4.29" height="16.44" transform="translate(49.59 -48) rotate(19.89)"/>
+              <rect class="cls-7" x="164.1" y="124.8" width="7.21" height="13.52" transform="translate(160.29 -81.46) rotate(49.89)"/>
+              <circle class="cls-7" cx="141.54" cy="122.94" r="4.82"/>
+              <rect class="cls-7" x="126.61" y="134.75" width="10.46" height="10.46" transform="translate(221.7 -30.02) rotate(71.14)"/>
+              <path class="cls-7" d="M154.74,150.92c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M124.93,127.82l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="179 143.86 188.05 154.61 192.83 141.4 179 143.86"/>
+              <polygon class="cls-7" points="185.09 164.94 194.84 176.52 178.41 170.57 185.09 164.94"/>
+              <rect class="cls-7" x="195.29" y="144.6" width="4.29" height="16.44" transform="translate(63.78 -58.07) rotate(19.89)"/>
+              <rect class="cls-7" x="199.89" y="160.23" width="7.21" height="13.52" transform="translate(200.13 -96.23) rotate(49.89)"/>
+              <circle class="cls-7" cx="177.33" cy="158.37" r="4.82"/>
+              <rect class="cls-7" x="162.41" y="170.18" width="10.46" height="10.46" transform="translate(279.46 -39.92) rotate(71.14)"/>
+              <path class="cls-7" d="M190.54,186.35c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M160.72,163.25l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+          </g>
+          <g>
+            <g>
+              <polygon class="cls-7" points="56.88 232.99 65.93 243.73 70.71 230.52 56.88 232.99"/>
+              <polygon class="cls-7" points="62.97 254.07 72.72 265.64 56.29 259.7 62.97 254.07"/>
+              <rect class="cls-7" x="73.17" y="233.73" width="4.29" height="16.44" transform="translate(86.82 -11.19) rotate(19.89)"/>
+              <rect class="cls-7" x="77.77" y="249.36" width="7.21" height="13.52" transform="translate(224.85 28.88) rotate(49.89)"/>
+              <circle class="cls-7" cx="55.21" cy="247.5" r="4.82"/>
+              <rect class="cls-7" x="40.28" y="259.31" width="10.46" height="10.46" transform="translate(281.15 135.97) rotate(71.14)"/>
+              <path class="cls-7" d="M68.42,275.48c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M38.6,252.38l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="93.94 267 102.99 277.75 107.77 264.54 93.94 267"/>
+              <polygon class="cls-7" points="100.04 288.08 109.78 299.65 93.35 293.71 100.04 288.08"/>
+              <rect class="cls-7" x="110.24" y="267.74" width="4.29" height="16.44" transform="translate(100.61 -21.77) rotate(19.89)"/>
+              <rect class="cls-7" x="114.83" y="283.37" width="7.21" height="13.52" transform="translate(264.05 12.64) rotate(49.89)"/>
+              <circle class="cls-7" cx="92.28" cy="281.51" r="4.82"/>
+              <rect class="cls-7" x="77.35" y="293.32" width="10.46" height="10.46" transform="translate(338.42 123.92) rotate(71.14)"/>
+              <path class="cls-7" d="M105.48,309.49c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M75.67,286.39l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="109.38 214.42 118.43 225.17 123.21 211.96 109.38 214.42"/>
+              <polygon class="cls-7" points="115.47 235.5 125.22 247.07 108.79 241.13 115.47 235.5"/>
+              <rect class="cls-7" x="125.67" y="215.16" width="4.29" height="16.44" transform="translate(83.64 -30.16) rotate(19.89)"/>
+              <rect class="cls-7" x="130.27" y="230.79" width="7.21" height="13.52" transform="translate(229.32 -17.88) rotate(49.89)"/>
+              <circle class="cls-7" cx="107.71" cy="228.93" r="4.82"/>
+              <rect class="cls-7" x="92.78" y="240.74" width="10.46" height="10.46" transform="translate(299.11 73.72) rotate(71.14)"/>
+              <path class="cls-7" d="M120.91,256.91c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M91.1,233.81l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="38.93 286.39 47.98 297.14 52.76 283.93 38.93 286.39"/>
+              <polygon class="cls-7" points="45.02 307.47 54.77 319.04 38.34 313.1 45.02 307.47"/>
+              <rect class="cls-7" x="55.22" y="287.13" width="4.29" height="16.44" transform="translate(103.93 -1.9) rotate(19.89)"/>
+              <rect class="cls-7" x="59.82" y="302.76" width="7.21" height="13.52" transform="translate(259.3 61.61) rotate(49.89)"/>
+              <circle class="cls-7" cx="37.26" cy="300.9" r="4.82"/>
+              <rect class="cls-7" x="22.33" y="312.71" width="10.46" height="10.46" transform="translate(319.54 189.1) rotate(71.14)"/>
+              <path class="cls-7" d="M50.47,328.88c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M20.65,305.78l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="146.64 249.85 155.69 260.6 160.47 247.39 146.64 249.85"/>
+              <polygon class="cls-7" points="152.73 270.93 162.48 282.5 146.05 276.56 152.73 270.93"/>
+              <rect class="cls-7" x="162.93" y="250.59" width="4.29" height="16.44" transform="translate(97.92 -40.73) rotate(19.89)"/>
+              <rect class="cls-7" x="167.53" y="266.22" width="7.21" height="13.52" transform="translate(269.68 -33.77) rotate(49.89)"/>
+              <circle class="cls-7" cx="144.97" cy="264.36" r="4.82"/>
+              <rect class="cls-7" x="130.04" y="276.17" width="10.46" height="10.46" transform="translate(357.86 62.44) rotate(71.14)"/>
+              <path class="cls-7" d="M158.18,292.34c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69c4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M128.36,269.24l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="163.31 196.15 172.36 206.89 177.14 193.69 163.31 196.15"/>
+              <polygon class="cls-7" points="169.4 217.23 179.15 228.8 162.72 222.86 169.4 217.23"/>
+              <rect class="cls-7" x="179.61" y="196.89" width="4.29" height="16.44" transform="translate(80.64 -49.61) rotate(19.89)"/>
+              <rect class="cls-7" x="184.2" y="212.52" width="7.21" height="13.52" transform="translate(234.54 -65.63) rotate(49.89)"/>
+              <circle class="cls-7" cx="161.65" cy="210.66" r="4.82"/>
+              <rect class="cls-7" x="146.72" y="222.47" width="10.46" height="10.46" transform="translate(318.32 10.32) rotate(71.14)"/>
+              <path class="cls-7" d="M174.85,238.64c-.72-4.05-4.64-6.78-8.69-6.06s-6.78,4.64-6.06,8.69c4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M145.03,215.54l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+            <g>
+              <polygon class="cls-7" points="199.11 231.58 208.16 242.32 212.94 229.12 199.11 231.58"/>
+              <polygon class="cls-7" points="205.2 252.66 214.95 264.23 198.52 258.29 205.2 252.66"/>
+              <rect class="cls-7" x="215.4" y="232.32" width="4.29" height="16.44" transform="translate(94.83 -59.67) rotate(19.89)"/>
+              <rect class="cls-7" x="220" y="247.95" width="7.21" height="13.52" transform="translate(274.37 -80.4) rotate(49.89)"/>
+              <circle class="cls-7" cx="197.44" cy="246.09" r="4.82"/>
+              <rect class="cls-7" x="182.51" y="257.9" width="10.46" height="10.46" transform="translate(376.08 .42) rotate(71.14)"/>
+              <path class="cls-7" d="M210.65,274.07c-.72-4.05-4.64-6.78-8.69-6.06-4.05.72-6.78,4.64-6.06,8.69,4.92-.88,9.83-1.75,14.75-2.63Z"/>
+              <path class="cls-7" d="M180.83,250.97l3.73-1.24c-1.56-4.71.99-9.79,5.69-11.36l-1.24-3.73h0c-6.61,2.19-10.17,9.67-8.19,16.34h0Z"/>
+            </g>
+          </g>
+          <polygon class="cls-7" points="194.36 89.91 203.52 100.79 208.37 87.41 194.36 89.91"/>
+          <polygon class="cls-7" points="200.53 111.26 210.4 122.98 193.76 116.96 200.53 111.26"/>
+          <rect class="cls-7" x="210.86" y="90.66" width="4.35" height="16.65" transform="translate(46.39 -66.59) rotate(19.89)"/>
+          <rect class="cls-7" x="215.52" y="106.48" width="7.31" height="13.7" transform="translate(164.66 -127.31) rotate(49.89)"/>
+          <circle class="cls-7" cx="192.67" cy="104.6" r="4.88"/>
+          <rect class="cls-7" x="177.55" y="116.56" width="10.6" height="10.6" transform="translate(239.08 -90.56) rotate(71.14)"/>
+          <path class="cls-7" d="M206.05,132.94c-.73-4.1-4.7-6.87-8.8-6.14-4.1.73-6.87,4.7-6.14,8.8,4.98-.89,9.96-1.78,14.94-2.66Z"/>
+          <path class="cls-7" d="M175.85,109.54l3.78-1.26c-1.58-4.77,1-9.92,5.77-11.5l-1.26-3.78h0c-6.69,2.22-10.3,9.79-8.29,16.55h0Z"/>
+          <polygon class="cls-7" points="215.17 177.31 224.33 188.19 229.17 174.81 215.17 177.31"/>
+          <polygon class="cls-7" points="221.34 198.66 231.21 210.38 214.57 204.36 221.34 198.66"/>
+          <rect class="cls-7" x="231.67" y="178.06" width="4.35" height="16.65" transform="translate(77.38 -68.45) rotate(19.89)"/>
+          <rect class="cls-7" x="236.33" y="193.89" width="7.31" height="13.7" transform="translate(238.92 -112.13) rotate(49.89)"/>
+          <circle class="cls-7" cx="213.48" cy="192" r="4.88"/>
+          <rect class="cls-7" x="198.36" y="203.97" width="10.6" height="10.6" transform="translate(335.87 -51.09) rotate(71.14)"/>
+          <path class="cls-7" d="M226.85,220.35c-.73-4.1-4.7-6.87-8.8-6.14-4.1.73-6.87,4.7-6.14,8.8,4.98-.89,9.96-1.78,14.94-2.66Z"/>
+          <path class="cls-7" d="M196.66,196.94l3.78-1.26c-1.58-4.77,1-9.92,5.77-11.5l-1.26-3.78h0c-6.69,2.22-10.3,9.79-8.29,16.55h0Z"/>
+          <polygon class="cls-7" points="182.9 283.84 192.07 294.72 196.91 281.34 182.9 283.84"/>
+          <polygon class="cls-7" points="189.08 305.19 198.95 316.91 182.31 310.89 189.08 305.19"/>
+          <rect class="cls-7" x="199.41" y="284.59" width="4.35" height="16.65" transform="translate(111.7 -51.11) rotate(19.89)"/>
+          <rect class="cls-7" x="204.06" y="300.42" width="7.31" height="13.7" transform="translate(308.92 -49.55) rotate(49.89)"/>
+          <circle class="cls-7" cx="181.22" cy="298.53" r="4.88"/>
+          <rect class="cls-7" x="166.09" y="310.5" width="10.6" height="10.6" transform="translate(414.85 51.54) rotate(71.14)"/>
+          <path class="cls-7" d="M194.59,326.88c-.73-4.1-4.7-6.87-8.8-6.14s-6.87,4.7-6.14,8.8c4.98-.89,9.96-1.78,14.94-2.66Z"/>
+          <path class="cls-7" d="M164.39,303.47l3.78-1.26c-1.58-4.77,1-9.92,5.77-11.5l-1.26-3.78h0c-6.69,2.22-10.3,9.79-8.29,16.55h0Z"/>
+        </g>
+      </g>
+      <path class="cls-4" d="M181.96,211.34l-40.53-70.19c-2.51-4.35-8.78-4.35-11.29,0l-40.53,70.19c-2.51,4.35.63,9.78,5.65,9.78h81.05c5.02,0,8.16-5.43,5.65-9.78ZM138.23,220.92h-4.08v-15.5c0-.66.91-1.2,2.04-1.2s2.04.54,2.04,1.2v15.5Z"/>
+    </g>
+  </g>
+</svg>

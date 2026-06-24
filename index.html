@@ -61,8 +61,8 @@
                     <span>Juego</span>
                 </a>
 
-                <a href="#piezas" class="shape-btn rectangle-btn" aria-label="Las piezas">
-                    <span>Las<br>Piezas</span>
+                <a href="#experimentacion" class="shape-btn rectangle-btn" aria-label="Probar experiencia">
+                    <span>Probar<br>experiencia</span>
                 </a>
 
             </nav>
@@ -214,35 +214,73 @@
         </div>
     </div>
 
-    <!-- CARTAS FORMA -->
-    <div class="mec-bloque mec-cartas" data-reveal>
-        <div class="mec-visual mv-cartas" aria-hidden="true">
-            <div class="fcard fc-f"><span>F</span><div class="fcard-shape fcs-tri"></div></div>
-            <div class="fcard fc-o"><span>O</span><div class="fcard-shape fcs-circle"></div></div>
-            <div class="fcard fc-r active"><span>R</span><div class="fcard-shape fcs-rect"></div></div>
-            <div class="fcard fc-m"><span>M</span><div class="fcard-shape fcs-cuad"></div></div>
-            <div class="fcard fc-a"><span>A</span><div class="fcard-shape fcs-semi"></div></div>
-            <div class="fcard-glow"></div>
+   <!-- CARTAS FORMA -->
+<div class="mec-bloque mec-cartas" data-reveal>
+    <div class="mec-visual mv-cartas" aria-hidden="true">
+        <div class="fcard fc-f"><img src="assets/cartas forma F.svg" alt=""></div>
+        <div class="fcard fc-o"><img src="assets/cartas_forma_O.svg" alt=""></div>
+        <div class="fcard fc-r active"><img src="assets/cartas forma R.svg" alt=""></div>
+        <div class="fcard fc-m"><img src="assets/cartas forma M.svg" alt=""></div>
+        <div class="fcard fc-a"><img src="assets/cartas forma A.svg" alt=""></div>
+    </div>
+    <div class="mec-texto">
+        <div class="mec-tag tag-rojo">&#11088; Objetivo principal</div>
+        <h3>Cartas <em>FORMA</em></h3>
+        <p>Las Cartas de Letra son las más importantes del juego y solo pueden obtenerse a través del Mazo Especial. Cada una contiene una letra diferente y, para ganar la partida, deberás reunir las cinco cartas necesarias hasta completar la palabra.</p>
+        <div class="mec-letras-prog">
+            <div class="mlp-letra mlp-f">F</div>
+            <div class="mlp-letra mlp-o">O</div>
+            <div class="mlp-letra mlp-r">R</div>
+            <div class="mlp-letra mlp-m">M</div>
+            <div class="mlp-letra mlp-a">A</div>
+            <div class="mlp-win">= &#127881; Victoria!</div>
         </div>
-        <div class="mec-texto">
-            <div class="mec-tag tag-rojo">&#11088; Objetivo principal</div>
-            <h3>Cartas <em>FORMA</em></h3>
-            <p>Las Cartas de Letra son las más importantes del juego y solo pueden obtenerse a través del Mazo Especial. Cada una contiene una letra diferente y, para ganar la partida, deberás reunir las cinco cartas necesarias hasta completar la palabra.</p>
-            <div class="mec-letras-prog">
-                <div class="mlp-letra mlp-f">F</div>
-                <div class="mlp-letra mlp-o">O</div>
-                <div class="mlp-letra mlp-r">R</div>
-                <div class="mlp-letra mlp-m">M</div>
-                <div class="mlp-letra mlp-a">A</div>
-                <div class="mlp-win">= &#127881; Victoria!</div>
+    </div>
+</div>
+
+</section>
+<!-- ==================== GALERÍA ==================== -->
+<section class="galeria-section" id="galeria">
+
+    <div class="galeria-header" data-reveal>
+        <span class="eyebrow">Galería</span>
+        <h2>Así es <span class="mec-accent">Dale Forma</span></h2>
+    </div>
+
+    <div class="galeria-grid">
+
+        <figure class="galeria-card gc-rojo" data-reveal>
+            <div class="galeria-photo">
+                <img src="assets/caja completa dale forma.png" alt="Piezas de Dale Forma sobre la mesa" loading="lazy">
             </div>
-        </div>
+            <figcaption>Packaging</figcaption>
+        </figure>
+
+        <figure class="galeria-card gc-amarillo" data-reveal>
+            <div class="galeria-photo">
+                <img src="assets/piezas dale forma png.png" alt="Jugadores construyendo una figura" loading="lazy">
+            </div>
+            <figcaption>Las piezas</figcaption>
+        </figure>
+
+        <figure class="galeria-card gc-verde" data-reveal>
+            <div class="galeria-photo">
+                <img src="assets/ejemplo figura armada.png" alt="Cartas FORMA repartidas" loading="lazy">
+            </div>
+            <figcaption>Piezas y conectores en acción</figcaption>
+        </figure>
+
     </div>
 
 </section>
 
+<!-- Lightbox de la galería -->
+<div class="galeria-lightbox" id="galeriaLightbox" aria-hidden="true">
+    <button class="gl-close" id="galeriaClose" aria-label="Cerrar imagen">&times;</button>
+    <img src="" alt="" id="galeriaLightboxImg">
+</div>
 <!-- ==================== CTA FINAL ==================== -->
-    <section class="seccion cta-seccion">
+    <section class="seccion cta-seccion" id="experimentacion">
 
         <div class="cta-formas" aria-hidden="true">
             <div class="cta-f tri"></div>
@@ -289,22 +327,68 @@
             composiciones visuales.
         </p>
     </div>
+    <div style="font-family: sans-serif; text-align: center; margin: 100px auto 60px; max-width: 1200px;">
+
+        
+  
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 36px;">
+  <span style="font-size: 28px;"></span>
+  <h2 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: 0.5px; color: #ffffff; font-family: 'Poppins', sans-serif;">
+    Partitura de interacción <span style="color: #98daf4; text-decoration: underline; text-decoration-color: #98daf4; text-underline-offset: 4px;">PIX</span>
+  </h2>
+</div>
+
+  <div style="width: 1200px; height: 557px; margin: 0 auto; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.12); border-radius: 12px;">
+    <iframe 
+      src="https://eadpucv.github.io/pix/#!/import/eyJ0aXRsZSI6IkRhbGUgRm9ybWE6IFByaW1lciBhY2VyY2FtaWVudG8gYWwganVlZ28iLCJsYXlvdXQiOiJwaXgiLCJkZXNjcmlwdGlvbiI6IkVsIG1vbWVudG8gZW4gZWwgcXVlIGVsIHVzdWFyaW8gdGllbmUgc3UgcHJpbWVyIHZpc3Rhem8gYWwganVlZ28gXCJEYWxlIGZvcm1hXCIsIGluc3BlY2Npb25hbmRvIGxhIGNhamEgeSBzdXMgZWxlbWVudG9zLiIsInNjb3JlcyI6W1t7InN0ZXBfdGl0bGUiOiJWaXN0YXpvIGEgbGEgY2FqYSIsInVzZXIiOiJwaXgtc3VycHJpc2VkIEFzw60gcXVlIGVzdGUgZXMgZWwgXCJEYWxlIGZvcm1hXCIiLCJkaWFsb2d1ZSI6IiIsInN5c3RlbSI6IiIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoiIiwiZGlhbG9ndWUiOiJwaXgtc2VhcmNoIFNlIHNpZW50YSBhIGluc3BlY2Npb25hciBsYSBjYWphIHkgc3VzIGVsZW1lbnRvcyB2aXN1YWxlcyIsInN5c3RlbSI6IiIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoicGl4LWludHJpZ3VlZCBWYW1vcyBhIHZlciBxdcOpIGRpY2UgZWwgcmV2ZXJzbyIsImRpYWxvZ3VlIjoicGl4LXJvdGF0ZSBEYSB2dWVsdGEgbGEgY2FqYSBwYXJhIGxlZXIgbG8gcXVlIGRpY2UgZGVsIG90cm8gbGFkbyIsInN5c3RlbSI6IiIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoicGl4LXN1cnByaXNlZCBWYXlhLCDCoXF1ZSBpbnRlcmVzYW50ZXMgc29uIGxvcyBvYmpldG9zIGRlbCBqdWVnbyEiLCJkaWFsb2d1ZSI6InBpeC12aWV3IExlZSBsYXMgZGVzY3JpcGNpb25lcyB5IHJldmlzYSBjYWRhIHBpZXphIGlsdXN0cmFkYSIsInN5c3RlbSI6IiIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoicGl4LXNtaWxpbmcgWWEgbWUgZXN0w6FuIGRhbmRvIGdhbmFzIGRlIGp1Z2FyIiwiZGlhbG9ndWUiOiIiLCJzeXN0ZW0iOiIiLCJub3RlIjoiIn0seyJzdGVwX3RpdGxlIjoiSW5zcGVjY2nDs24gZGVsIGludGVyaW9yIiwidXNlciI6IiIsImRpYWxvZ3VlIjoicGl4LXNlYXJjaCBBYnJlIGxhIGNhamEgeSByZXZpc2EgYSBkZXRhbGxlIGNhZGEgcGllemEiLCJzeXN0ZW0iOiJwaXgtc2VuZCBMYSBwYXJ0ZSBzdXBlcmlvciBkZSBsYSBjYWphIHNlIGRlc2xpemEgeSBzZXBhcmEgcG9yIGNvbXBsZXRvIGRlIGxhIGluZmVyaW9yIiwibm90ZSI6IiJ9LHsic3RlcF90aXRsZSI6IiIsInVzZXIiOiJwaXgtc3VycHJpc2VkIMKhU29uIG11Y2hhcyBwaWV6YXMgcGFyYSBjb25zdHJ1aXIhIiwiZGlhbG9ndWUiOiIiLCJzeXN0ZW0iOiIiLCJub3RlIjoiIn0seyJzdGVwX3RpdGxlIjoiIiwidXNlciI6IiIsImRpYWxvZ3VlIjoicGl4LWhhbmQgTGV2YW50YSBkZSBhIHBvY28gbGFzIHBpZXphcyBkZSBjb25zdHJ1Y2Npw7NuIiwic3lzdGVtIjoicGl4LXRhcDF1cCBFbCBkaXNlw7FvIGVyZ29uw7NtaWNvIGRlIGxhIGNhamEgcGVybWl0ZSBzYWNhciBsYXMgcGllemFzIGRlIG1hbmVyYSBzZW5jaWxsYSIsIm5vdGUiOiIifSx7InN0ZXBfdGl0bGUiOiIiLCJ1c2VyIjoicGl4LWhhcHB5IMKhU29uIGRvcyBtYXpvcyEgwqFZIHNvbiB0YW50b3MgY29uY2VwdG9zISIsImRpYWxvZ3VlIjoicGl4LXNlYXJjaCBDb21pZW56YSBhIHJldmlzYXIgbGFzIGNhcnRhcyBkZSBtYW5lcmEgcsOhcGlkYSIsInN5c3RlbSI6InBpeC1raW9zayBMYSB0ZXh0dXJhIHN1YXZlIGRlIGxhcyBjYXJ0YXMgaGFjZSBxdWUgc2UgYWRoaWVyYW4gYmllbiBhIGxhcyB5ZW1hcyBkZSBzdXMgZGVkb3MiLCJub3RlIjoiIn0seyJzdGVwX3RpdGxlIjoiIiwidXNlciI6InBpeC1zbWlsaW5nIMKhUXXDqSDDunRpbGVzIHNvbiBlc3RhcyBvdHJhcyBwaWV6YXMhIiwiZGlhbG9ndWUiOiJwaXgtc2VhcmNoIE9ic2VydmEgY29uIGRldGVuaW1pZW50byBsYXMgcGllemFzIHBlcXVlw7FhcyBkZSB1bmnDsm4iLCJzeXN0ZW0iOiIiLCJub3RlIjoiIn0seyJzdGVwX3RpdGxlIjoiIiwidXNlciI6InBpeC1zdXJwcmlzZWQgwqFDdWFudGFzIGZpY2hhcyEiLCJkaWFsb2d1ZSI6InBpeC1oYW5kMSBTYWNhIGxhIGJvbHNhIGRlIGZpY2hhcyB5IGxhcyBvYnNlcnZhIHNpbiBzYWNhcmxhcyBkZSBzdSBib2xzYSIsInN5c3RlbSI6InBpeC1jbG91ZCBMYSBib2xzYSBzaW4gYWJyaXJzZSBjb250aWVuZSBzdSB2b2x1bWVuIHkgcGVybWl0ZSB1biBidWVuYSBhZ2FycmUiLCJub3RlIjoiIn0seyJzdGVwX3RpdGxlIjoiIiwidXNlciI6InBpeC10aGluayDCoUJhc3RhIGRlIGluc3BlY2Npw7NuIcKhRXMgaG9yYSBkZSBqdWdhciEiLCJkaWFsb2d1ZSI6IiIsInN5c3RlbSI6IiIsIm5vdGUiOiIifV1dfQ==" 
+      width="1400" 
+      height="650" 
+      frameborder="0" 
+      style="border: none; transform: scale(0.857); transform-origin: top left;">
+    </iframe>
+  </div>
+
+</div>
+
+<a href="https://wiki.ead.pucv.cl/Dale_Forma" target="_blank" rel="noopener" style="display: inline-block; margin-top: 28px; padding: 14px 34px; background: #98daf4; color: #0b1a22; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px; text-decoration: none; border-radius: 8px; transition: background 0.2s ease;" onmouseover="this.style.background='#6cc6ec';" onmouseout="this.style.background='#98daf4';">
+  Más información en Wiki Casiopea
+</a>
+</div>
 
     </section>
-
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="footer">
-        <div class="footer-formas" aria-hidden="true">
-            <div class="ff tri"></div>
-            <div class="ff circle"></div>
-            <div class="ff rect"></div>
-            <div class="ff semi"></div>
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <span class="ff tri" aria-hidden="true"></span>
+            <h4>Información del proyecto</h4>
+            <p>Landing y experimentación digital de Dale Forma, diseñado en Visual Studio Code y GitHub.</p>
         </div>
-        <p>© 2025 Dale Forma. Todos los derechos reservados. 
-            Renata Bocca
- </p>
-    </footer>
 
-    <script src="script.js"></script>
+        <div class="footer-col">
+            <span class="ff circle" aria-hidden="true"></span>
+            <h4>Estudiante</h4>
+            <p>Renata Bocca Ulloa</p>
+        </div>
+
+        <div class="footer-col footer-col--academic">
+            <span class="ff rect" aria-hidden="true"></span>
+            <p class="footer-academic-line">Taller de Diseño de Interacción 2026 · e[ad] PUCV</p>
+            <div class="footer-logos">
+                <img src="assets/Ead_logo_fondo_2019_color.png" alt="e[ad] Escuela de Arquitectura y Diseño">
+                <img src="assets/Escudo_PUCV-2016_monocromo h blanco.png" alt="Pontificia Universidad Católica de Valparaíso">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span class="ff semi" aria-hidden="true"></span>
+        <p class="footer-copy">© 2026 Dale Forma. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
+</html>
