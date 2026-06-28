@@ -462,7 +462,9 @@ body {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  z-index: 5;
+  /* Por encima de #mosaic (z-index:10) y de #tangram (z-index:11, creado
+     en JS), para que el texto nunca quede tapado por las piezas. */
+  z-index: 30;
   transition: opacity 0.8s;
   width: 100%;
   text-align: center;
@@ -470,7 +472,10 @@ body {
 
 #hint.bottom {
   top: auto;
-  bottom: 165px;
+  /* Antes 165px: a esa altura el texto caía a la misma altura que la fila
+     de piezas sueltas del tangram (rowY ≈ 0.78*H), quedando metido entre
+     ellas. Se baja más, para que quede claramente por debajo de la fila. */
+  bottom: 48px;
 }
 
 #hint p {

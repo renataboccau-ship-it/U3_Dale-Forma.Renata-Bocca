@@ -488,6 +488,19 @@ function buildMosaicAnimated() {
 
   buildProgressDots(total);
 
+  // CAMBIO: el hint ("arrastra y quita las piezas para revelar") ahora se
+  // muestra ANTES de que el mosaico termine de armarse, no después. Antes
+  // este texto recién aparecía en un setTimeout posterior a la creación de
+  // todos los tiles (total * 40 + 120ms), por lo que el usuario veía el
+  // mosaico completo armado y recién ahí el mensaje — pareciendo "detrás"
+  // del proceso. Ahora se muestra de inmediato, mientras los tiles todavía
+  // están apareciendo con su propio stagger, así la instrucción llega antes
+  // de que el usuario tenga que adivinar qué hacer.
+  progressDots.classList.add('show');
+  hint.querySelector('p').textContent = 'arrastra y quita las piezas para revelar';
+  hint.style.transition = 'opacity 0.6s';
+  hint.style.opacity    = '1';
+
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const idx = r * COLS + c;
@@ -522,14 +535,6 @@ function buildMosaicAnimated() {
       }, idx * 40);
     }
   }
-
-  setTimeout(() => {
-    if (phase !== 'mosaic') return;
-    progressDots.classList.add('show');
-    hint.querySelector('p').textContent = 'arrastra y quita las piezas para revelar';
-    hint.style.transition = 'opacity 0.6s';
-    hint.style.opacity    = '1';
-  }, total * 40 + 120);
 }
 
 function makeDraggable(div, idx) {
@@ -883,6 +888,16 @@ function buildTangramRound() {
   outlines = [];
   dragPieces = [];
 
+  // CAMBIO: el hint ("arrastra el color a una figura") ahora se muestra
+  // ANTES de que terminen de aparecer los outlines y las piezas sueltas,
+  // no después. Antes había un setTimeout final que esperaba a que TODO
+  // (outlines + drag-pieces, con su stagger) estuviera en pantalla para
+  // recién entonces mostrar el texto — el usuario veía toda la ronda ya
+  // armada y el mensaje llegaba "atrás" de las piezas, tarde. Ahora se
+  // muestra de inmediato, igual que en el mosaico.
+  hint.querySelector('p').textContent = 'arrastra el color a una figura';
+  hint.style.opacity = '1';
+
   // ── ZONA SUPERIOR: outlines en GRILLA REGULAR (filas y columnas alineadas) ──
   const cols = tangramRound === 1 ? 4 : 5;
   const rows = tangramRound === 1 ? 2 : 2;
@@ -987,12 +1002,6 @@ function buildTangramRound() {
 
   }
   dragPiecesLeft = DRAGPIECE_COUNT;
-
-  setTimeout(() => {
-    if (phase !== 'tangram') return;
-    hint.querySelector('p').textContent = 'arrastra el color a una figura';
-    hint.style.opacity = '1';
-  }, 250 + DRAGPIECE_COUNT * 55 + 200);
 }
 
 function shapeOutlinePath(type, cx, cy, s) {
@@ -1216,7 +1225,7 @@ let mandalaTouchStartX = null;
 // umbral de giro acumulado (en radianes, valor absoluto, sin importar
 // dirección) a partir del cual el mandala explota solo — automático al
 // cruzar el umbral, sin que el usuario tenga que soltar nada.
-const MANDALA_SPIN_THRESHOLD = Math.PI * 2; // ~1 vuelta completa (antes ~2.5, duraba mucho)
+const MANDALA_SPIN_THRESHOLD = Math.PI * 6; // ~3 vueltas completas (antes PI*2.6, seguía sintiéndose corto)
 let mandalaExploding = false;
 
 function startMandalaPhase() {
@@ -1282,14 +1291,13 @@ function startMandalaPhase() {
 
   playReveal();
 
-  // ya no se muestra un botón acá: el cierre del mandala es 100% automático
-  // (se dispara al girar lo suficiente, ver MANDALA_SPIN_THRESHOLD).
-  setTimeout(() => {
-    if (phase !== 'mandala') return;
-    hint.querySelector('p').textContent = 'haz scroll para girar la composición';
-    hint.style.opacity = '1';
-    startMandalaLoop();
-  }, totalPieces * 35 + 750);
+  // CAMBIO: el hint ("haz scroll para girar la composición") se muestra
+  // ANTES de que el mandala termine de autoensamblarse, no después de
+  // esperar a todas las piezas (totalPieces*35 + 750ms). Antes el texto
+  // llegaba recién cuando el mandala ya estaba completo en pantalla.
+  hint.querySelector('p').textContent = 'haz scroll para girar la composición';
+  hint.style.opacity = '1';
+  startMandalaLoop();
 }
 
 function startMandalaLoop() {
